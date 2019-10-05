@@ -41,6 +41,11 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private float m_NextStep;
         private int iJumpCount;
         private bool m_Jumping;
+        private bool m_Dash;
+        private bool bAirDashed;
+        private int iDashedCount;
+        private int iDashCount;
+        private KeyCode DashKey = KeyCode.LeftShift;
         private AudioSource m_AudioSource;
 
         // Use this for initialization
@@ -55,6 +60,9 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_NextStep = m_StepCycle/2f;
             m_Jumping = false;
             iJumpCount = 0;
+            iDashCount = 0;
+            iDashedCount = 0;
+            bAirDashed = false;
             m_AudioSource = GetComponent<AudioSource>();
 			m_MouseLook.Init(transform , m_Camera.transform);
         }
@@ -80,6 +88,10 @@ namespace UnityStandardAssets.Characters.FirstPerson
             if (!m_CharacterController.isGrounded && !m_Jumping && m_PreviouslyGrounded)
             {
                 m_MoveDir.y = 0f;
+            }
+
+            if (Input.GetKey(DashKey) && !bAirDashed) {
+                m_Dash = true;
             }
 
             m_PreviouslyGrounded = m_CharacterController.isGrounded;
@@ -110,12 +122,34 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_MoveDir.x = desiredMove.x*speed;
             m_MoveDir.z = desiredMove.z*speed;
 
-            if (iJumpCount >= 2 && m_CharacterController.isGrounded) {
-                iJumpCount = 0;
+            if (m_Dash && iDashedCount == 0) {
+                if (!m_CharacterController.isGrounded) {
+                    bAirDashed = true;
+                }
+                m_MoveDir.x = desiredMove.x * 20;
+                m_MoveDir.z = desiredMove.z * 20;
+                iDashCount += 1;
             }
-            Debug.Log(m_CharacterController.isGrounded);
+
+            if (m_Dash && iDashCount > 20) {
+                m_Dash = false;
+                iDashCount = 0;
+                iDashedCount = 1;
+            }
+
+            if (iDashedCount > 0) {
+                Debug.Log(iDashedCount);
+                Debug.Log(m_Jumping);
+                if (iDashedCount > 15 && !m_Jumping) {
+                    iDashedCount = -1;
+                }
+                iDashedCount += 1;
+            }
+
             if (m_CharacterController.isGrounded)
             {
+                iJumpCount = 0;
+                bAirDashed = false;
                 m_MoveDir.y = -m_StickToGroundForce;
 
                 if (m_Jump)
@@ -126,6 +160,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                     m_Jumping = true;
                     iJumpCount += 1;
                 }
+
             }
             else
             {
@@ -175,7 +210,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         private void PlayFootStepAudio()
         {
-            if (!m_CharacterController.isGrounded)
+            if (!m_CharacterController.isGrounded || m_Dash)
             {
                 return;
             }
@@ -193,7 +228,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private void UpdateCameraPosition(float speed)
         {
             Vector3 newCameraPosition;
-            if (!m_UseHeadBob)
+            if (!m_UseHeadBob || m_Dash)
             {
                 return;
             }
