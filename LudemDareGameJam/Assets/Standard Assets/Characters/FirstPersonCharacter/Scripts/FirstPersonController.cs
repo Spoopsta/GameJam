@@ -2,12 +2,13 @@ using System;
 using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 using UnityStandardAssets.Utility;
+using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 
 namespace UnityStandardAssets.Characters.FirstPerson
 {
-    [RequireComponent(typeof (CharacterController))]
-    [RequireComponent(typeof (AudioSource))]
+    [RequireComponent(typeof(CharacterController))]
+    [RequireComponent(typeof(AudioSource))]
     public class FirstPersonController : MonoBehaviour
     {
         [SerializeField] private bool m_IsWalking;
@@ -27,7 +28,9 @@ namespace UnityStandardAssets.Characters.FirstPerson
         [SerializeField] private AudioClip[] m_FootstepSounds;    // an array of footstep sounds that will be randomly selected from.
         [SerializeField] private AudioClip m_JumpSound;           // the sound played when character leaves the ground.
         [SerializeField] private AudioClip m_LandSound;           // the sound played when character touches back on ground.
+        [SerializeField] private AudioClip m_ItemGet;
 
+        public GameObject player;
         private Camera m_Camera;
         private bool m_Jump;
         private float m_YRotation;
@@ -39,12 +42,12 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private Vector3 m_OriginalCameraPosition;
         private float m_StepCycle;
         private float m_NextStep;
-        private int iJumpCount;
         private bool m_Jumping;
         private bool m_Dash;
         private bool bAirDashed;
         private int iDashedCount;
         private int iDashCount;
+        private bool bAirJump;
         private KeyCode DashKey = KeyCode.LeftShift;
         private AudioSource m_AudioSource;
 
@@ -59,21 +62,34 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_StepCycle = 0f;
             m_NextStep = m_StepCycle/2f;
             m_Jumping = false;
-            iJumpCount = 0;
             iDashCount = 0;
             iDashedCount = 0;
             bAirDashed = false;
+            bAirJump = false;
             m_AudioSource = GetComponent<AudioSource>();
 			m_MouseLook.Init(transform , m_Camera.transform);
         }
 
+        private void OnTriggerEnter(Collider collision)
+        {
+            if (collision.gameObject.tag.Equals("Void")) {
+                Application.LoadLevel(Application.loadedLevel);
+            }
+
+            if (collision.gameObject.tag.Equals("Pickup")) {
+                Destroy(collision);
+                collision.gameObject.GetComponent<MeshRenderer>().enabled = false;
+                bAirJump = true;
+                PlayItemGet(collision.gameObject);
+            }
+        }
 
         // Update is called once per frame
         private void Update()
         {
             RotateView();
             // the jump state needs to read here to make sure it is not missed
-            if (!m_Jump && iJumpCount < 2)
+            if (!m_Jump && (m_CharacterController.isGrounded || bAirJump))
             {
                 m_Jump = CrossPlatformInputManager.GetButtonDown("Jump");
             }
@@ -138,8 +154,6 @@ namespace UnityStandardAssets.Characters.FirstPerson
             }
 
             if (iDashedCount > 0) {
-                Debug.Log(iDashedCount);
-                Debug.Log(m_Jumping);
                 if (iDashedCount > 15 && !m_Jumping) {
                     iDashedCount = -1;
                 }
@@ -148,7 +162,6 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
             if (m_CharacterController.isGrounded)
             {
-                iJumpCount = 0;
                 bAirDashed = false;
                 m_MoveDir.y = -m_StickToGroundForce;
 
@@ -158,18 +171,20 @@ namespace UnityStandardAssets.Characters.FirstPerson
                     PlayJumpSound();
                     m_Jump = false;
                     m_Jumping = true;
-                    iJumpCount += 1;
                 }
 
             }
             else
             {
-                if (m_Jump && iJumpCount < 2)
+                if (m_Jump)
                 {
                     m_MoveDir.y = m_JumpSpeed;
                     PlayJumpSound();
                     m_Jump = false;
-                    iJumpCount += 1;
+                    if (bAirJump)
+                    {
+                        bAirJump = false;
+                    }
                 }
                 m_MoveDir += Physics.gravity*m_GravityMultiplier*Time.fixedDeltaTime;
             }
@@ -186,6 +201,13 @@ namespace UnityStandardAssets.Characters.FirstPerson
         {
             m_AudioSource.clip = m_JumpSound;
             m_AudioSource.Play();
+        }
+
+        private void PlayItemGet(GameObject gObject)
+        {
+            gObject.GetComponent<AudioSource>().Play();
+            //m_AudioSource.clip = m_ItemGet;
+            //m_AudioSource.Play();
         }
 
 
