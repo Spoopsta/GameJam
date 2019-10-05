@@ -21,7 +21,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             [HideInInspector] public float CurrentTargetSpeed = 8f;
 
 #if !MOBILE_INPUT
-            private bool m_Running;
+            private bool m_Dashing;
 #endif
 
             public void UpdateDesiredTargetSpeed(Vector2 input)
@@ -44,14 +44,14 @@ namespace UnityStandardAssets.Characters.FirstPerson
 					CurrentTargetSpeed = ForwardSpeed;
 				}
 #if !MOBILE_INPUT
-	            if (Input.GetKey(RunKey))
+                if (Input.GetKey(RunKey))
 	            {
 		            CurrentTargetSpeed *= RunMultiplier;
-		            m_Running = true;
+		            m_Dashing = true;
 	            }
 	            else
 	            {
-		            m_Running = false;
+		            m_Dashing = false;
 	            }
 #endif
             }
@@ -59,7 +59,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 #if !MOBILE_INPUT
             public bool Running
             {
-                get { return m_Running; }
+                get { return m_Dashing; }
             }
 #endif
         }
@@ -82,7 +82,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         public MouseLook mouseLook = new MouseLook();
         public AdvancedSettings advancedSettings = new AdvancedSettings();
 
-
+        private bool m_Dash;
         private Rigidbody m_RigidBody;
         private CapsuleCollider m_Capsule;
         private float m_YRotation;
