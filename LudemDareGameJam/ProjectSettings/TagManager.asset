@@ -9,6 +9,8 @@ TagManager:
   - Projectile
   - Boundary
   - WinCondition
+  - LevelSwitch
+  - SpecialPickup
   layers:
   - Default
   - TransparentFX
