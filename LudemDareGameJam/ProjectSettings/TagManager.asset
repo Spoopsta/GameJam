@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Void
   - Pickup
+  - Projectile
+  - Boundary
+  - WinCondition
   layers:
   - Default
   - TransparentFX

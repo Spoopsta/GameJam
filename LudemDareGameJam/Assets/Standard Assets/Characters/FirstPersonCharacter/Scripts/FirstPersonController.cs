@@ -48,6 +48,9 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private int iDashedCount;
         private int iDashCount;
         private bool bAirJump;
+        public bool playCutscene;
+        private bool bCompleteLevel;
+        private int cameraTracker;
         private KeyCode DashKey = KeyCode.LeftShift;
         private AudioSource m_AudioSource;
 
@@ -66,27 +69,59 @@ namespace UnityStandardAssets.Characters.FirstPerson
             iDashedCount = 0;
             bAirDashed = false;
             bAirJump = false;
+            bCompleteLevel = false;
             m_AudioSource = GetComponent<AudioSource>();
 			m_MouseLook.Init(transform , m_Camera.transform);
+            cameraTracker = 0;
+            playCutscene = false;
         }
 
         private void OnTriggerEnter(Collider collision)
         {
-            if (collision.gameObject.tag.Equals("Void")) {
+            if (collision.gameObject.tag.Equals("Void") || collision.gameObject.tag.Equals("Projectile")) {
                 Application.LoadLevel(Application.loadedLevel);
             }
 
             if (collision.gameObject.tag.Equals("Pickup")) {
-                Destroy(collision);
                 collision.gameObject.GetComponent<MeshRenderer>().enabled = false;
+                collision.gameObject.GetComponent<MeshCollider>().enabled = false;
                 bAirJump = true;
+                if (bAirDashed) {
+                    bAirDashed = false;
+                    iDashedCount = 0;
+                }
                 PlayItemGet(collision.gameObject);
+            }
+
+            if (collision.gameObject.tag.Equals("WinCondition")) {
+                /* if (bCompleteLevel)
+                 {
+                     Debug.Log("you win");
+                 }
+                 else {
+                     Debug.Log("turn around dummy");
+                 }*/
+                playCutscene = true;
+            }
+        }
+
+        private void starterCutscene() {
+            if (m_Camera.transform.rotation.x < -28)
+            {
+                m_Camera.transform.rotation = Quaternion.Euler(0.1f, 0, 0);
+            }
+            else {
+                playCutscene = false;
             }
         }
 
         // Update is called once per frame
         private void Update()
         {
+            if (playCutscene) {
+                starterCutscene();
+                return;
+            }
             RotateView();
             // the jump state needs to read here to make sure it is not missed
             if (!m_Jump && (m_CharacterController.isGrounded || bAirJump))
@@ -124,6 +159,10 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         private void FixedUpdate()
         {
+            if (playCutscene)
+            {
+                return;
+            }
             float speed;
             GetInput(out speed);
             // always move along the camera forward as it is the direction that it being aimed at
@@ -206,8 +245,6 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private void PlayItemGet(GameObject gObject)
         {
             gObject.GetComponent<AudioSource>().Play();
-            //m_AudioSource.clip = m_ItemGet;
-            //m_AudioSource.Play();
         }
 
 
