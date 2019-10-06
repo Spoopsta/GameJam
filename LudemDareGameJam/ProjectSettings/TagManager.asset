@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Void
   - Pickup
+  - LevelSwitch
   layers:
   - Default
   - TransparentFX
