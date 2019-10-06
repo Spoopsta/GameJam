@@ -7,7 +7,7 @@ public class SceneManagement : MonoBehaviour
 {
     public Animation UIAnimation1;
     public Animation UIAnimation2;
-    public Animation UIANimation3;
+    public Animation UIAnimation3;
 
     public GameObject StartCanvas;
     public GameObject UICanvas;
@@ -17,6 +17,7 @@ public class SceneManagement : MonoBehaviour
     {
         StartCanvas.gameObject.SetActive(true);
         UICanvas.gameObject.SetActive(false);
+        UIAnimation3.Play();
     }
 
 
@@ -27,6 +28,9 @@ public class SceneManagement : MonoBehaviour
             StartCanvas.gameObject.SetActive (false);
 
             UICanvas.gameObject.SetActive(true);
+
+            UIAnimation1.Play();
+            UIAnimation2.Play();
         }
     }
 
@@ -41,5 +45,11 @@ public class SceneManagement : MonoBehaviour
         {
             SceneManager.LoadScene(sceneBuildIndex: 2);
         }
+    }
+
+    public void QuitGame()
+    {
+        Debug.Log("game has been quit");
+        Application.Quit();
     }
 }
