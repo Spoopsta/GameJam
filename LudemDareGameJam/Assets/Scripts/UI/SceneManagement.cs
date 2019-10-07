@@ -25,6 +25,7 @@ public class SceneManagement : MonoBehaviour
     {
         if (Input.GetKeyDown("space"))
         {
+            Cursor.visible = true;
             StartCanvas.gameObject.SetActive (false);
 
             UICanvas.gameObject.SetActive(true);

@@ -53,6 +53,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private bool bCompleteLevel;
         private int endCounter;
         private bool end;
+        private bool level2;
         private KeyCode DashKey = KeyCode.LeftShift;
         private AudioSource m_AudioSource;
 
@@ -77,6 +78,13 @@ namespace UnityStandardAssets.Characters.FirstPerson
             endCounter = 0;
             playCutscene = false;
             end = false;
+            if (SceneManager.GetActiveScene().buildIndex == 3)
+            {
+                level2 = true;
+            }
+            else {
+                level2 = false;
+            }
         }
 
         private void OnTriggerEnter(Collider collision)
@@ -86,8 +94,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
             }
 
             if (collision.gameObject.tag.Equals("Pickup")) {
-                collision.gameObject.GetComponent<MeshRenderer>().enabled = false;
                 collision.gameObject.GetComponent<BoxCollider>().enabled = false;
+                collision.gameObject.GetComponent<MeshRenderer>().enabled = false;
                 collision.gameObject.GetComponentInChildren<ParticleSystem>().Stop();
                 bAirJump = true;
                 if (bAirDashed) {
@@ -108,11 +116,22 @@ namespace UnityStandardAssets.Characters.FirstPerson
                  if (bCompleteLevel)
                  {
                     collision.gameObject.GetComponent<MeshCollider>().enabled = false;
-                    end = true;
+                    if (!level2)
+                    {
+                        end = true;
+                    }
                  }
                  else {
                      collision.GetComponent<AudioSource>().Play();
                  }
+            }
+
+            if (collision.gameObject.tag.Equals("done")) {
+                if (bCompleteLevel) {
+                    collision.GetComponent<AudioSource>().Play();
+                    collision.gameObject.GetComponent<MeshCollider>().enabled = false;
+                    end = true;
+                }
             }
         }
 
@@ -121,8 +140,15 @@ namespace UnityStandardAssets.Characters.FirstPerson
         {
             if (end) {
                 endCounter++;
-                if (endCounter > 50){
-                    SceneManager.LoadScene(sceneBuildIndex: 3);
+                if (level2 && endCounter > 120 || !level2 && endCounter > 50)
+                {
+                    if (!level2)
+                    {
+                        SceneManager.LoadScene(sceneBuildIndex: 3);
+                    }
+                    else {
+                        SceneManager.LoadScene(sceneBuildIndex: 0);
+                    }
                 }
             }
             RotateView();
@@ -146,6 +172,10 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
             if (Input.GetKey(DashKey) && !bAirDashed) {
                 m_Dash = true;
+            }
+
+            if (Input.GetKey(KeyCode.Escape)) {
+                SceneManager.LoadScene(sceneBuildIndex: 0);
             }
 
             m_PreviouslyGrounded = m_CharacterController.isGrounded;
