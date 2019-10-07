@@ -147,7 +147,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                         SceneManager.LoadScene(sceneBuildIndex: 3);
                     }
                     else {
-                        SceneManager.LoadScene(sceneBuildIndex: 0);
+                        SceneManager.LoadScene(sceneBuildIndex: 4);
                     }
                 }
             }
