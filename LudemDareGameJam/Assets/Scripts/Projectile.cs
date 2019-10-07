@@ -26,15 +26,21 @@ public class Projectile : MonoBehaviour
         {
             transform.Translate(speed, 0, 0, Space.Self);
         }
-        else if (GetComponentInParent<Transform>().rotation.eulerAngles.z == 0) {
+        else if (GetComponentInParent<Transform>().rotation.eulerAngles.z == 0)
+        {
             if (GetComponentInParent<Transform>().rotation.eulerAngles.y == 0)
             {
                 transform.Translate(speed, 0, 0, Space.Self);
             }
-            else if (GetComponentInParent<Transform>().rotation.eulerAngles.y == 180) {
+            else if (GetComponentInParent<Transform>().rotation.eulerAngles.y == 180)
+            {
                 transform.Translate(speed, 0, 0, Space.Self);
             }
             else if (GetComponentInParent<Transform>().rotation.eulerAngles.y == 90)
+            {
+                transform.Translate(speed, 0, 0, Space.Self);
+            }
+            else if (GetComponentInParent<Transform>().rotation.eulerAngles.y == 270)
             {
                 transform.Translate(speed, 0, 0, Space.Self);
             }
