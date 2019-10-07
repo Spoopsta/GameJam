@@ -8,7 +8,7 @@ public class PickupScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        iCounter = 0;        
+        iCounter = 0;
     }
 
     // Update is called once per frame
@@ -18,7 +18,8 @@ public class PickupScript : MonoBehaviour
             iCounter++;
             if (iCounter > 550) {
                 GetComponent<MeshRenderer>().enabled = true;
-                GetComponent<MeshCollider>().enabled = true;
+                GetComponent<BoxCollider>().enabled = true;
+                GetComponentInChildren<ParticleSystem>().Play();
                 iCounter = 0;
             }
         }        

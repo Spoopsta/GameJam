@@ -84,7 +84,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
             if (collision.gameObject.tag.Equals("Pickup")) {
                 collision.gameObject.GetComponent<MeshRenderer>().enabled = false;
-                collision.gameObject.GetComponent<MeshCollider>().enabled = false;
+                collision.gameObject.GetComponent<BoxCollider>().enabled = false;
+                collision.gameObject.GetComponentInChildren<ParticleSystem>().Stop();
                 bAirJump = true;
                 if (bAirDashed) {
                     bAirDashed = false;
@@ -93,35 +94,27 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 PlayItemGet(collision.gameObject);
             }
 
-            if (collision.gameObject.tag.Equals("WinCondition")) {
-                /* if (bCompleteLevel)
+            if (collision.gameObject.tag.Equals("SpecialPickup")) {
+                bCompleteLevel = true;
+                collision.gameObject.GetComponent<MeshRenderer>().enabled = false;
+                collision.gameObject.GetComponent<MeshCollider>().enabled = false;
+                collision.GetComponent<AudioSource>().Play();
+            }
+
+            if (collision.gameObject.tag.Equals("aaa")) {
+                 if (bCompleteLevel)
                  {
-                     Debug.Log("you win");
+                    collision.gameObject.GetComponent<MeshCollider>().enabled = false;
                  }
                  else {
-                     Debug.Log("turn around dummy");
-                 }*/
-                playCutscene = true;
-            }
-        }
-
-        private void starterCutscene() {
-            if (m_Camera.transform.rotation.x < -28)
-            {
-                m_Camera.transform.rotation = Quaternion.Euler(0.1f, 0, 0);
-            }
-            else {
-                playCutscene = false;
+                     collision.GetComponent<AudioSource>().Play();
+                 }
             }
         }
 
         // Update is called once per frame
         private void Update()
         {
-            if (playCutscene) {
-                starterCutscene();
-                return;
-            }
             RotateView();
             // the jump state needs to read here to make sure it is not missed
             if (!m_Jump && (m_CharacterController.isGrounded || bAirJump))
@@ -159,10 +152,6 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         private void FixedUpdate()
         {
-            if (playCutscene)
-            {
-                return;
-            }
             float speed;
             GetInput(out speed);
             // always move along the camera forward as it is the direction that it being aimed at
@@ -201,6 +190,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
             if (m_CharacterController.isGrounded)
             {
+                bAirJump = false;
                 bAirDashed = false;
                 m_MoveDir.y = -m_StickToGroundForce;
 

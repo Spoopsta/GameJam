@@ -11,6 +11,8 @@ TagManager:
   - WinCondition
   - LevelSwitch
   - SpecialPickup
+  - winBlocker
+  - aaa
   layers:
   - Default
   - TransparentFX
