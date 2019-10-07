@@ -113,10 +113,10 @@ MonoBehaviour:
     y: 30
     width: 1920
     height: 947
-  m_MinSize: {x: 917, y: 501}
-  m_MaxSize: {x: 22012, y: 12072}
+  m_MinSize: {x: 913, y: 501}
+  m_MaxSize: {x: 22008, y: 12072}
   vertical: 0
-  controlID: 8201
+  controlID: 13342
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -142,7 +142,7 @@ MonoBehaviour:
   m_MinSize: {x: 202, y: 501}
   m_MaxSize: {x: 4002, y: 12072}
   vertical: 1
-  controlID: 8202
+  controlID: 13343
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -161,7 +161,7 @@ MonoBehaviour:
     x: 0
     y: 0
     width: 948
-    height: 457
+    height: 670
   m_MinSize: {x: 202, y: 224}
   m_MaxSize: {x: 4002, y: 4024}
   m_ActualView: {fileID: 14}
@@ -186,9 +186,9 @@ MonoBehaviour:
   m_Position:
     serializedVersion: 2
     x: 0
-    y: 457
+    y: 670
     width: 948
-    height: 142
+    height: 53
   m_MinSize: {x: 145, y: 53}
   m_MaxSize: {x: 4002, y: 4024}
   m_ActualView: {fileID: 16}
@@ -212,9 +212,9 @@ MonoBehaviour:
   m_Position:
     serializedVersion: 2
     x: 0
-    y: 599
+    y: 723
     width: 948
-    height: 348
+    height: 224
   m_MinSize: {x: 202, y: 224}
   m_MaxSize: {x: 4002, y: 4024}
   m_ActualView: {fileID: 13}
@@ -322,9 +322,9 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 0
-    y: 672
+    y: 796
     width: 946
-    height: 328
+    height: 204
   m_PersistentViewDataDictionary: {fileID: 0}
   m_MaximizeOnPlay: 1
   m_Gizmos: 0
@@ -336,10 +336,10 @@ MonoBehaviour:
     m_VRangeLocked: 0
     hZoomLockedByDefault: 0
     vZoomLockedByDefault: 0
-    m_HBaseRangeMin: -276.5
-    m_HBaseRangeMax: 276.5
-    m_VBaseRangeMin: -155.5
-    m_VBaseRangeMax: 155.5
+    m_HBaseRangeMin: -166
+    m_HBaseRangeMax: 166
+    m_VBaseRangeMin: -93.5
+    m_VBaseRangeMax: 93.5
     m_HAllowExceedBaseRangeMin: 1
     m_HAllowExceedBaseRangeMax: 1
     m_VAllowExceedBaseRangeMin: 1
@@ -358,9 +358,9 @@ MonoBehaviour:
       x: 0
       y: 17
       width: 946
-      height: 311
+      height: 187
     m_Scale: {x: 1, y: 1}
-    m_Translation: {x: 473, y: 155.5}
+    m_Translation: {x: 473, y: 93.5}
     m_MarginLeft: 0
     m_MarginRight: 0
     m_MarginTop: 0
@@ -368,14 +368,14 @@ MonoBehaviour:
     m_LastShownAreaInsideMargins:
       serializedVersion: 2
       x: -473
-      y: -155.5
+      y: -93.5
       width: 946
-      height: 311
+      height: 187
     m_MinimalGUI: 1
   m_defaultScale: 1
   m_TargetTexture: {fileID: 0}
   m_CurrentColorSpace: 0
-  m_LastWindowPixelSize: {x: 946, y: 328}
+  m_LastWindowPixelSize: {x: 946, y: 204}
   m_ClearInEditMode: 1
   m_NoCameraWarning: 1
   m_LowResolutionForAspectRatios: 01000000000100000100
@@ -403,7 +403,7 @@ MonoBehaviour:
     x: 0
     y: 73
     width: 946
-    height: 437
+    height: 650
   m_PersistentViewDataDictionary: {fileID: 0}
   m_WindowGUID: 575d2abd7c967e24a8eb7a3ad634bddc
   m_SceneLighting: 1
@@ -411,9 +411,9 @@ MonoBehaviour:
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 35.38142, y: 38.783478, z: -2.9585686}
+    m_Target: {x: 39.11723, y: 27.635048, z: 45.074352}
     speed: 2
-    m_Value: {x: 35.38142, y: 38.783478, z: -2.9585686}
+    m_Value: {x: 39.11723, y: 27.635048, z: 45.074352}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -441,13 +441,13 @@ MonoBehaviour:
       speed: 2
       m_Value: 0
   m_Rotation:
-    m_Target: {x: 0.21531841, y: 0.0858717, z: -0.0190112, w: 0.97257525}
+    m_Target: {x: -0.013422803, y: 0.9863221, z: -0.104328826, w: -0.12690178}
     speed: 2
-    m_Value: {x: 0.21531841, y: 0.0858717, z: -0.0190112, w: 0.97257525}
+    m_Value: {x: -0.013422803, y: 0.9863221, z: -0.104328826, w: -0.12690178}
   m_Size:
-    m_Target: 2.8260477
+    m_Target: 52.90567
     speed: 2
-    m_Value: 2.8260477
+    m_Value: 52.90567
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -506,9 +506,9 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 0
-    y: 530
+    y: 743
     width: 946
-    height: 122
+    height: 33
   m_PersistentViewDataDictionary: {fileID: 0}
   dragSelectMode: 2
   drawNormals: 0
@@ -541,10 +541,10 @@ MonoBehaviour:
   m_PersistentViewDataDictionary: {fileID: 0}
   m_SceneHierarchy:
     m_TreeViewState:
-      scrollPos: {x: 0, y: 80}
+      scrollPos: {x: 0, y: 258}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: cacdfeffda28ffff1072ffffc4fbfffff8330000
+      m_ExpandedIDs: 2096ffff229effffc2a5ffff84b1ffffcefaffff763100002c390000de39000058e2020062e202006ce20200a8e202004ae5020074e50200b8050300c2050300cc050300080603001a0a0300
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -606,20 +606,20 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Materials/Brick
+    - Assets/Scenes
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Materials/Brick
+  - Assets/Scenes
   m_LastFoldersGridSize: -1
   m_LastProjectPath: F:\GameJam\LudemDareGameJam
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: ea2a0000
-    m_LastClickedID: 10986
-    m_ExpandedIDs: 000000001e280000d02800002e29000042290000b2290000b02a0000602b00007e2b0000042c00003a2c0000982c00004e2d0000742e0000a42e0000663b0000683b00006a3b000000ca9a3b
+    m_SelectedIDs: 402a0000
+    m_LastClickedID: 10816
+    m_ExpandedIDs: 00000000a628000058290000b6290000362a0000322b0000fc2b0000822c0000162d0000ca2d0000f02e0000202f0000603d0000623d0000643d000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -647,7 +647,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000001e280000d028000042290000b2290000b02a00007e2b0000982c00004e2d0000a42e0000663b0000683b00006a3b000000ca9a3b
+    m_ExpandedIDs: 00000000a628000058290000b6290000362a0000322b0000fc2b0000822c0000162d0000ca2d0000f02e0000202f0000603d0000623d0000643d000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -674,7 +674,7 @@ MonoBehaviour:
   m_ListAreaState:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 1
+    m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: 
     m_RenameOverlay:
       m_UserAcceptedRename: 0
