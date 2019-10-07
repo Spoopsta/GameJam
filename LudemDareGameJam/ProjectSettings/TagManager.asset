@@ -6,8 +6,13 @@ TagManager:
   tags:
   - Void
   - Pickup
+  - Projectile
+  - Boundary
+  - WinCondition
   - LevelSwitch
   - SpecialPickup
+  - winBlocker
+  - aaa
   layers:
   - Default
   - TransparentFX

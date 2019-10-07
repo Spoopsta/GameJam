@@ -48,6 +48,9 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private int iDashedCount;
         private int iDashCount;
         private bool bAirJump;
+        public bool playCutscene;
+        private bool bCompleteLevel;
+        private int cameraTracker;
         private KeyCode DashKey = KeyCode.LeftShift;
         private AudioSource m_AudioSource;
 
@@ -66,21 +69,46 @@ namespace UnityStandardAssets.Characters.FirstPerson
             iDashedCount = 0;
             bAirDashed = false;
             bAirJump = false;
+            bCompleteLevel = false;
             m_AudioSource = GetComponent<AudioSource>();
 			m_MouseLook.Init(transform , m_Camera.transform);
+            cameraTracker = 0;
+            playCutscene = false;
         }
 
         private void OnTriggerEnter(Collider collision)
         {
-            if (collision.gameObject.tag.Equals("Void")) {
+            if (collision.gameObject.tag.Equals("Void") || collision.gameObject.tag.Equals("Projectile")) {
                 Application.LoadLevel(Application.loadedLevel);
             }
 
             if (collision.gameObject.tag.Equals("Pickup")) {
-                Destroy(collision);
                 collision.gameObject.GetComponent<MeshRenderer>().enabled = false;
+                collision.gameObject.GetComponent<BoxCollider>().enabled = false;
+                collision.gameObject.GetComponentInChildren<ParticleSystem>().Stop();
                 bAirJump = true;
+                if (bAirDashed) {
+                    bAirDashed = false;
+                    iDashedCount = 0;
+                }
                 PlayItemGet(collision.gameObject);
+            }
+
+            if (collision.gameObject.tag.Equals("SpecialPickup")) {
+                bCompleteLevel = true;
+                collision.gameObject.GetComponent<MeshRenderer>().enabled = false;
+                collision.gameObject.GetComponent<MeshCollider>().enabled = false;
+                collision.GetComponent<AudioSource>().Play();
+            }
+
+            if (collision.gameObject.tag.Equals("aaa")) {
+                 if (bCompleteLevel)
+                 {
+                    collision.gameObject.GetComponent<MeshCollider>().enabled = false;
+                 }
+                 else {
+                     collision.GetComponent<AudioSource>().Play();
+                 }
             }
         }
 
@@ -162,6 +190,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
             if (m_CharacterController.isGrounded)
             {
+                bAirJump = false;
                 bAirDashed = false;
                 m_MoveDir.y = -m_StickToGroundForce;
 
@@ -206,8 +235,6 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private void PlayItemGet(GameObject gObject)
         {
             gObject.GetComponent<AudioSource>().Play();
-            //m_AudioSource.clip = m_ItemGet;
-            //m_AudioSource.Play();
         }
 
 
