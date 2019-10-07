@@ -5,6 +5,7 @@ using UnityStandardAssets.Utility;
 using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 
+
 namespace UnityStandardAssets.Characters.FirstPerson
 {
     [RequireComponent(typeof(CharacterController))]
@@ -50,7 +51,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private bool bAirJump;
         public bool playCutscene;
         private bool bCompleteLevel;
-        private int cameraTracker;
+        private int endCounter;
+        private bool end;
         private KeyCode DashKey = KeyCode.LeftShift;
         private AudioSource m_AudioSource;
 
@@ -72,8 +74,9 @@ namespace UnityStandardAssets.Characters.FirstPerson
             bCompleteLevel = false;
             m_AudioSource = GetComponent<AudioSource>();
 			m_MouseLook.Init(transform , m_Camera.transform);
-            cameraTracker = 0;
+            endCounter = 0;
             playCutscene = false;
+            end = false;
         }
 
         private void OnTriggerEnter(Collider collision)
@@ -105,6 +108,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                  if (bCompleteLevel)
                  {
                     collision.gameObject.GetComponent<MeshCollider>().enabled = false;
+                    end = true;
                  }
                  else {
                      collision.GetComponent<AudioSource>().Play();
@@ -115,6 +119,12 @@ namespace UnityStandardAssets.Characters.FirstPerson
         // Update is called once per frame
         private void Update()
         {
+            if (end) {
+                endCounter++;
+                if (endCounter > 50){
+                    SceneManager.LoadScene(sceneBuildIndex: 3);
+                }
+            }
             RotateView();
             // the jump state needs to read here to make sure it is not missed
             if (!m_Jump && (m_CharacterController.isGrounded || bAirJump))
