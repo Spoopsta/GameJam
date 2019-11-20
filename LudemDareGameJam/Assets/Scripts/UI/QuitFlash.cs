@@ -19,6 +19,7 @@ public class QuitFlash : MonoBehaviour
 
         //start the coroutine for the blinking text at the start
         StartCoroutine(BlinkQuitText());
+
     }
 
     //method to blink the text

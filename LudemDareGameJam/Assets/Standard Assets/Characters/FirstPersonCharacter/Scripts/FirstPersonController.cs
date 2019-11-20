@@ -3,7 +3,11 @@ using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 using UnityStandardAssets.Utility;
 using UnityEngine.SceneManagement;
+using System.Collections.Generic;
+using System.Linq;
 using Random = UnityEngine.Random;
+
+
 
 
 namespace UnityStandardAssets.Characters.FirstPerson
@@ -32,6 +36,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         [SerializeField] private AudioClip m_ItemGet;
 
         public GameObject player;
+        //public GameObject levelManager;
         private Camera m_Camera;
         private bool m_Jump;
         private float m_YRotation;
@@ -60,6 +65,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         // Use this for initialization
         private void Start()
         {
+            //levelManager = FindObjectOfType<LevelManager>();
             m_CharacterController = GetComponent<CharacterController>();
             m_Camera = Camera.main;
             m_OriginalCameraPosition = m_Camera.transform.localPosition;
@@ -91,6 +97,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
         {
             if (collision.gameObject.tag.Equals("Void") || collision.gameObject.tag.Equals("Projectile")) {
                 Application.LoadLevel(Application.loadedLevel);
+
+                //levelManager.GetComponent<GameManager>().RespawnPlayer();
             }
 
             if (collision.gameObject.tag.Equals("Pickup")) {
@@ -133,6 +141,11 @@ namespace UnityStandardAssets.Characters.FirstPerson
                     end = true;
                 }
             }
+
+            //if (collision.gameObject.tag.Equals("Checkpoints"))
+           // {
+               // levelManager.GetComponent<LevelManager>().currentCheckpoint = collision.gameObject;
+           // }
         }
 
         // Update is called once per frame
