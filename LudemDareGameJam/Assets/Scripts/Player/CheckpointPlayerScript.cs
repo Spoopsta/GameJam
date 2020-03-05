@@ -27,7 +27,7 @@ public class CheckpointPlayerScript : MonoBehaviour
         }
 
         if (other.gameObject.tag.Equals("Void") || other.gameObject.tag.Equals("Projectile"))
-        {
+       {
             checkpointManager.GetComponent<GameManager>().RespawnPlayer();
 
         }

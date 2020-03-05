@@ -95,11 +95,11 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         private void OnTriggerEnter(Collider collision)
         {
-            if (collision.gameObject.tag.Equals("Void") || collision.gameObject.tag.Equals("Projectile")) {
-                Application.LoadLevel(Application.loadedLevel);
+            //if (collision.gameObject.tag.Equals("Void") || collision.gameObject.tag.Equals("Projectile")) {
+              //  Application.LoadLevel(Application.loadedLevel);
 
                 //levelManager.GetComponent<GameManager>().RespawnPlayer();
-            }
+            //}
 
             if (collision.gameObject.tag.Equals("Pickup")) {
                 collision.gameObject.GetComponent<BoxCollider>().enabled = false;

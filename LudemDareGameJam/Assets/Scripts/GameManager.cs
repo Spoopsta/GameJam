@@ -10,6 +10,9 @@ public class GameManager : MonoBehaviour
     //this is so we can move the player around by making them an object that the code can read and adjust their transform.position
     public GameObject player;
 
+    //creating a delay for respawning
+    public float respawnDelay;
+
 
     // Start is called before the first frame update
     void Start()
@@ -30,6 +33,15 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void RespawnPlayer()
     {
+        //keep just in case
+        //player.transform.position = currentCheckpoint.transform.position;
+        StartCoroutine(RespawnCoroutine());
+
+    }
+
+    public IEnumerator RespawnCoroutine()
+    {
+        yield return new WaitForSeconds(respawnDelay);
         player.transform.position = currentCheckpoint.transform.position;
     }
 
