@@ -78,6 +78,7 @@
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\PickupScript.cs" />
     <Compile Include="Assets\Scripts\Player\CheckpointPlayerScript.cs" />
+    <Compile Include="Assets\Scripts\Player\Wallrun.cs" />
     <Compile Include="Assets\Scripts\Printer.cs" />
     <Compile Include="Assets\Scripts\Projectile.cs" />
     <Compile Include="Assets\Scripts\PunchCard.cs" />
