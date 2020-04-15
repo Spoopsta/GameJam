@@ -290,7 +290,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             gObject.GetComponent<AudioSource>().Play();
         }
 
-
+   
         private void ProgressStepCycle(float speed)
         {
             if (m_CharacterController.velocity.sqrMagnitude > 0 && (m_Input.x != 0 || m_Input.y != 0))
@@ -298,6 +298,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 m_StepCycle += (m_CharacterController.velocity.magnitude + (speed*(m_IsWalking ? 1f : m_RunstepLenghten)))*
                              Time.fixedDeltaTime;
             }
+            
 
             if (!(m_StepCycle > m_NextStep))
             {
@@ -308,6 +309,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
             PlayFootStepAudio();
         }
+        
+        
 
 
         private void PlayFootStepAudio()
@@ -349,13 +352,14 @@ namespace UnityStandardAssets.Characters.FirstPerson
             }
             m_Camera.transform.localPosition = newCameraPosition;
         }
+        
 
 
         private void GetInput(out float speed)
         {
             // Read input
-            float horizontal = CrossPlatformInputManager.GetAxis("Horizontal");
-            float vertical = CrossPlatformInputManager.GetAxis("Vertical");
+            float horizontal = CrossPlatformInputManager.GetAxisRaw("Horizontal") * Time.deltaTime;
+            float vertical = CrossPlatformInputManager.GetAxisRaw("Vertical") * Time.deltaTime;
 
             bool waswalking = m_IsWalking;
 

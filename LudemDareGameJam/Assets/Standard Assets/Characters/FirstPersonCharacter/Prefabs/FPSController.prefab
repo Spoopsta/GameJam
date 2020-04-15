@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 6981667829416930696}
   - component: {fileID: 5400000}
   - component: {fileID: 8200000}
+  - component: {fileID: 6634834976649110861}
   m_Layer: 0
   m_Name: FPSController
   m_TagString: Untagged
@@ -180,7 +181,6 @@ MonoBehaviour:
   m_LandSound: {fileID: 8300000, guid: 3b09d59f4499d45428baa7a21e954296, type: 3}
   m_ItemGet: {fileID: 0}
   player: {fileID: 0}
-  levelManager: {fileID: 0}
   playCutscene: 0
 --- !u!114 &6981667829416930696
 MonoBehaviour:
@@ -307,6 +307,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!136 &6634834976649110861
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 100000}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &100002
 GameObject:
   m_ObjectHideFlags: 0
