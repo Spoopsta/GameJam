@@ -62,6 +62,10 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private KeyCode DashKey = KeyCode.LeftShift;
         private AudioSource m_AudioSource;
 
+        
+
+
+
         // Use this for initialization
         private void Start()
         {
