@@ -15,6 +15,7 @@ TagManager:
   - aaa
   - done
   - Checkpoints
+  - Wall
   layers:
   - Default
   - TransparentFX

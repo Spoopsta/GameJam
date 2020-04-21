@@ -14,11 +14,18 @@ public class GameManager : MonoBehaviour
     public float respawnDelay;
 
 
+    //death fades
+    public Animator animator;
+    //public Animation DeathFadeOut;
+
+
+
     // Start is called before the first frame update
     void Start()
     {
 
         player.transform.position = currentCheckpoint.transform.position;
+
 
     }
 
@@ -36,13 +43,24 @@ public class GameManager : MonoBehaviour
         //keep just in case
         //player.transform.position = currentCheckpoint.transform.position;
         StartCoroutine(RespawnCoroutine());
+        
+        animator.SetTrigger("Death-FadeOut");
+
+
 
     }
 
     public IEnumerator RespawnCoroutine()
     {
         yield return new WaitForSeconds(respawnDelay);
+        animator.SetTrigger("Death-FadeIn");
         player.transform.position = currentCheckpoint.transform.position;
     }
 
+
+   /* public void DeathFade(int levelIndex)
+    {
+        animator.SetTrigger("Death-FadeOut");
+    }
+    */
 }
