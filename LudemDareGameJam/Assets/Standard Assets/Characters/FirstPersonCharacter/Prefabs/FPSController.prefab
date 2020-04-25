@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 5400000}
   - component: {fileID: 8200000}
   - component: {fileID: 6634834976649110861}
+  - component: {fileID: 45893987373411834}
   m_Layer: 0
   m_Name: FPSController
   m_TagString: Untagged
@@ -62,7 +63,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 100000}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 05ec5cf00ca181d45a42ba1870e148c3, type: 3}
   m_Name: 
@@ -321,6 +322,26 @@ CapsuleCollider:
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &45893987373411834
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edbcff02f8e32dd4983fd2a3605d5b83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BaseSpeed: 4
+  RunSpeedIncrease: 4
+  RampUpTime: 0.75
+  TurnSpeed: 90
+  JumpSpeed: 8
+  Gravity: 20
+  MouseSensitivity: 2.5
+  camera: {fileID: 0}
 --- !u!1 &100002
 GameObject:
   m_ObjectHideFlags: 0
