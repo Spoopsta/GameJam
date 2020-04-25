@@ -3,7 +3,11 @@ using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 using UnityStandardAssets.Utility;
 using UnityEngine.SceneManagement;
+using System.Collections.Generic;
+using System.Linq;
 using Random = UnityEngine.Random;
+
+
 
 
 namespace UnityStandardAssets.Characters.FirstPerson
@@ -32,6 +36,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         [SerializeField] private AudioClip m_ItemGet;
 
         public GameObject player;
+        //public GameObject levelManager;
         private Camera m_Camera;
         private bool m_Jump;
         private float m_YRotation;
@@ -57,9 +62,14 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private KeyCode DashKey = KeyCode.LeftShift;
         private AudioSource m_AudioSource;
 
+        
+
+
+
         // Use this for initialization
         private void Start()
         {
+            //levelManager = FindObjectOfType<LevelManager>();
             m_CharacterController = GetComponent<CharacterController>();
             m_Camera = Camera.main;
             m_OriginalCameraPosition = m_Camera.transform.localPosition;
@@ -89,9 +99,11 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         private void OnTriggerEnter(Collider collision)
         {
-            if (collision.gameObject.tag.Equals("Void") || collision.gameObject.tag.Equals("Projectile")) {
-                Application.LoadLevel(Application.loadedLevel);
-            }
+            //if (collision.gameObject.tag.Equals("Void") || collision.gameObject.tag.Equals("Projectile")) {
+              //  Application.LoadLevel(Application.loadedLevel);
+
+                //levelManager.GetComponent<GameManager>().RespawnPlayer();
+            //}
 
             if (collision.gameObject.tag.Equals("Pickup")) {
                 collision.gameObject.GetComponent<BoxCollider>().enabled = false;
@@ -133,6 +145,11 @@ namespace UnityStandardAssets.Characters.FirstPerson
                     end = true;
                 }
             }
+
+            //if (collision.gameObject.tag.Equals("Checkpoints"))
+           // {
+               // levelManager.GetComponent<LevelManager>().currentCheckpoint = collision.gameObject;
+           // }
         }
 
         // Update is called once per frame
@@ -147,7 +164,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                         SceneManager.LoadScene(sceneBuildIndex: 3);
                     }
                     else {
-                        SceneManager.LoadScene(sceneBuildIndex: 0);
+                        SceneManager.LoadScene(sceneBuildIndex: 4);
                     }
                 }
             }
@@ -277,7 +294,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             gObject.GetComponent<AudioSource>().Play();
         }
 
-
+   
         private void ProgressStepCycle(float speed)
         {
             if (m_CharacterController.velocity.sqrMagnitude > 0 && (m_Input.x != 0 || m_Input.y != 0))
@@ -285,6 +302,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 m_StepCycle += (m_CharacterController.velocity.magnitude + (speed*(m_IsWalking ? 1f : m_RunstepLenghten)))*
                              Time.fixedDeltaTime;
             }
+            
 
             if (!(m_StepCycle > m_NextStep))
             {
@@ -295,6 +313,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
             PlayFootStepAudio();
         }
+        
+        
 
 
         private void PlayFootStepAudio()
@@ -336,15 +356,27 @@ namespace UnityStandardAssets.Characters.FirstPerson
             }
             m_Camera.transform.localPosition = newCameraPosition;
         }
+        
 
 
         private void GetInput(out float speed)
         {
             // Read input
-            float horizontal = CrossPlatformInputManager.GetAxis("Horizontal");
-            float vertical = CrossPlatformInputManager.GetAxis("Vertical");
+            float horizontal = CrossPlatformInputManager.GetAxisRaw("Horizontal") * Time.deltaTime;
+            float vertical = CrossPlatformInputManager.GetAxisRaw("Vertical") * Time.deltaTime;
 
             bool waswalking = m_IsWalking;
+
+
+            if (Input.GetKeyDown(KeyCode.W))
+            {
+                Debug.Log("movement key is pressed");
+            }
+
+            if (Input.GetKeyUp(KeyCode.W))
+            {
+                Debug.Log("Movement key released");
+            }
 
 #if !MOBILE_INPUT
             // On standalone builds, walk/run speed is modified by a key press.

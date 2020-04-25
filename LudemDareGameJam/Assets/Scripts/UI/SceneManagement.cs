@@ -5,9 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class SceneManagement : MonoBehaviour
 {
-    public Animation UIAnimation1;
-    public Animation UIAnimation2;
-    public Animation UIAnimation3;
+    private Animation UIAnimation1;
+    private Animation UIAnimation2;
+    private Animation UIAnimation3;
 
     public GameObject StartCanvas;
     public GameObject UICanvas;
@@ -18,6 +18,7 @@ public class SceneManagement : MonoBehaviour
         StartCanvas.gameObject.SetActive(true);
         UICanvas.gameObject.SetActive(false);
         UIAnimation3.Play();
+       
     }
 
 
@@ -32,6 +33,22 @@ public class SceneManagement : MonoBehaviour
 
             UIAnimation1.Play();
             UIAnimation2.Play();
+        }
+
+        if (Input.GetKeyDown("q"))
+        {
+            Debug.Log("game quit");
+            Application.Quit();
+        }
+
+        if (Input.GetKeyDown("y"))
+        {
+            SceneManager.LoadScene(sceneBuildIndex: 1);
+        }
+
+        if (Input.GetKeyDown("e"))
+        {
+            Application.Quit();
         }
     }
 
@@ -52,5 +69,9 @@ public class SceneManagement : MonoBehaviour
     {
         Debug.Log("game has been quit");
         Application.Quit();
+
+      
     }
+
+   
 }

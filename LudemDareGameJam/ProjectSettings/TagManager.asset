@@ -14,6 +14,8 @@ TagManager:
   - winBlocker
   - aaa
   - done
+  - Checkpoints
+  - Wall
   layers:
   - Default
   - TransparentFX
