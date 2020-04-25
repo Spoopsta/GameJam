@@ -62,9 +62,11 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private KeyCode DashKey = KeyCode.LeftShift;
         private AudioSource m_AudioSource;
 
-        
-
-
+        private RaycastHit rHitL;
+        private RaycastHit rHitR;
+        private bool bIsWallR;
+        private bool bIsWallL;
+        private float m_GravityMultiplierOG;
 
         // Use this for initialization
         private void Start()
@@ -223,6 +225,13 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_MoveDir.x = desiredMove.x*speed;
             m_MoveDir.z = desiredMove.z*speed;
 
+            if (CheckWallTouch()){
+                m_GravityMultiplier = 0.5f;
+            }
+            else {
+                m_GravityMultiplier = 2;
+            }
+
             if (m_Dash && iDashedCount == 0) {
                 if (!m_CharacterController.isGrounded) {
                     bAirDashed = true;
@@ -253,6 +262,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
                 if (m_Jump)
                 {
+
                     m_MoveDir.y = m_JumpSpeed;
                     PlayJumpSound();
                     m_Jump = false;
@@ -263,13 +273,13 @@ namespace UnityStandardAssets.Characters.FirstPerson
             else
             {
                 if (m_Jump)
-                {
+                {                        
                     m_MoveDir.y = m_JumpSpeed;
                     PlayJumpSound();
                     m_Jump = false;
                     if (bAirJump)
                     {
-                        bAirJump = false;
+                       bAirJump = false;
                     }
                 }
                 m_MoveDir += Physics.gravity*m_GravityMultiplier*Time.fixedDeltaTime;
@@ -280,6 +290,33 @@ namespace UnityStandardAssets.Characters.FirstPerson
             UpdateCameraPosition(speed);
 
             m_MouseLook.UpdateCursorLock();
+        }
+
+        private bool CheckWallTouch()
+        {
+            if (Physics.Raycast(transform.position, transform.right, out rHitR, 1))
+            {
+                if (rHitR.transform.tag == "Wall")
+                {
+                    bIsWallR = true;
+                    bIsWallL = false;
+                    bAirJump = true;
+                    return true;
+                }
+            }
+
+            if (Physics.Raycast(transform.position, -transform.right, out rHitL, 1))
+            {
+                if (rHitL.transform.tag == "Wall")
+                {
+                    bIsWallL = true;
+                    bIsWallR = false;
+                    bAirJump = true;
+                    return true;
+                }
+            }
+
+            return false;
         }
 
 
@@ -366,17 +403,6 @@ namespace UnityStandardAssets.Characters.FirstPerson
             float vertical = CrossPlatformInputManager.GetAxisRaw("Vertical") * Time.deltaTime;
 
             bool waswalking = m_IsWalking;
-
-
-            if (Input.GetKeyDown(KeyCode.W))
-            {
-                Debug.Log("movement key is pressed");
-            }
-
-            if (Input.GetKeyUp(KeyCode.W))
-            {
-                Debug.Log("Movement key released");
-            }
 
 #if !MOBILE_INPUT
             // On standalone builds, walk/run speed is modified by a key press.
