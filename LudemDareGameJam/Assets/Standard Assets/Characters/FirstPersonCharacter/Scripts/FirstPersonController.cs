@@ -198,6 +198,9 @@ namespace UnityStandardAssets.Characters.FirstPerson
             }
 
             m_PreviouslyGrounded = m_CharacterController.isGrounded;
+
+            //temporary code to restart level for testing purposes
+            ResetLevel();
         }
 
 
@@ -393,8 +396,15 @@ namespace UnityStandardAssets.Characters.FirstPerson
             }
             m_Camera.transform.localPosition = newCameraPosition;
         }
-        
 
+
+        private void ResetLevel()
+        {
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                Application.LoadLevel(Application.loadedLevel);
+            }
+        }
 
         private void GetInput(out float speed)
         {
