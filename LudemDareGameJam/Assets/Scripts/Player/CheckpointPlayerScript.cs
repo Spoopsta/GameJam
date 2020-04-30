@@ -23,14 +23,15 @@ public class CheckpointPlayerScript : MonoBehaviour
     {
         if (other.gameObject.tag.Equals ("Checkpoints"))
         {
-            checkpointManager.GetComponent<GameManager>().currentCheckpoint = other.gameObject;
-
+                Debug.Log("checkpoint");
+                checkpointManager.GetComponent<GameManager>().currentCheckpoint = other.gameObject;
+            
         }
 
         if (other.gameObject.tag.Equals("Void") || other.gameObject.tag.Equals("Projectile"))
        {
+            Debug.Log("void / Projectile");
             checkpointManager.GetComponent<GameManager>().RespawnPlayer();
-
         }
     }
 }
