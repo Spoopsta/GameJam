@@ -23,8 +23,8 @@ public class CheckpointPlayerScript : MonoBehaviour
     {
         if (other.gameObject.tag.Equals ("Checkpoints"))
         {
-                Debug.Log("checkpoint");
-                checkpointManager.GetComponent<GameManager>().currentCheckpoint = other.gameObject;
+            Debug.Log("checkpoint");
+            checkpointManager.GetComponent<GameManager>().currentCheckpoint = other.gameObject;
             
         }
 
