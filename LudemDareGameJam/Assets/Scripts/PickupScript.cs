@@ -16,7 +16,7 @@ public class PickupScript : MonoBehaviour
     {
         if (!GetComponent<MeshRenderer>().enabled) {
             iCounter++;
-            if (iCounter > 550) {
+            if (iCounter > 250) {
                 GetComponent<MeshRenderer>().enabled = true;
                 GetComponent<BoxCollider>().enabled = true;
                 GetComponentInChildren<ParticleSystem>().Play();
