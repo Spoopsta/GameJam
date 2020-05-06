@@ -193,9 +193,10 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 m_Dash = true;
             }
 
-            if (Input.GetKey(KeyCode.Escape)) {
+           /* if (Input.GetKey(KeyCode.Escape)) {
                 SceneManager.LoadScene(sceneBuildIndex: 0);
             }
+            */
 
             m_PreviouslyGrounded = m_CharacterController.isGrounded;
 
