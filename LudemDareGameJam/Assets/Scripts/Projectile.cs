@@ -7,7 +7,7 @@ public class Projectile : MonoBehaviour
     private float startPosX;
     private float startPosY;
     private float startPosZ;
-    private float speed;
+    public float speed;
     private int wait;
 
     // Start is called before the first frame update
@@ -16,7 +16,7 @@ public class Projectile : MonoBehaviour
         startPosX = transform.position.x;
         startPosY = transform.position.y;
         startPosZ = transform.position.z;
-        speed = -0.2f;
+        //speed = -0.25f;
     }
 
     // Update is called once per frame
@@ -50,9 +50,11 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter(Collider collision)
     {
-        if (collision.gameObject.tag.Equals("Boundary"))
+        if (collision.gameObject.tag.Equals("Boundary") || collision.gameObject.tag.Equals("Void"))
         {
             transform.position = new Vector3(startPosX, startPosY, startPosZ);
         }
     }
+
 }
+
