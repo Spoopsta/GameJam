@@ -85,7 +85,6 @@
     <Compile Include="Assets\Scripts\Printer.cs" />
     <Compile Include="Assets\Scripts\Projectile.cs" />
     <Compile Include="Assets\Scripts\PunchCard.cs" />
-    <Compile Include="Assets\Scripts\Terrain\MovingPlatform.cs" />
     <Compile Include="Assets\Scripts\Terrain\WaypointPlatform.cs" />
     <Compile Include="Assets\Scripts\UI\FlashingText.cs" />
     <Compile Include="Assets\Scripts\UI\QuitFlash.cs" />

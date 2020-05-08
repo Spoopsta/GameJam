@@ -22,7 +22,8 @@ public class Projectile : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GetComponentInParent<Transform>().rotation.eulerAngles.z == 270)
+        
+       if (GetComponentInParent<Transform>().rotation.eulerAngles.z == 270)
         {
             transform.Translate(speed, 0, 0, Space.Self);
         }
@@ -45,6 +46,7 @@ public class Projectile : MonoBehaviour
                 transform.Translate(speed, 0, 0, Space.Self);
             }
         }
+      
         
     }
 
