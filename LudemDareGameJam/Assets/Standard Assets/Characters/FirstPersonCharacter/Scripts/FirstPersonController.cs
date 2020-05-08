@@ -230,11 +230,16 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_MoveDir.z = desiredMove.z*speed;
 
             if (CheckWallTouch()){
-                m_GravityMultiplier = 0.5f;
+                m_GravityMultiplier = 0.35f;
+                m_WalkSpeed = 15.0f;
             }
             else {
                 m_GravityMultiplier = 2;
+                m_WalkSpeed = 8.0f;
             }
+
+            //check to make sure speed is increasing on walls
+            //Debug.Log(m_WalkSpeed);
 
             if (m_Dash && iDashedCount == 0) {
                 if (!m_CharacterController.isGrounded) {
