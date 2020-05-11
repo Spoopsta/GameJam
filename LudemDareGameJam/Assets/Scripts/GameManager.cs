@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityStandardAssets.Characters.FirstPerson;
 
 public class GameManager : MonoBehaviour
 {
@@ -8,7 +9,10 @@ public class GameManager : MonoBehaviour
     public GameObject currentCheckpoint;
 
     //this is so we can move the player around by making them an object that the code can read and adjust their transform.position
-    public GameObject player;
+    //public GameObject player;
+
+    //attempted replacement of gameobject
+    public FirstPersonController player;
 
     //creating a delay for respawning
     public float respawnDelay;
@@ -18,6 +22,10 @@ public class GameManager : MonoBehaviour
     public Animator animator;
     //public Animation DeathFadeOut;
 
+    public GameObject punchCard1, Door1;
+
+    private int punchCardCount;
+
 
 
     // Start is called before the first frame update
@@ -25,6 +33,7 @@ public class GameManager : MonoBehaviour
     {
 
         player.transform.position = currentCheckpoint.transform.position;
+        player = GameObject.FindObjectOfType<FirstPersonController>();
 
 
     }
@@ -32,7 +41,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        DestroyWall();
     }
 
     /// <summary>
@@ -56,6 +65,19 @@ public class GameManager : MonoBehaviour
         animator.SetTrigger("Death-FadeIn");
         player.transform.position = currentCheckpoint.transform.position;
     }
+
+
+    private void DestroyWall()
+    {
+        if (player.gameObject.GetComponent<FirstPersonController>().punchCards == 1)
+        {
+            Debug.Log("Wall is kill");
+           Door1.gameObject.SetActive(false);
+            //Wall1.gameObject.GetComponent<MeshRenderer>().enabled = false;
+           // Wall1.gameObject.GetComponent<MeshCollider>().enabled = false;
+        }
+    }
+
 
 
    /* public void DeathFade(int levelIndex)
