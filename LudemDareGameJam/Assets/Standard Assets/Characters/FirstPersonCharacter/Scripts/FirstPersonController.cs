@@ -68,6 +68,9 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private bool bIsWallL;
         private float m_GravityMultiplierOG;
 
+
+       [SerializeField] public int punchCards;
+
         // Use this for initialization
         private void Start()
         {
@@ -119,14 +122,24 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 PlayItemGet(collision.gameObject);
             }
 
+
+            //when hitting special pickups it adds to the punch cards int.
+            //FirstPersonController is called in GameManager where if punchCards == 1 Wall 1 is set to false.
             if (collision.gameObject.tag.Equals("SpecialPickup")) {
-                bCompleteLevel = true;
+                Debug.Log("punch ard obtained");
+                collision.gameObject.SetActive(false);
+                punchCards++;
+                Debug.Log(punchCards);
+
+
+               /* bCompleteLevel = true;
                 collision.gameObject.GetComponent<MeshRenderer>().enabled = false;
                 collision.gameObject.GetComponent<MeshCollider>().enabled = false;
                 collision.GetComponent<AudioSource>().Play();
+                */
             }
 
-            if (collision.gameObject.tag.Equals("aaa")) {
+            /*if (collision.gameObject.tag.Equals("aaa")) {
                  if (bCompleteLevel)
                  {
                     collision.gameObject.GetComponent<MeshCollider>().enabled = false;
@@ -139,6 +152,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                      collision.GetComponent<AudioSource>().Play();
                  }
             }
+            */
 
             if (collision.gameObject.tag.Equals("done")) {
                 if (bCompleteLevel) {
