@@ -14,6 +14,11 @@ public class WaypointPlatform : MonoBehaviour
 
     public GameObject Player;
 
+    //testing player touching the thing to make it start moving
+    public bool isStationary = false;
+
+   
+
     private void Start()
     {
         transform.position = waypoints[waypointIndex].transform.position;
@@ -23,11 +28,14 @@ public class WaypointPlatform : MonoBehaviour
     {
         transform.position = Vector3.MoveTowards(transform.position, waypoints[waypointIndex].transform.position, moveSpeed * Time.deltaTime);
 
-
-        //when a waypoint is reached, +1 to go to next waypoint
-        if (transform.position == waypoints[waypointIndex].transform.position)
+        // if the platform is not stationary, start moving towards the next waypoint 
+        if (isStationary == false)
         {
-            waypointIndex += 1;
+            //when a waypoint is reached, +1 to go to next waypoint
+            if (transform.position == waypoints[waypointIndex].transform.position)
+            {
+                waypointIndex += 1;
+            }
         }
 
 
@@ -41,14 +49,17 @@ public class WaypointPlatform : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        //if the player touches the object, the platform will begin to move and the player becomes a child object of the platform
         if (other.gameObject == Player)
         {
+            isStationary = false;
             Player.transform.parent = transform;
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
+        //player is no longer a child object of the platform / object.
         Player.transform.parent = null;
     }
 

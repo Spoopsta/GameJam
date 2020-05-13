@@ -52,7 +52,7 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter(Collider collision)
     {
-        if (collision.gameObject.tag.Equals("Boundary") || collision.gameObject.tag.Equals("Void"))
+        if (collision.gameObject.tag.Equals("Boundary") || collision.gameObject.tag.Equals("Void")|| collision.gameObject.tag.Equals("Wall"))
         {
             transform.position = new Vector3(startPosX, startPosY, startPosZ);
         }

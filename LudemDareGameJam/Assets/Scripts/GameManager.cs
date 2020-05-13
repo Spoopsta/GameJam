@@ -42,6 +42,8 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         DestroyWall();
+        ResetLevel();
+
     }
 
     /// <summary>
@@ -77,12 +79,19 @@ public class GameManager : MonoBehaviour
            // Wall1.gameObject.GetComponent<MeshCollider>().enabled = false;
         }
     }
-
-
-
-   /* public void DeathFade(int levelIndex)
+    private void ResetLevel()
     {
-        animator.SetTrigger("Death-FadeOut");
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            RespawnPlayer();
+        }
     }
-    */
+
+
+
+    /* public void DeathFade(int levelIndex)
+     {
+         animator.SetTrigger("Death-FadeOut");
+     }
+     */
 }

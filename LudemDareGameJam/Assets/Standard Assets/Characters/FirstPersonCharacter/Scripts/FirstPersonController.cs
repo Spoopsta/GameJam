@@ -244,8 +244,10 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_MoveDir.z = desiredMove.z*speed;
 
             if (CheckWallTouch()){
-                m_GravityMultiplier = 0.35f;
-                m_WalkSpeed = 15.0f;
+                m_GravityMultiplier = 1.0f;
+                m_WalkSpeed = 20.0f;
+               // bAirDashed = false;
+                
             }
             else {
                 m_GravityMultiplier = 2;
@@ -324,6 +326,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                     bIsWallR = true;
                     bIsWallL = false;
                     bAirJump = true;
+                    //bAirDashed = false;
                     return true;
                 }
             }
@@ -335,6 +338,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                     bIsWallL = true;
                     bIsWallR = false;
                     bAirJump = true;
+                    //bAirDashed = false;
                     return true;
                 }
             }
@@ -420,7 +424,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         private void ResetLevel()
         {
-            if (Input.GetKeyDown(KeyCode.R))
+            if (Input.GetKeyDown(KeyCode.Y))
             {
                 Application.LoadLevel(Application.loadedLevel);
             }
