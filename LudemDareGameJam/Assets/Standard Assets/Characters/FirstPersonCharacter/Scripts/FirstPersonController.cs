@@ -131,6 +131,11 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 punchCards++;
                 Debug.Log(punchCards);
 
+                if (collision.gameObject.tag.Equals("WinWall"))
+                {
+                    SceneManager.LoadScene(sceneBuildIndex: 2);
+                }
+
 
                /* bCompleteLevel = true;
                 collision.gameObject.GetComponent<MeshRenderer>().enabled = false;

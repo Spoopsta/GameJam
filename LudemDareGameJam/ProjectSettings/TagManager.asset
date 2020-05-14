@@ -16,6 +16,8 @@ TagManager:
   - done
   - Checkpoints
   - Wall
+  - DashTutorial
+  - WinWall
   layers:
   - Default
   - TransparentFX

@@ -10,12 +10,17 @@ public class WaypointPlatform : MonoBehaviour
     [SerializeField]
     float moveSpeed = 2f;
 
+    float downSpeed = 0;
+
     int waypointIndex = 0;
 
     public GameObject Player;
 
     //testing player touching the thing to make it start moving
     public bool isStationary = false;
+
+    //setting up a falling platform when the player touches
+    public bool isFallingPlatform = false;
 
    
 
@@ -36,6 +41,13 @@ public class WaypointPlatform : MonoBehaviour
             {
                 waypointIndex += 1;
             }
+
+            if (isFallingPlatform)
+            {
+                downSpeed += Time.deltaTime/10;
+                transform.position = new Vector3(transform.position.x, transform.position.y - downSpeed, transform.position.z);
+            }
+
         }
 
 
@@ -54,6 +66,11 @@ public class WaypointPlatform : MonoBehaviour
         {
             isStationary = false;
             Player.transform.parent = transform;
+        }
+
+        else if (isFallingPlatform == false)
+        {
+            isFallingPlatform = true;
         }
     }
 

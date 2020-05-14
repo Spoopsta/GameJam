@@ -74,6 +74,7 @@
     <Compile Include="Assets\ProCore\ProGrids\Classes\pg_SceneMeshRender.cs" />
     <Compile Include="Assets\ProCore\ProGrids\Classes\pg_Util.cs" />
     <Compile Include="Assets\ProCore\ProGrids\MonoBehaviour\pg_IgnoreSnap.cs" />
+    <Compile Include="Assets\Scripts\Game Management\CheckpointAudio.cs" />
     <Compile Include="Assets\Scripts\Game Management\Respawn.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\PickupScript.cs" />
@@ -85,6 +86,7 @@
     <Compile Include="Assets\Scripts\Printer.cs" />
     <Compile Include="Assets\Scripts\Projectile.cs" />
     <Compile Include="Assets\Scripts\PunchCard.cs" />
+    <Compile Include="Assets\Scripts\Terrain\FallingPlatform.cs" />
     <Compile Include="Assets\Scripts\Terrain\WaypointPlatform.cs" />
     <Compile Include="Assets\Scripts\Terrain\WaypointPlatformWall.cs" />
     <Compile Include="Assets\Scripts\UI\FlashingText.cs" />

@@ -17,7 +17,7 @@ public class SceneManagement : MonoBehaviour
     {
         StartCanvas.gameObject.SetActive(true);
         UICanvas.gameObject.SetActive(false);
-        UIAnimation3.Play();
+        //UIAnimation3.Play();
        
     }
 
@@ -26,16 +26,18 @@ public class SceneManagement : MonoBehaviour
     {
         if (Input.GetKeyDown("space"))
         {
-            Cursor.visible = true;
+            /*Cursor.visible = true;
             StartCanvas.gameObject.SetActive (false);
 
             UICanvas.gameObject.SetActive(true);
 
             UIAnimation1.Play();
             UIAnimation2.Play();
+            */
+            SceneManager.LoadScene(sceneBuildIndex: 1);
         }
 
-        if (Input.GetKeyDown("q"))
+        if (Input.GetKeyDown(KeyCode.Q))
         {
             Debug.Log("game quit");
             Application.Quit();
