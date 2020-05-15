@@ -115,9 +115,14 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 collision.gameObject.GetComponent<MeshRenderer>().enabled = false;
                 collision.gameObject.GetComponentInChildren<ParticleSystem>().Stop();
                 bAirJump = true;
-                if (bAirDashed) {
+                if (bAirDashed == true) {
+
+                    //look ill be honest im not sure how this is working but when you pickup a jump boost it resets EVERYTHING relating to dash so you can consistently ash after picking one up
                     bAirDashed = false;
                     iDashedCount = 0;
+                    iDashCount = 0;
+                    m_Dash = false;
+                    bAirDashed = false;
                 }
                 PlayItemGet(collision.gameObject);
             }
@@ -212,17 +217,20 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 m_Dash = true;
             }
 
-           /* if (Input.GetKey(KeyCode.Escape)) {
-                SceneManager.LoadScene(sceneBuildIndex: 0);
-            }
-            */
+
+            /* if (Input.GetKey(KeyCode.Escape)) {
+                 SceneManager.LoadScene(sceneBuildIndex: 0);
+             }
+             */
 
             m_PreviouslyGrounded = m_CharacterController.isGrounded;
 
             //temporary code to restart level for testing purposes
             ResetLevel();
+
         }
 
+       
 
         private void PlayLandingSound()
         {

@@ -1,12 +1,10 @@
 Win64
 PlayerPath?
-F:/Game jam backups/Builds/LudemDareGameJam.exe
+F:/Dreamer BUilds/Dreamer Test Build v0.1/Dreamer_Test.exe
 SceneListBegin?
-Assets/Scenes/Main Menu.unity
-Assets/Scenes/Tutorial Scene.unity
-Assets/Scenes/Actual Game Scene.unity
-Assets/Scenes/Level2.unity
-Assets/Scenes/Credits.unity
+Assets/Scenes/Credits - Main/Main Menu.unity
+Assets/Scenes/Level 1 - Office/Office 1.unity
+Assets/Scenes/Credits - Main/Credits.unity
 SceneListEnd?
 984dcc0ba3707b7691fbdca8ff508d28 Unity.TextMeshPro.dll:TMPro.TMP_SelectionCaret
 3748fbad2d474a315bda516b8363a0c5 Assembly-CSharp-firstpass.dll:UnityStandardAssets.Effects.ExtinguishableParticleSystem
@@ -24,7 +22,7 @@ e1bbf0ab858085e38fae6b12ebbdcd35 UnityEngine.Timeline.dll:UnityEngine.Timeline.G
 e1bbf0ab858085e38fae6b12ebbdcd35 UnityEngine.Timeline.dll:UnityEngine.Timeline.PlayableTrack
 201e3fde670b00545944bb3db215c80a UnityEngine.Timeline.dll:UnityEngine.Timeline.TimelineAsset
 3748fbad2d474a315bda516b8363a0c5 Assembly-CSharp-firstpass.dll:UnityStandardAssets.Effects.ParticleSystemMultiplier
-2bde0d4376b8b459c232a9b76fda4dec Assembly-CSharp-firstpass.dll:UnityStandardAssets.Characters.FirstPerson.FirstPersonController
+f6e81129db5c427b7e0b824095a73f1f Assembly-CSharp-firstpass.dll:UnityStandardAssets.Characters.FirstPerson.FirstPersonController
 e7a73f5f78ba6445195ec23b74a1ce2d Unity.TextMeshPro.dll:TMPro.TMP_ScrollbarEventHandler
 0faadf7f444e033f28a19470d1ae257b Assembly-CSharp-firstpass.dll:UnityStandardAssets.Effects.ExplosionPhysicsForce
 71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp-firstpass.dll:.EventSystemChecker
@@ -62,6 +60,7 @@ fc108ce7d98c40ac0907e8ca7f500c76 UnityEngine.UI.dll:UnityEngine.UI.Text
 0fd6822f6177297bd0eb4d83cc7a9030 UnityEngine.UI.dll:UnityEngine.UI.ToggleGroup
 abf1930d8126d0b2e00e9449129a0190 UnityEngine.UI.dll:UnityEngine.EventSystems.TouchInputModule
 64e54c0cbb0177c5ea26f340efb9ff85 UnityEngine.UI.dll:UnityEngine.UI.VerticalLayoutGroup
+2ad6915dcc573420b184aec9854470b7 Assembly-CSharp.dll:.Wallrun3
 98ad81e9f689a492509f07e75b810aaa Unity.TextMeshPro.dll:TMPro.TMP_InputField
 352455aaadb8c98ff36ead557753abfa Assembly-CSharp-firstpass.dll:UnityStandardAssets.CrossPlatformInput.TiltInput
 cf9f5cf2c3145a37ac07f00e50e460f9 UnityEngine.UI.dll:UnityEngine.UI.AspectRatioFitter
@@ -139,11 +138,14 @@ db1f205a8c9dae1c39098cd23fc97f63 Assembly-CSharp-firstpass.dll:UnityStandardAsse
 a8b6c919b2049fcc280823488144371f Assembly-CSharp-firstpass.dll:UnityStandardAssets.CrossPlatformInput.Joystick
 4f631fd718256a8c69483c396671a274 Assembly-CSharp-firstpass.dll:UnityStandardAssets.Utility.PlatformSpecificContent
 0574135745ea880aa1c1be2f2057ab89 Assembly-CSharp-firstpass.dll:UnityStandardAssets.Utility.ActivateTrigger
+71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.Wallrun
 4bd1cc3c85989d2213a9a8fd9d09e63f Assembly-CSharp-firstpass.dll:UnityStandardAssets.CrossPlatformInput.InputAxisScrollbar
 fdd7177da17032ba94d98037cc97bb49 Assembly-CSharp-firstpass.dll:UnityStandardAssets.CrossPlatformInput.AxisTouchButton
+dced78bdaf9066d45a15e572a6f776cd Assembly-CSharp.dll:.WallRunningManager
 b3ab2106268377ffe25dd18ac23dca28 Unity.TextMeshPro.dll:TMPro.TMP_Asset
 c88c4199b288356ec3eb2f0d85abc619 Assembly-CSharp-firstpass.dll:UnityStandardAssets.CrossPlatformInput.ButtonHandler
 71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:ProBuilder2.Examples.HueCube
+f291fbfbeeab188dd551f501bac77b30 Assembly-CSharp.dll:.FallingPlatform
 0e0c7e6c34f2d19ba95cf463e39888b1 Assembly-CSharp-firstpass.dll:UnityStandardAssets.Characters.FirstPerson.HeadBob
 a4d879eed97e8d86fd752672fc026fa2 Assembly-CSharp-firstpass.dll:UnityStandardAssets.Utility.AutoMoveAndRotate
 71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp-firstpass.dll:.ForcedReset
@@ -185,10 +187,12 @@ ad9173d3a69d99153f38ed4b62226129 UnityEngine.Networking.dll:UnityEngine.Networki
 9b895dcabbc1faf095c000c32d471fd0 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkTransformChild
 5887ef1bc706b22b773d253fd443ceef UnityEngine.Networking.dll:UnityEngine.Networking.NetworkTransformVisualizer
 9ecd849b535c05f9f322e2e0c9149bbc Assembly-CSharp.dll:.Printer
+86f3d2860b237b2cfa63aa5ab7c62acf Assembly-CSharp.dll:.CheckpointAudio
 9a40de0f5a84ec02044ccfb05875df71 Assembly-CSharp-firstpass.dll:UnityStandardAssets.Utility.WaypointCircuit
 510fefd6a544e16a3ffefa557ddcba39 Unity.TextMeshPro.dll:TMPro.PackageResourceImporterWindow
 aa82b3ce4c0c9b227036c0337315c5d3 Unity.TextMeshPro.dll:TMPro.TMP_FontAsset
 e51c09a4cc447f11db225afcd8e3e490 Unity.TextMeshPro.dll:TMPro.TMP_Settings
+ad51545663bd1e9ec3865ad1d43b88a5 Assembly-CSharp.dll:.CheckpointPlayerScript
 76b945b547f74d79302f337813e6c0be Assembly-CSharp-firstpass.dll:UnityStandardAssets.Characters.FirstPerson.RigidbodyFirstPersonController
 71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.FlashingText
 cf96e5f7b3d069bab453925bd41be04e UnityEngine.TestRunner.dll:UnityEngine.TestTools.EnumerableSetUpTearDownCommandState
@@ -213,17 +217,21 @@ a4f0a4f62100f1a4fb5cbe0e00dde83f Unity.TextMeshPro.dll:TMPro.TextMeshProUGUI
 5fc094978ce3e3591a7500ed380d854a Unity.Analytics.DataPrivacy.dll:UnityEngine.Analytics.DataPrivacyButton
 b9048d3760274b9fd3dc94b75b3d0f96 Assembly-CSharp-firstpass.dll:UnityStandardAssets.Effects.WaterHoseParticles
 c80d3238226b1d162e3ff2069e0972ed Assembly-CSharp.dll:ProBuilder2.Examples.CameraControls
-71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.Projectile
+afc5b93a7b192de2dcb3832fe35a5c7e Assembly-CSharp.dll:.Projectile
 d251bf88db6c95a6b1aa0b69298da9ef UnityEngine.SpatialTracking.dll:UnityEngine.SpatialTracking.TrackedPoseDriver
 323ef9904ec6149348cdcc45975c0dbe Assembly-CSharp-firstpass.dll:UnityStandardAssets.Effects.SmokeParticles
 49dcb3939f87870ac10cf1f8fcdfb35e Assembly-CSharp-firstpass.dll:UnityStandardAssets.Utility.FollowTarget
+8a611a7cfa3113c5928a7ebd21298299 Assembly-CSharp.dll:.WaypointPlatform
 219ec6059796d8951d2adcd8505d0dc2 Assembly-CSharp-firstpass.dll:UnityStandardAssets.CrossPlatformInput.TouchPad
 a8cd58c1680eb5251e5604e560cf89e9 Assembly-CSharp-firstpass.dll:UnityStandardAssets.Utility.TimedObjectDestructor
+564ad3f3997c0668764f4ce5933f843e Assembly-CSharp.dll:.WaypointPlatformWall
 44c2d3bd57c3d764412e06815f612aa3 Assembly-CSharp-firstpass.dll:UnityStandardAssets.Effects.Explosive
 d791aa6007fa3640be1164ea75bb087d Unity.TextMeshPro.dll:TMPro.TMP_StyleSheet
 c6666661329916e218bee7f5e79e60f5 Unity.TextMeshPro.dll:TMPro.TextMeshPro
 3165968ba45c74472d279ba04455fccb Unity.TextMeshPro.dll:TMPro.TMP_ColorGradient
 71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp-firstpass.dll:UnityStandardAssets.Utility.FPSCounter
+781b8feb37d82108c6e76f6cd2bf26aa Assembly-CSharp.dll:.GameManager
 8649814970b42d345b89944b862453cc Unity.TextMeshPro.dll:TMPro.TMP_SubMesh
 5d58e2c6538e97bb37bbc552307c320c Assembly-CSharp.dll:ProBuilder2.Examples.RuntimeEdit
+ff5c66f3642bee07869c13580ccc761b Assembly-CSharp.dll:.Respawn
 47cd05cf11ce8beb2fd9a1522f58f5ec Assembly-CSharp-firstpass.dll:UnityStandardAssets.Utility.AutoMobileShaderSwitch

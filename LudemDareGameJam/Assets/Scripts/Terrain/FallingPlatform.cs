@@ -8,6 +8,10 @@ public class FallingPlatform : MonoBehaviour
     float downSpeed = 0;
     public GameObject Player;
 
+    public float waitTime;
+
+    public float fallingSpeed;
+
     
     // public GameObject spawnPosition;
 
@@ -29,7 +33,7 @@ public class FallingPlatform : MonoBehaviour
     {
         if (isFallingPlatform)
         {
-            downSpeed += Time.deltaTime / 10;
+            downSpeed += Time.deltaTime / fallingSpeed;
             transform.position = new Vector3(transform.position.x, transform.position.y - downSpeed, transform.position.z);
         }
     }
@@ -39,7 +43,7 @@ public class FallingPlatform : MonoBehaviour
 
         if (other.gameObject == Player)
         {  
-            coroutine = FallingDelay(1.5f);
+            coroutine = FallingDelay();
             StartCoroutine(coroutine);
            // isFallingPlatform = true;
             Player.transform.parent = transform;
@@ -61,7 +65,7 @@ public class FallingPlatform : MonoBehaviour
         Player.transform.parent = null;
     }
 
-    private IEnumerator FallingDelay(float waitTime)
+    private IEnumerator FallingDelay()
     {
         while (true)
         {

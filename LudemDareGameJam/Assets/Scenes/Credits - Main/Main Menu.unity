@@ -169,11 +169,18 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: When you finish playing, I would like you to take roughly 5-10 minutes of
-    time to fill out a quick google survey form and answer the questions on there
+  m_text: 'When you finish playing, I would like you to take roughly 5-10 minutes
+    of time to fill out a quick google survey form and answer the questions on there
     to help me gauge the enjoyability of the game in its current state. Make sure
     you are as honest as possible so I know if the current direction of the game is
     not suitable.
+
+
+    In the game you can press "r" to send you back to the most recent checkpoint,
+    "y" to reset the game completely (lose all progress), or "q" to close the game.
+    The game currently has no way of saving progress, try to complete in one full
+    sitting. If possible, please time yourself as well and put your result in the
+    survey form'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -219,7 +226,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: -1
+  m_firstOverflowCharacterIndex: 403
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
@@ -242,12 +249,12 @@ MonoBehaviour:
   m_margin: {x: 441.06546, y: 0, z: -611.5597, w: -100.02196}
   m_textInfo:
     textComponent: {fileID: 287970791}
-    characterCount: 323
+    characterCount: 650
     spriteCount: 0
-    spaceCount: 62
-    wordCount: 63
+    spaceCount: 125
+    wordCount: 125
     linkCount: 0
-    lineCount: 4
+    lineCount: 10
     pageCount: 1
     materialCount: 1
   m_havePropertiesChanged: 0

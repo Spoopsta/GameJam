@@ -50,7 +50,15 @@ public class GameManager : MonoBehaviour
     {
         DestroyWall();
         ResetLevel();
-        DebugTeleporting();
+        //DebugTeleporting();
+
+
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            Application.Quit();
+            Debug.Log("quit");
+        }
+
 
     }
 
