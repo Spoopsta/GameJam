@@ -116,7 +116,7 @@ public class GameManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.R))
         {
-            RespawnPlayer();
+            player.gameObject.transform.position = currentCheckpoint.transform.position;
         }
     }
 

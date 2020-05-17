@@ -18,7 +18,8 @@ public class PickupScript : MonoBehaviour
     {
         if (!GetComponent<MeshRenderer>().enabled)
         {
-            iCounter += Time.deltaTime + 1;
+            //iCounter += Time.deltaTime + 1;
+            iCounter += Time.fixedDeltaTime + 1;
             // coroutine = pickupRespawnDelay();
             //StartCoroutine(coroutine);
 

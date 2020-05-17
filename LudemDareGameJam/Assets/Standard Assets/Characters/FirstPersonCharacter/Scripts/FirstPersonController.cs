@@ -339,6 +339,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                     bIsWallR = true;
                     bIsWallL = false;
                     bAirJump = true;
+                    m_PreviouslyGrounded = m_CharacterController.isGrounded == true;
                     //bAirDashed = false;
                     return true;
                 }
