@@ -42,7 +42,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private float m_YRotation;
         private Vector2 m_Input;
         private Vector3 m_MoveDir = Vector3.zero;
-        private CharacterController m_CharacterController;
+        public CharacterController m_CharacterController;
         private CollisionFlags m_CollisionFlags;
         private bool m_PreviouslyGrounded;
         private Vector3 m_OriginalCameraPosition;
@@ -53,7 +53,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private bool bAirDashed;
         private int iDashedCount;
         private int iDashCount;
-        private bool bAirJump;
+        public float dashSpeed;
+        public bool bAirJump;
         public bool playCutscene;
         private bool bCompleteLevel;
         private int endCounter;
@@ -68,6 +69,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private bool bIsWallL;
         private float m_GravityMultiplierOG;
 
+        private Rigidbody rb;
+
 
        [SerializeField] public int punchCards;
 
@@ -75,6 +78,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private void Start()
         {
             //levelManager = FindObjectOfType<LevelManager>();
+            GetComponentInChildren<ParticleSystem>().Stop();
             m_CharacterController = GetComponent<CharacterController>();
             m_Camera = Camera.main;
             m_OriginalCameraPosition = m_Camera.transform.localPosition;
@@ -114,6 +118,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 collision.gameObject.GetComponent<BoxCollider>().enabled = false;
                 collision.gameObject.GetComponent<MeshRenderer>().enabled = false;
                 collision.gameObject.GetComponentInChildren<ParticleSystem>().Stop();
+                GetComponentInChildren<ParticleSystem>().Stop();
+
                 bAirJump = true;
                 if (bAirDashed == true) {
 
@@ -196,10 +202,11 @@ namespace UnityStandardAssets.Characters.FirstPerson
             }
             RotateView();
             // the jump state needs to read here to make sure it is not missed
-            if (!m_Jump && (m_CharacterController.isGrounded || bAirJump))
+           if (!m_Jump && (m_CharacterController.isGrounded || bAirJump))
             {
                 m_Jump = CrossPlatformInputManager.GetButtonDown("Jump");
             }
+            
 
             if (!m_PreviouslyGrounded && m_CharacterController.isGrounded)
             {
@@ -211,10 +218,14 @@ namespace UnityStandardAssets.Characters.FirstPerson
             if (!m_CharacterController.isGrounded && !m_Jumping && m_PreviouslyGrounded)
             {
                 m_MoveDir.y = 0f;
+               
+                
             }
+            
 
             if (Input.GetKey(DashKey) && !bAirDashed) {
                 m_Dash = true;
+                GetComponentInChildren<ParticleSystem>().Play();
             }
 
 
@@ -242,6 +253,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         private void FixedUpdate()
         {
+
             float speed;
             GetInput(out speed);
             // always move along the camera forward as it is the direction that it being aimed at
@@ -256,42 +268,42 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_MoveDir.x = desiredMove.x*speed;
             m_MoveDir.z = desiredMove.z*speed;
 
+            //WALLRUNNING
             if (CheckWallTouch()){
                 m_GravityMultiplier = 1.0f;
                 m_WalkSpeed = 20.0f;
                // bAirDashed = false;
                 
             }
+
+            //NOT WALL RUNNING ANYMORE
             else {
-                m_GravityMultiplier = 2;
+                m_GravityMultiplier = 2f;
                 m_WalkSpeed = 8.0f;
             }
 
             //check to make sure speed is increasing on walls
             //Debug.Log(m_WalkSpeed);
 
-            if (m_Dash && iDashedCount == 0) {
-                if (!m_CharacterController.isGrounded) {
-                    bAirDashed = true;
-                }
-                m_MoveDir.x = desiredMove.x * 20;
-                m_MoveDir.z = desiredMove.z * 20;
-                iDashCount += 1;
-            }
 
-            if (m_Dash && iDashCount > 20) {
-                m_Dash = false;
-                iDashCount = 0;
-                iDashedCount = 1;
-            }
+            //calling for the dashing script
+            PlayerDashing();
 
-            if (iDashedCount > 0) {
-                if (iDashedCount > 15 && !m_Jumping) {
-                    iDashedCount = -1;
-                }
-                iDashedCount += 1;
-            }
+            //calling for the jumping script.
+            PlayerJumping();
+          
 
+            
+        }
+
+        /// <summary>
+        /// This is the code that handles the players jumping.
+        /// </summary>
+        private void PlayerJumping()
+        {
+            float speed;
+            GetInput(out speed);
+            //JUMPING
             if (m_CharacterController.isGrounded)
             {
                 bAirJump = false;
@@ -305,24 +317,30 @@ namespace UnityStandardAssets.Characters.FirstPerson
                     PlayJumpSound();
                     m_Jump = false;
                     m_Jumping = true;
+
                 }
 
             }
             else
             {
                 if (m_Jump)
-                {                        
+                {
                     m_MoveDir.y = m_JumpSpeed;
+                    // m_GravityMultiplier += Physics.gravity.y * Time.fixedDeltaTime;
+
+                    // m_MoveDir.y = m_GravityMultiplier;
+
                     PlayJumpSound();
                     m_Jump = false;
                     if (bAirJump)
                     {
-                       bAirJump = false;
+                        bAirJump = false;
                     }
                 }
-                m_MoveDir += Physics.gravity*m_GravityMultiplier*Time.fixedDeltaTime;
+
+                m_MoveDir += Physics.gravity * m_GravityMultiplier * Time.fixedDeltaTime;
             }
-            m_CollisionFlags = m_CharacterController.Move(m_MoveDir*Time.fixedDeltaTime);
+            m_CollisionFlags = m_CharacterController.Move(m_MoveDir * Time.fixedDeltaTime);
 
             ProgressStepCycle(speed);
             UpdateCameraPosition(speed);
@@ -330,6 +348,52 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_MouseLook.UpdateCursorLock();
         }
 
+        /// <summary>
+        /// This is the code that handles the player dashing 
+        /// </summary>
+        private void PlayerDashing()
+        {
+            //DASHING
+            if (m_Dash && iDashedCount == 0)
+            {
+                if (!m_CharacterController.isGrounded)
+                {
+                    bAirDashed = true;
+                }
+                Debug.Log("Dash lol");
+                //m_MoveDir.x = desiredMove.x * 20;
+                // m_MoveDir.z = desiredMove.z * 20;
+
+                //player will dash in the direction that the camera is looking at.
+                
+                transform.position = transform.position + Camera.main.transform.forward * dashSpeed * Time.fixedDeltaTime;
+
+                iDashCount += 1;
+            }
+
+            if (m_Dash && iDashCount > 20)
+            {
+                
+                m_Dash = false;
+                iDashCount = 0;
+                iDashedCount = 1;
+                GetComponentInChildren<ParticleSystem>().Stop();
+            }
+
+            if (iDashedCount > 0)
+            {
+                if (iDashedCount > 15 && !m_Jumping)
+                {
+                    iDashedCount = -1;
+                   
+                }
+               
+                iDashedCount += 1;
+            }
+        }
+
+
+        //WALL RUNNING
         private bool CheckWallTouch()
         {
             if (Physics.Raycast(transform.position, transform.right, out rHitR, 1))
@@ -360,7 +424,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             return false;
         }
 
-
+        //AUDIO
         private void PlayJumpSound()
         {
             m_AudioSource.clip = m_JumpSound;
@@ -372,7 +436,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             gObject.GetComponent<AudioSource>().Play();
         }
 
-   
+        //FUCKIN SOMETHING
         private void ProgressStepCycle(float speed)
         {
             if (m_CharacterController.velocity.sqrMagnitude > 0 && (m_Input.x != 0 || m_Input.y != 0))
@@ -394,7 +458,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         
         
 
-
+        //MORE AUDIO
         private void PlayFootStepAudio()
         {
             if (!m_CharacterController.isGrounded || m_Dash)
@@ -435,7 +499,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_Camera.transform.localPosition = newCameraPosition;
         }
 
-
+        //RESET LEVEL
         private void ResetLevel()
         {
             if (Input.GetKeyDown(KeyCode.Y))
@@ -444,6 +508,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             }
         }
 
+        //PLAYER INPUT
         private void GetInput(out float speed)
         {
             // Read input
