@@ -54,7 +54,9 @@ public class Projectile : MonoBehaviour
     {
         if (collision.gameObject.tag.Equals("Boundary") || collision.gameObject.tag.Equals("Void")|| collision.gameObject.tag.Equals("Wall"))
         {
-            transform.position = new Vector3(startPosX, startPosY, startPosZ);
+            // transform.position = new Vector3(startPosX, startPosY, startPosZ);
+
+            Destroy(this.gameObject);
         }
     }
 

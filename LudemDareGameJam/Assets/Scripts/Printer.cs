@@ -10,30 +10,36 @@ public class Printer : MonoBehaviour
     private Quaternion rotation;
     private int count;
     private bool done;
-    [SerializeField] int Delay;
+    [SerializeField] float Delay;
+    public float fireRate;
 
     // Start is called before the first frame update
     void Start()
     {
         
-        if (Delay == 0)
+        if (Time.time > Delay)
         {
-            Instantiate(myPrefab, ShotSpawn.position, ShotSpawn.rotation);
-            done = true;
+          //  Delay = Time.time + fireRate;
+            //Instantiate(myPrefab, ShotSpawn.position, ShotSpawn.rotation);
+            //done = true;
         }
-        else {
+      /*  else {
             count = 0;
             done = false;
         }
-        
+      */  
     }
 
     // Update is called once per frame
     void Update()
     {
-
-
-        if (count > Delay && !done)
+        if (Time.time > Delay)
+        {
+            Delay = Time.time + fireRate;
+            Instantiate(myPrefab, ShotSpawn.position, ShotSpawn.rotation);
+        }
+     
+       /* if (count > Delay && !done)
         {
             Instantiate(myPrefab, ShotSpawn.position, ShotSpawn.rotation);
             done = true;
@@ -41,7 +47,7 @@ public class Printer : MonoBehaviour
         else {
             count++;
         }
-
+        */
        
     }
 }

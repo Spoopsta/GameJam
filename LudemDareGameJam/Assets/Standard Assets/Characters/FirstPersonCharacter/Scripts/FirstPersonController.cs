@@ -5,6 +5,7 @@ using UnityStandardAssets.Utility;
 using UnityEngine.SceneManagement;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using Random = UnityEngine.Random;
 
 
@@ -62,6 +63,10 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private bool level2;
         private KeyCode DashKey = KeyCode.LeftShift;
         private AudioSource m_AudioSource;
+        public int jumpTextCounter;
+        public int dashTextCounter;
+
+        public TextMeshProUGUI dashText, jumpText;
 
         private RaycastHit rHitL;
         private RaycastHit rHitR;
@@ -119,11 +124,13 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 collision.gameObject.GetComponent<MeshRenderer>().enabled = false;
                 collision.gameObject.GetComponentInChildren<ParticleSystem>().Stop();
                 GetComponentInChildren<ParticleSystem>().Stop();
+                dashText.text = "1";
+                jumpText.text = "1";
 
                 bAirJump = true;
                 if (bAirDashed == true) {
 
-                    //look ill be honest im not sure how this is working but when you pickup a jump boost it resets EVERYTHING relating to dash so you can consistently ash after picking one up
+                    //look ill be honest im not sure how this is working but when you pickup a jump boost it resets EVERYTHING relating to dash so you can consistently dash after picking one up
                     bAirDashed = false;
                     iDashedCount = 0;
                     iDashCount = 0;
@@ -153,6 +160,11 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 collision.gameObject.GetComponent<MeshCollider>().enabled = false;
                 collision.GetComponent<AudioSource>().Play();
                 */
+            }
+
+            if (collision.gameObject.tag.Equals("MiddleWall"))
+            {
+                m_MoveDir.y = 10.0f;
             }
 
             /*if (collision.gameObject.tag.Equals("aaa")) {
@@ -187,6 +199,14 @@ namespace UnityStandardAssets.Characters.FirstPerson
         // Update is called once per frame
         private void Update()
         {
+            /*
+           if (Input.GetKeyDown(KeyCode.Space))
+           {
+               Debug.Log("change text for fucks sake");
+               jumpText.text = "for the love of god change";
+           }
+           */
+
             if (end) {
                 endCounter++;
                 if (level2 && endCounter > 120 || !level2 && endCounter > 50)
@@ -205,6 +225,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
            if (!m_Jump && (m_CharacterController.isGrounded || bAirJump))
             {
                 m_Jump = CrossPlatformInputManager.GetButtonDown("Jump");
+               
             }
             
 
@@ -214,11 +235,15 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 PlayLandingSound();
                 m_MoveDir.y = 0f;
                 m_Jumping = false;
+
+                //when hit ground text go 1
+                dashText.text = "1";
+                jumpText.text = "1";
             }
             if (!m_CharacterController.isGrounded && !m_Jumping && m_PreviouslyGrounded)
             {
                 m_MoveDir.y = 0f;
-               
+                
                 
             }
             
@@ -226,6 +251,9 @@ namespace UnityStandardAssets.Characters.FirstPerson
             if (Input.GetKey(DashKey) && !bAirDashed) {
                 m_Dash = true;
                 GetComponentInChildren<ParticleSystem>().Play();
+
+                //when dash text go 0
+                dashText.text = "0";
             }
 
 
@@ -253,6 +281,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         private void FixedUpdate()
         {
+           // Debug.Log(m_MoveDir.y);
 
             float speed;
             GetInput(out speed);
@@ -272,6 +301,11 @@ namespace UnityStandardAssets.Characters.FirstPerson
             if (CheckWallTouch()){
                 m_GravityMultiplier = 1.0f;
                 m_WalkSpeed = 20.0f;
+
+               // m_MoveDir.x = 20;
+               // m_MoveDir.x -= 20;
+               // m_MoveDir.y -= 0.25f;
+               
                // bAirDashed = false;
                 
             }
@@ -310,6 +344,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 bAirDashed = false;
                 m_MoveDir.y = -m_StickToGroundForce;
 
+              
+
                 if (m_Jump)
                 {
 
@@ -317,6 +353,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
                     PlayJumpSound();
                     m_Jump = false;
                     m_Jumping = true;
+                    jumpText.text = "0";
+                    jumpTextCounter++;
 
                 }
 
@@ -325,16 +363,20 @@ namespace UnityStandardAssets.Characters.FirstPerson
             {
                 if (m_Jump)
                 {
-                    m_MoveDir.y = m_JumpSpeed;
-                    // m_GravityMultiplier += Physics.gravity.y * Time.fixedDeltaTime;
+                    //og
+                   m_MoveDir.y = m_JumpSpeed;
 
-                    // m_MoveDir.y = m_GravityMultiplier;
+
+                    //m_GravityMultiplier += Physics.gravity.y * Time.fixedDeltaTime;
+
+                     //m_MoveDir.y = m_GravityMultiplier += Physics.gravity.y * Time.fixedDeltaTime;
 
                     PlayJumpSound();
                     m_Jump = false;
                     if (bAirJump)
                     {
                         bAirJump = false;
+                        jumpText.text = "0";
                     }
                 }
 
@@ -368,6 +410,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 
                 transform.position = transform.position + Camera.main.transform.forward * dashSpeed * Time.fixedDeltaTime;
 
+                
+
                 iDashCount += 1;
             }
 
@@ -378,6 +422,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 iDashCount = 0;
                 iDashedCount = 1;
                 GetComponentInChildren<ParticleSystem>().Stop();
+
+                
             }
 
             if (iDashedCount > 0)
@@ -396,29 +442,37 @@ namespace UnityStandardAssets.Characters.FirstPerson
         //WALL RUNNING
         private bool CheckWallTouch()
         {
-            if (Physics.Raycast(transform.position, transform.right, out rHitR, 1))
+            //original code commenting for prosperity
+            if (Physics.Raycast(transform.position, transform.right, out rHitR, 2.25f))
             {
                 if (rHitR.transform.tag == "Wall")
                 {
                     bIsWallR = true;
                     bIsWallL = false;
                     bAirJump = true;
-                    m_PreviouslyGrounded = m_CharacterController.isGrounded == true;
+                    jumpText.text = "1";
+                    m_MoveDir.y -= 0.01f;
                     //bAirDashed = false;
                     return true;
                 }
             }
-
-            if (Physics.Raycast(transform.position, -transform.right, out rHitL, 1))
+            //original code commenting for prosperity
+            if (Physics.Raycast(transform.position, -transform.right, out rHitL, 2.25f))
             {
                 if (rHitL.transform.tag == "Wall")
                 {
                     bIsWallL = true;
                     bIsWallR = false;
                     bAirJump = true;
+                    jumpText.text = "1";
+                    m_MoveDir.y -= 0.01f;
                     //bAirDashed = false;
                     return true;
+                    
                 }
+
+            
+
             }
 
             return false;

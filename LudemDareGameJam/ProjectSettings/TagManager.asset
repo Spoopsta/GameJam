@@ -18,6 +18,9 @@ TagManager:
   - Wall
   - DashTutorial
   - WinWall
+  - Ground
+  - MiddleWall
+  - EndWall
   layers:
   - Default
   - TransparentFX

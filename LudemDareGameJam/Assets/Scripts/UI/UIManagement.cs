@@ -11,7 +11,7 @@ public class UIManagement : MonoBehaviour
     public FirstPersonController fpc;
 
     // Start is called before the first frame update
-    void Start()
+  /*  void Start()
     {
         dashText.text = "1";
         jumpText.text = "1";
@@ -28,15 +28,29 @@ public class UIManagement : MonoBehaviour
     /// </summary>
     private void UIResets()
     {
-        if (fpc.GetComponent<FirstPersonController>().m_CharacterController.isGrounded == true)
+        if (fpc.GetComponent<FirstPersonController>().jumpTextCounter == 0)
         {
             jumpText.text = "1";
             Debug.Log("text change jump");
         }
 
-        if (fpc.GetComponent<FirstPersonController>().m_CharacterController.isGrounded == false)
+        if (fpc.GetComponent<FirstPersonController>().jumpTextCounter == 1)
         {
             jumpText.text = "0";
         }
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag.Equals("Ground"))
+        {
+            jumpText.text = "1";
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        jumpText.text = "0";
+    }
+    */
 }
