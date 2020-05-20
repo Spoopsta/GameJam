@@ -181,7 +181,16 @@ MonoBehaviour:
   m_LandSound: {fileID: 8300000, guid: 3b09d59f4499d45428baa7a21e954296, type: 3}
   m_ItemGet: {fileID: 0}
   player: {fileID: 0}
+  m_CharacterController: {fileID: 0}
+  dashSpeed: 0
+  bAirJump: 0
   playCutscene: 0
+  jumpTextCounter: 0
+  dashTextCounter: 0
+  dashText: {fileID: 0}
+  jumpText: {fileID: 0}
+  anim: {fileID: 0}
+  punchCards: 0
 --- !u!114 &6981667829416930696
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -347,7 +356,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 100002}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0.8, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []

@@ -76,6 +76,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         private Rigidbody rb;
 
+        public Animator anim;
+
 
        [SerializeField] public int punchCards;
 
@@ -102,6 +104,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             endCounter = 0;
             playCutscene = false;
             end = false;
+            anim = GetComponent<Animator>();
             if (SceneManager.GetActiveScene().buildIndex == 3)
             {
                 level2 = true;
@@ -189,6 +192,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
                     end = true;
                 }
             }
+
+       
 
             //if (collision.gameObject.tag.Equals("Checkpoints"))
            // {
@@ -302,12 +307,17 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 m_GravityMultiplier = 1.0f;
                 m_WalkSpeed = 20.0f;
 
-               // m_MoveDir.x = 20;
-               // m_MoveDir.x -= 20;
-               // m_MoveDir.y -= 0.25f;
-               
-               // bAirDashed = false;
-                
+                //anim.SetBool("RWallRun", true);
+
+
+
+
+                // m_MoveDir.x = 20;
+                // m_MoveDir.x -= 20;
+                // m_MoveDir.y -= 0.25f;
+
+                // bAirDashed = false;
+
             }
 
             //NOT WALL RUNNING ANYMORE
@@ -450,10 +460,18 @@ namespace UnityStandardAssets.Characters.FirstPerson
                     bIsWallR = true;
                     bIsWallL = false;
                     bAirJump = true;
+                    anim.SetBool("RWallRun", true);
+                    
                     jumpText.text = "1";
                     m_MoveDir.y -= 0.01f;
                     //bAirDashed = false;
                     return true;
+                }
+
+                else
+                {
+                    anim.SetBool("RWallRun", false);
+                    
                 }
             }
             //original code commenting for prosperity
@@ -466,9 +484,16 @@ namespace UnityStandardAssets.Characters.FirstPerson
                     bAirJump = true;
                     jumpText.text = "1";
                     m_MoveDir.y -= 0.01f;
+                    anim.SetTrigger("LeftWallHit");
+                   // anim.SetBool("leftWallHit", true);
                     //bAirDashed = false;
                     return true;
-                    
+
+                }
+
+                else
+                {
+                    anim.SetTrigger("Idle");
                 }
 
             
