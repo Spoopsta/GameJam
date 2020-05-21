@@ -460,7 +460,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                     bIsWallR = true;
                     bIsWallL = false;
                     bAirJump = true;
-                    anim.SetBool("RWallRun", true);
+                    //anim.SetBool("RWallRun", true);
                     
                     jumpText.text = "1";
                     m_MoveDir.y -= 0.01f;
@@ -468,11 +468,12 @@ namespace UnityStandardAssets.Characters.FirstPerson
                     return true;
                 }
 
-                else
+                /*else
                 {
-                    anim.SetBool("RWallRun", false);
+                  //  anim.SetBool("RWallRun", false);
                     
                 }
+                */
             }
             //original code commenting for prosperity
             if (Physics.Raycast(transform.position, -transform.right, out rHitL, 2.25f))
@@ -484,17 +485,19 @@ namespace UnityStandardAssets.Characters.FirstPerson
                     bAirJump = true;
                     jumpText.text = "1";
                     m_MoveDir.y -= 0.01f;
-                    anim.SetTrigger("LeftWallHit");
+                    //anim.SetTrigger("LeftWallHit");
                    // anim.SetBool("leftWallHit", true);
                     //bAirDashed = false;
                     return true;
 
                 }
 
+                /*
                 else
                 {
-                    anim.SetTrigger("Idle");
+                    //anim.SetTrigger("Idle");
                 }
+                */
 
             
 

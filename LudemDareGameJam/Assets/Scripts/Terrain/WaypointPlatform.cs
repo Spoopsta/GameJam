@@ -55,6 +55,22 @@ public class WaypointPlatform : MonoBehaviour
         if (waypointIndex == waypoints.Length)
         {
             waypointIndex = 0;
+            
+        }
+
+     /*   if (waypointIndex == waypoints.Length) //&& this.gameObject.tag.Equals("Moving")) 
+        {
+            Debug.Log("made it to the start chief");
+            waypointIndex = 0;
+            
+           // isStationary = true;
+        }
+        */
+
+        if (waypointIndex == 0 && this.gameObject.tag.Equals("Moving"))
+        {
+            //Debug.Log("nani");
+            isStationary = true;
         }
     }
 
@@ -78,6 +94,9 @@ public class WaypointPlatform : MonoBehaviour
     {
         //player is no longer a child object of the platform / object.
         Player.transform.parent = null;
+       // isStationary = true;
+        
+        
     }
 
 }

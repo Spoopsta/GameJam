@@ -21,6 +21,7 @@ TagManager:
   - Ground
   - MiddleWall
   - EndWall
+  - Moving
   layers:
   - Default
   - TransparentFX
