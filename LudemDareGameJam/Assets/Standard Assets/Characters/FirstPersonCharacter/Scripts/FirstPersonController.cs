@@ -304,18 +304,16 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
             //WALLRUNNING
             if (CheckWallTouch()){
-                m_GravityMultiplier = 1.0f;
+                m_GravityMultiplier = 2.0f;
                 m_WalkSpeed = 20.0f;
 
+
+                
+
                 //anim.SetBool("RWallRun", true);
-
-
-
-
                 // m_MoveDir.x = 20;
                 // m_MoveDir.x -= 20;
                 // m_MoveDir.y -= 0.25f;
-
                 // bAirDashed = false;
 
             }
@@ -352,6 +350,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             {
                 bAirJump = false;
                 bAirDashed = false;
+                m_MoveDir.y = m_JumpSpeed;
                 m_MoveDir.y = -m_StickToGroundForce;
 
               
@@ -452,7 +451,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         //WALL RUNNING
         private bool CheckWallTouch()
         {
-            //original code commenting for prosperity
+            //checking for wall touch on the right of player
             if (Physics.Raycast(transform.position, transform.right, out rHitR, 2.25f))
             {
                 if (rHitR.transform.tag == "Wall")
@@ -460,22 +459,23 @@ namespace UnityStandardAssets.Characters.FirstPerson
                     bIsWallR = true;
                     bIsWallL = false;
                     bAirJump = true;
+                    //m_JumpSpeed = 20.0f;
                     //anim.SetBool("RWallRun", true);
-                    
+
                     jumpText.text = "1";
-                    m_MoveDir.y -= 0.01f;
+
+                    if (!m_Jumping)
+                    {
+                        m_MoveDir.y = m_MoveDir.y * 0.45f;
+                    }
+                    //m_MoveDir.y = m_MoveDir.y * 0.75f;
                     //bAirDashed = false;
                     return true;
                 }
 
-                /*else
-                {
-                  //  anim.SetBool("RWallRun", false);
-                    
-                }
-                */
             }
-            //original code commenting for prosperity
+            
+            //checking for wall touch on the left of the player
             if (Physics.Raycast(transform.position, -transform.right, out rHitL, 2.25f))
             {
                 if (rHitL.transform.tag == "Wall")
@@ -483,24 +483,21 @@ namespace UnityStandardAssets.Characters.FirstPerson
                     bIsWallL = true;
                     bIsWallR = false;
                     bAirJump = true;
+                    //m_JumpSpeed = 6.0f;
                     jumpText.text = "1";
-                    m_MoveDir.y -= 0.01f;
+
+                    if (!m_Jumping)
+                    {
+                        m_MoveDir.y = m_MoveDir.y * 0.45f;
+                    }
+                    //m_MoveDir.y = m_MoveDir.y * 0.75f;
+                    //m_MoveDir.y += 1.0f;
                     //anim.SetTrigger("LeftWallHit");
-                   // anim.SetBool("leftWallHit", true);
+                    // anim.SetBool("leftWallHit", true);
                     //bAirDashed = false;
                     return true;
 
                 }
-
-                /*
-                else
-                {
-                    //anim.SetTrigger("Idle");
-                }
-                */
-
-            
-
             }
 
             return false;
