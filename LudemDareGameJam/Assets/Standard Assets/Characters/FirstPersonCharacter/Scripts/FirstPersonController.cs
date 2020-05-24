@@ -304,7 +304,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
             //WALLRUNNING
             if (CheckWallTouch()){
-                m_GravityMultiplier = 2.0f;
+                m_GravityMultiplier = 1.0f;
                 m_WalkSpeed = 20.0f;
 
 
