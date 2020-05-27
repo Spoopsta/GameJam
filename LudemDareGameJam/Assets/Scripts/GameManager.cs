@@ -142,6 +142,7 @@ public class GameManager : MonoBehaviour
     /// </summary>
     private void DebugTeleporting()
     {
+        //look up switch cases
         if (Input.GetKeyDown("1"))
         {
             player.transform.position = checkpoint1.transform.position;
