@@ -3,13 +3,66 @@ guid: da4b7643cbf6be44ca1b458354b406ba
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: //RootNode
-    400000: //RootNode
-    2100000: Platform White_
-    2100002: Platform black
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: Cube.003
+    100000: Cube.002
+    100002: Cube.004
+    100004: Cube.006
+    100006: Cube.008
+    100008: Cube.009
+    100010: Cube.012
+    100012: Cube.013
+    100014: Cube.015
+    100016: Cube.017
+    100018: Cube.018
+    100020: Cube.020
+    100022: //RootNode
+    400000: Cube.002
+    400002: Cube.004
+    400004: Cube.006
+    400006: Cube.008
+    400008: Cube.009
+    400010: Cube.012
+    400012: Cube.013
+    400014: Cube.015
+    400016: Cube.017
+    400018: Cube.018
+    400020: Cube.020
+    400022: //RootNode
+    2100000: Platform black
+    2100002: Platform White_
+    2100004: Cross
+    2300000: Cube.002
+    2300002: Cube.004
+    2300004: Cube.006
+    2300006: Cube.008
+    2300008: Cube.009
+    2300010: Cube.012
+    2300012: Cube.013
+    2300014: Cube.015
+    2300016: Cube.017
+    2300018: Cube.018
+    2300020: Cube.020
+    3300000: Cube.002
+    3300002: Cube.004
+    3300004: Cube.006
+    3300006: Cube.008
+    3300008: Cube.009
+    3300010: Cube.012
+    3300012: Cube.013
+    3300014: Cube.015
+    3300016: Cube.017
+    3300018: Cube.018
+    3300020: Cube.020
+    4300000: Cube.002
+    4300002: Cube.004
+    4300004: Cube.006
+    4300006: Cube.008
+    4300008: Cube.009
+    4300010: Cube.012
+    4300012: Cube.013
+    4300014: Cube.015
+    4300016: Cube.017
+    4300018: Cube.018
+    4300020: Cube.020
   externalObjects: {}
   materials:
     importMaterials: 1
