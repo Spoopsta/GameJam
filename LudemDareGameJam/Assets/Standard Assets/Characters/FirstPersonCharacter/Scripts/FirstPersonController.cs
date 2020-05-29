@@ -65,6 +65,10 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private AudioSource m_AudioSource;
         public int jumpTextCounter;
         public int dashTextCounter;
+        public float decelerationRatePerFrame;
+        public float platformAcceleration;
+        public float maximumAcceleration;
+        public float wallrunAcceleration;
 
         public TextMeshProUGUI dashText, jumpText;
 
@@ -193,6 +197,17 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 }
             }
 
+            if (collision.gameObject.tag.Equals("SpeedBoost"))
+            {
+                if (m_WalkSpeed <= maximumAcceleration)
+                {
+                    Debug.Log("Movement speed increased");
+                    // Debug.Log(m_WalkSpeed);
+                    m_WalkSpeed = m_WalkSpeed + platformAcceleration;
+                }
+            }
+
+
        
 
             //if (collision.gameObject.tag.Equals("Checkpoints"))
@@ -204,6 +219,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         // Update is called once per frame
         private void Update()
         {
+            Debug.Log(m_WalkSpeed);
             /*
            if (Input.GetKeyDown(KeyCode.Space))
            {
@@ -211,6 +227,12 @@ namespace UnityStandardAssets.Characters.FirstPerson
                jumpText.text = "for the love of god change";
            }
            */
+
+            if (m_WalkSpeed >= 8.0 && !CheckWallTouch())
+            {
+                m_WalkSpeed = m_WalkSpeed - decelerationRatePerFrame;
+            }
+
 
             if (end) {
                 endCounter++;
@@ -305,7 +327,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             //WALLRUNNING
             if (CheckWallTouch()){
                 m_GravityMultiplier = 1.0f;
-                m_WalkSpeed = 20.0f;
+                m_WalkSpeed = m_WalkSpeed;
 
 
                 
@@ -321,7 +343,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             //NOT WALL RUNNING ANYMORE
             else {
                 m_GravityMultiplier = 2f;
-                m_WalkSpeed = 8.0f;
+                m_WalkSpeed = m_WalkSpeed;
             }
 
             //check to make sure speed is increasing on walls
@@ -459,6 +481,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                     bIsWallR = true;
                     bIsWallL = false;
                     bAirJump = true;
+                    
                     //m_JumpSpeed = 20.0f;
                     //anim.SetBool("RWallRun", true);
 
@@ -467,6 +490,11 @@ namespace UnityStandardAssets.Characters.FirstPerson
                     if (!m_Jumping)
                     {
                         m_MoveDir.y = m_MoveDir.y * 0.45f;
+                    }
+
+                    if (m_WalkSpeed <= 15)
+                    {
+                        m_WalkSpeed = m_WalkSpeed + wallrunAcceleration;
                     }
                     //m_MoveDir.y = m_MoveDir.y * 0.75f;
                     //bAirDashed = false;
@@ -483,12 +511,19 @@ namespace UnityStandardAssets.Characters.FirstPerson
                     bIsWallL = true;
                     bIsWallR = false;
                     bAirJump = true;
+                  
                     //m_JumpSpeed = 6.0f;
                     jumpText.text = "1";
 
                     if (!m_Jumping)
                     {
                         m_MoveDir.y = m_MoveDir.y * 0.45f;
+                    }
+
+
+                    if (m_WalkSpeed <= 15)
+                    {
+                        m_WalkSpeed = m_WalkSpeed + wallrunAcceleration;
                     }
                     //m_MoveDir.y = m_MoveDir.y * 0.75f;
                     //m_MoveDir.y += 1.0f;

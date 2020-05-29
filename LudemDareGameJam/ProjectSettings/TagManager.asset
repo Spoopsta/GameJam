@@ -22,6 +22,7 @@ TagManager:
   - MiddleWall
   - EndWall
   - Moving
+  - SpeedBoost
   layers:
   - Default
   - TransparentFX
