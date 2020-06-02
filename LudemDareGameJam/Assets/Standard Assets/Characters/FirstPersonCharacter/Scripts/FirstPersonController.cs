@@ -69,6 +69,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
         public float platformAcceleration;
         public float maximumAcceleration;
         public float wallrunAcceleration;
+        public float dashCooldown;
+        public float dashFrames;
 
         public TextMeshProUGUI dashText, jumpText;
 
@@ -139,8 +141,6 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
                     //look ill be honest im not sure how this is working but when you pickup a jump boost it resets EVERYTHING relating to dash so you can consistently dash after picking one up
                     bAirDashed = false;
-                    iDashedCount = 0;
-                    iDashCount = 0;
                     m_Dash = false;
                     bAirDashed = false;
                 }
@@ -199,6 +199,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
             if (collision.gameObject.tag.Equals("SpeedBoost"))
             {
+                bAirDashed = true;
                 if (m_WalkSpeed <= maximumAcceleration)
                 {
                     Debug.Log("Movement speed increased");
@@ -219,7 +220,12 @@ namespace UnityStandardAssets.Characters.FirstPerson
         // Update is called once per frame
         private void Update()
         {
-            Debug.Log(m_WalkSpeed);
+            //Debug.Log(m_CharacterController.isGrounded);
+
+
+            
+
+           // Debug.Log(m_WalkSpeed);
             /*
            if (Input.GetKeyDown(KeyCode.Space))
            {
@@ -275,13 +281,14 @@ namespace UnityStandardAssets.Characters.FirstPerson
             }
             
 
-            if (Input.GetKey(DashKey) && !bAirDashed) {
+         /*   if (Input.GetKey(DashKey) && !bAirDashed) {
                 m_Dash = true;
                 GetComponentInChildren<ParticleSystem>().Play();
 
                 //when dash text go 0
                 dashText.text = "0";
             }
+            */
 
 
             /* if (Input.GetKey(KeyCode.Escape)) {
@@ -345,6 +352,10 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 m_GravityMultiplier = 2f;
                 m_WalkSpeed = m_WalkSpeed;
             }
+
+            Debug.Log(iDashedCount + " DashedCount");
+           Debug.Log(iDashCount + " dashCount");
+      
 
             //check to make sure speed is increasing on walls
             //Debug.Log(m_WalkSpeed);
@@ -426,46 +437,38 @@ namespace UnityStandardAssets.Characters.FirstPerson
         /// </summary>
         private void PlayerDashing()
         {
-            //DASHING
-            if (m_Dash && iDashedCount == 0)
+            //perform the dash - if the button is pushed & we aren't in dashCooldown & we're in the air
+            if (Input.GetKey(DashKey) && dashCooldown == 0 && !m_CharacterController.isGrounded)
             {
-                if (!m_CharacterController.isGrounded)
-                {
-                    bAirDashed = true;
-                }
-                Debug.Log("Dash lol");
-                //m_MoveDir.x = desiredMove.x * 20;
-                // m_MoveDir.z = desiredMove.z * 20;
-
-                //player will dash in the direction that the camera is looking at.
-                
+                GetComponentInChildren<ParticleSystem>().Play();
+                //when dash text go 0
+                dashText.text = "0";
+                //No. of frames to dashCooldown:
+                dashCooldown = 20;
+                //No. of frames to apply dash over:
+                dashFrames = 20;
+            }
+            //every frame, reduce dashCooldown frames by one.
+            if (dashCooldown > 0)
+            {
+                dashCooldown--;
+            }
+            //Every frame, if remaining dash frames > 0, continue dashing and reduce dash frames 
+            if (dashFrames > 0)
+            {
                 transform.position = transform.position + Camera.main.transform.forward * dashSpeed * Time.fixedDeltaTime;
-
-                
-
-                iDashCount += 1;
+                dashFrames--;
             }
-
-            if (m_Dash && iDashCount > 20)
+            //Not sure what this bit does??!? Left it in. Enlighten me.
+            if (dashFrames == 0)
             {
-                
-                m_Dash = false;
-                iDashCount = 0;
-                iDashedCount = 1;
                 GetComponentInChildren<ParticleSystem>().Stop();
-
-                
             }
-
-            if (iDashedCount > 0)
+            //Every frame - check we're grounded? If so, allow dashing immediately.
+            if (m_CharacterController.isGrounded)
             {
-                if (iDashedCount > 15 && !m_Jumping)
-                {
-                    iDashedCount = -1;
-                   
-                }
-               
-                iDashedCount += 1;
+                dashCooldown = 0;
+                dashFrames = 0;
             }
         }
 
