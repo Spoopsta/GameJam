@@ -143,6 +143,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                     bAirDashed = false;
                     m_Dash = false;
                     bAirDashed = false;
+                    dashCooldown = 0f;
                 }
                 PlayItemGet(collision.gameObject);
             }
@@ -438,7 +439,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private void PlayerDashing()
         {
             //perform the dash - if the button is pushed & we aren't in dashCooldown & we're in the air
-            if (Input.GetKey(DashKey) && dashCooldown == 0 && !m_CharacterController.isGrounded)
+            if (Input.GetKeyDown(DashKey) && dashCooldown == 0 && !m_CharacterController.isGrounded)
             {
                 GetComponentInChildren<ParticleSystem>().Play();
                 //when dash text go 0
