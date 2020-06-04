@@ -116,6 +116,15 @@
     <None Include="Assets\Standard Assets\ParticleSystems\Shaders\PriorityParticleAddSoft.shader" />
     <None Include="Assets\Standard Assets\Characters\FirstPersonCharacter\FirstPersonCharacterGuidelines.txt" />
     <None Include="Assets\Standard Assets\ParticleSystems\Shaders\PriorityParticleAdd.shader" />
+    <Reference Include="Unity.ProBuilder">
+      <HintPath>E:/Dreamer/LudemDareGameJam/Library/ScriptAssemblies/Unity.ProBuilder.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.ProBuilder.Editor">
+      <HintPath>E:/Dreamer/LudemDareGameJam/Library/ScriptAssemblies/Unity.ProBuilder.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.ProBuilder.AssetIdRemapUtility">
+      <HintPath>E:/Dreamer/LudemDareGameJam/Library/ScriptAssemblies/Unity.ProBuilder.AssetIdRemapUtility.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>E:/Dreamer/LudemDareGameJam/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
@@ -124,6 +133,9 @@
     </Reference>
     <Reference Include="Unity.CollabProxy.Editor">
       <HintPath>E:/Dreamer/LudemDareGameJam/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.ProBuilder.AddOns.Editor">
+      <HintPath>E:/Dreamer/LudemDareGameJam/Library/ScriptAssemblies/Unity.ProBuilder.AddOns.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
       <HintPath>E:/Dreamer/LudemDareGameJam/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
@@ -331,21 +343,6 @@
     </Reference>
     <Reference Include="UnityEngine.SpatialTracking">
       <HintPath>E:/Unity/Editor/Data/UnityExtensions/Unity/UnitySpatialTracking/RuntimeEditor/UnityEngine.SpatialTracking.dll</HintPath>
-    </Reference>
-    <Reference Include="ProBuilderCore-Unity5">
-      <HintPath>E:/Dreamer/LudemDareGameJam/Assets/ProCore/ProBuilder/Classes/ProBuilderCore-Unity5.dll</HintPath>
-    </Reference>
-    <Reference Include="ProBuilderMeshOps-Unity5">
-      <HintPath>E:/Dreamer/LudemDareGameJam/Assets/ProCore/ProBuilder/Classes/ProBuilderMeshOps-Unity5.dll</HintPath>
-    </Reference>
-    <Reference Include="KdTreeLib">
-      <HintPath>E:/Dreamer/LudemDareGameJam/Assets/ProCore/ProBuilder/Classes/ClassesLib/KdTreeLib.dll</HintPath>
-    </Reference>
-    <Reference Include="pb_Stl">
-      <HintPath>E:/Dreamer/LudemDareGameJam/Assets/ProCore/ProBuilder/Classes/ClassesLib/pb_Stl.dll</HintPath>
-    </Reference>
-    <Reference Include="Poly2Tri">
-      <HintPath>E:/Dreamer/LudemDareGameJam/Assets/ProCore/ProBuilder/Classes/ClassesLib/Poly2Tri.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.Editor">
       <HintPath>E:/Dreamer/LudemDareGameJam/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Editor.dll</HintPath>
