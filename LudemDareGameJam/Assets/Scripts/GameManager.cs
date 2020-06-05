@@ -18,7 +18,8 @@ public class GameManager : MonoBehaviour
     //creating a delay for respawning
     public float respawnDelay;
 
-    public GameObject checkpoint1, checkpoint2, checkpoint3, checkpoint4, checkpoint5, checkpoint6, checkpoint7, checkpoint8, checkpoint9, checkpoint10, checkpointO, checkpointP;
+    public GameObject checkpoint1, checkpoint2, checkpoint3, checkpoint4, checkpoint5, checkpoint6, checkpoint7, checkpoint8, checkpoint9, checkpoint10, checkpointO, checkpointP,
+        checkpointL;
 
 
     //death fades
@@ -72,6 +73,7 @@ public class GameManager : MonoBehaviour
         StartCoroutine(RespawnCoroutine());
         
         animator.SetTrigger("Death-FadeOut");
+        player.gameObject.GetComponent<FirstPersonController>().m_WalkSpeed = 8f;
 
 
 
@@ -91,24 +93,18 @@ public class GameManager : MonoBehaviour
         {
             //Debug.Log("Wall is kill");
            Door1.gameObject.SetActive(false);
-            //Wall1.gameObject.GetComponent<MeshRenderer>().enabled = false;
-           // Wall1.gameObject.GetComponent<MeshCollider>().enabled = false;
         }
 
         if (player.gameObject.GetComponent<FirstPersonController>().punchCards == 2)
         {
             //Debug.Log("Wall is kill");
             Door2.gameObject.SetActive(false);
-            //Wall1.gameObject.GetComponent<MeshRenderer>().enabled = false;
-            // Wall1.gameObject.GetComponent<MeshCollider>().enabled = false;
         }
 
         if (player.gameObject.GetComponent<FirstPersonController>().punchCards == 3)
         {
             //Debug.Log("Wall is kill");
             SceneManager.LoadScene(sceneBuildIndex: 2);
-            //Wall1.gameObject.GetComponent<MeshRenderer>().enabled = false;
-            // Wall1.gameObject.GetComponent<MeshCollider>().enabled = false;
         }
 
     }
@@ -201,6 +197,11 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyDown("p"))
         {
             player.transform.position = checkpointP.transform.position;
+        }
+
+        if (Input.GetKeyDown("l"))
+        {
+            player.transform.position = checkpointL.transform.position;
         }
     }
 }

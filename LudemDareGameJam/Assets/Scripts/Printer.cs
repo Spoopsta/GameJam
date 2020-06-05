@@ -16,18 +16,7 @@ public class Printer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
-        if (Time.time > Delay)
-        {
-          //  Delay = Time.time + fireRate;
-            //Instantiate(myPrefab, ShotSpawn.position, ShotSpawn.rotation);
-            //done = true;
-        }
-      /*  else {
-            count = 0;
-            done = false;
-        }
-      */  
+   
     }
 
     // Update is called once per frame
@@ -38,16 +27,6 @@ public class Printer : MonoBehaviour
             Delay = Time.time + fireRate;
             Instantiate(myPrefab, ShotSpawn.position, ShotSpawn.rotation);
         }
-     
-       /* if (count > Delay && !done)
-        {
-            Instantiate(myPrefab, ShotSpawn.position, ShotSpawn.rotation);
-            done = true;
-        }
-        else {
-            count++;
-        }
-        */
        
     }
 }

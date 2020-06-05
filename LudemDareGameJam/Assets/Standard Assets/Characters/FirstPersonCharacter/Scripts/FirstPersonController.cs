@@ -18,7 +18,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
     public class FirstPersonController : MonoBehaviour
     {
         [SerializeField] private bool m_IsWalking;
-        [SerializeField] private float m_WalkSpeed;
+        [SerializeField] public float m_WalkSpeed;
         [SerializeField] private float m_RunSpeed;
         [SerializeField] [Range(0f, 1f)] private float m_RunstepLenghten;
         [SerializeField] private float m_JumpSpeed;
@@ -90,7 +90,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         // Use this for initialization
         private void Start()
         {
-            //levelManager = FindObjectOfType<LevelManager>();
+            
             GetComponentInChildren<ParticleSystem>().Stop();
             m_CharacterController = GetComponent<CharacterController>();
             m_Camera = Camera.main;
@@ -122,11 +122,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         private void OnTriggerEnter(Collider collision)
         {
-            //if (collision.gameObject.tag.Equals("Void") || collision.gameObject.tag.Equals("Projectile")) {
-              //  Application.LoadLevel(Application.loadedLevel);
-
-                //levelManager.GetComponent<GameManager>().RespawnPlayer();
-            //}
+            
 
             if (collision.gameObject.tag.Equals("Pickup")) {
                 collision.gameObject.GetComponent<BoxCollider>().enabled = false;
@@ -212,29 +208,12 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
        
 
-            //if (collision.gameObject.tag.Equals("Checkpoints"))
-           // {
-               // levelManager.GetComponent<LevelManager>().currentCheckpoint = collision.gameObject;
-           // }
+        
         }
 
         // Update is called once per frame
         private void Update()
         {
-            //Debug.Log(m_CharacterController.isGrounded);
-
-
-            
-
-           // Debug.Log(m_WalkSpeed);
-            /*
-           if (Input.GetKeyDown(KeyCode.Space))
-           {
-               Debug.Log("change text for fucks sake");
-               jumpText.text = "for the love of god change";
-           }
-           */
-
             if (m_WalkSpeed >= 8.0 && !CheckWallTouch())
             {
                 m_WalkSpeed = m_WalkSpeed - decelerationRatePerFrame;
@@ -280,22 +259,6 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 
                 
             }
-            
-
-         /*   if (Input.GetKey(DashKey) && !bAirDashed) {
-                m_Dash = true;
-                GetComponentInChildren<ParticleSystem>().Play();
-
-                //when dash text go 0
-                dashText.text = "0";
-            }
-            */
-
-
-            /* if (Input.GetKey(KeyCode.Escape)) {
-                 SceneManager.LoadScene(sceneBuildIndex: 0);
-             }
-             */
 
             m_PreviouslyGrounded = m_CharacterController.isGrounded;
 
@@ -316,8 +279,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         private void FixedUpdate()
         {
-           // Debug.Log(m_MoveDir.y);
-
+            Debug.Log(m_CharacterController.isGrounded);
             float speed;
             GetInput(out speed);
             // always move along the camera forward as it is the direction that it being aimed at
@@ -336,15 +298,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             if (CheckWallTouch()){
                 m_GravityMultiplier = 1.0f;
                 m_WalkSpeed = m_WalkSpeed;
-
-
                 
-
-                //anim.SetBool("RWallRun", true);
-                // m_MoveDir.x = 20;
-                // m_MoveDir.x -= 20;
-                // m_MoveDir.y -= 0.25f;
-                // bAirDashed = false;
 
             }
 
@@ -352,11 +306,11 @@ namespace UnityStandardAssets.Characters.FirstPerson
             else {
                 m_GravityMultiplier = 2f;
                 m_WalkSpeed = m_WalkSpeed;
+               
             }
 
-            Debug.Log(iDashedCount + " DashedCount");
-           Debug.Log(iDashCount + " dashCount");
-      
+            //Debug.Log(dashCooldown + " cooldown");
+            //Debug.Log(dashFrames + " frames");
 
             //check to make sure speed is increasing on walls
             //Debug.Log(m_WalkSpeed);
@@ -409,11 +363,6 @@ namespace UnityStandardAssets.Characters.FirstPerson
                     //og
                    m_MoveDir.y = m_JumpSpeed;
 
-
-                    //m_GravityMultiplier += Physics.gravity.y * Time.fixedDeltaTime;
-
-                     //m_MoveDir.y = m_GravityMultiplier += Physics.gravity.y * Time.fixedDeltaTime;
-
                     PlayJumpSound();
                     m_Jump = false;
                     if (bAirJump)
@@ -445,7 +394,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 //when dash text go 0
                 dashText.text = "0";
                 //No. of frames to dashCooldown:
-                dashCooldown = 20;
+                 dashCooldown = 20;
                 //No. of frames to apply dash over:
                 dashFrames = 20;
             }
@@ -528,12 +477,9 @@ namespace UnityStandardAssets.Characters.FirstPerson
                     if (m_WalkSpeed <= 15)
                     {
                         m_WalkSpeed = m_WalkSpeed + wallrunAcceleration;
-                    }
-                    //m_MoveDir.y = m_MoveDir.y * 0.75f;
-                    //m_MoveDir.y += 1.0f;
+                    } 
                     //anim.SetTrigger("LeftWallHit");
                     // anim.SetBool("leftWallHit", true);
-                    //bAirDashed = false;
                     return true;
 
                 }
