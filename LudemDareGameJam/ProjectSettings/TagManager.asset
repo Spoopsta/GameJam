@@ -23,6 +23,7 @@ TagManager:
   - EndWall
   - Moving
   - SpeedBoost
+  - Sheep
   layers:
   - Default
   - TransparentFX

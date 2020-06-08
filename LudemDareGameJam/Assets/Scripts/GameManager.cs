@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
     public float respawnDelay;
 
     public GameObject checkpoint1, checkpoint2, checkpoint3, checkpoint4, checkpoint5, checkpoint6, checkpoint7, checkpoint8, checkpoint9, checkpoint10, checkpointO, checkpointP,
-        checkpointL;
+        checkpointL, checkpointI;
 
 
     //death fades
@@ -28,7 +28,9 @@ public class GameManager : MonoBehaviour
 
     public GameObject punchCard1, Door1;
 
-    public GameObject punchCard2, Door2, punchCard3;
+    public GameObject punchCard2, Door2;
+
+    public GameObject punchCard3, Door3;
 
     public GameObject winWall;
 
@@ -104,7 +106,7 @@ public class GameManager : MonoBehaviour
         if (player.gameObject.GetComponent<FirstPersonController>().punchCards == 3)
         {
             //Debug.Log("Wall is kill");
-            SceneManager.LoadScene(sceneBuildIndex: 2);
+            Door3.gameObject.SetActive(false);
         }
 
     }
@@ -202,6 +204,11 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyDown("l"))
         {
             player.transform.position = checkpointL.transform.position;
+        }
+        if (Input.GetKeyDown("i"))
+        {
+            player.transform.position = checkpointI.transform.position;
+
         }
     }
 }

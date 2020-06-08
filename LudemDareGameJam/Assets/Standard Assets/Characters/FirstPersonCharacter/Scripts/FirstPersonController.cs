@@ -140,6 +140,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                     m_Dash = false;
                     bAirDashed = false;
                     dashCooldown = 0f;
+                    dashFrames = 0f;
                 }
                 PlayItemGet(collision.gameObject);
             }
@@ -279,7 +280,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         private void FixedUpdate()
         {
-            Debug.Log(m_CharacterController.isGrounded);
+            //Debug.Log(m_CharacterController.isGrounded);
             float speed;
             GetInput(out speed);
             // always move along the camera forward as it is the direction that it being aimed at
@@ -394,9 +395,11 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 //when dash text go 0
                 dashText.text = "0";
                 //No. of frames to dashCooldown:
-                 dashCooldown = 20;
+                dashCooldown = 20f;
                 //No. of frames to apply dash over:
-                dashFrames = 20;
+                dashFrames = 20f;
+
+                Debug.Log(dashFrames + " shift");
             }
             //every frame, reduce dashCooldown frames by one.
             if (dashCooldown > 0)
@@ -408,17 +411,21 @@ namespace UnityStandardAssets.Characters.FirstPerson
             {
                 transform.position = transform.position + Camera.main.transform.forward * dashSpeed * Time.fixedDeltaTime;
                 dashFrames--;
+                Debug.Log(dashFrames + " frame by frame");
             }
             //Not sure what this bit does??!? Left it in. Enlighten me.
             if (dashFrames == 0)
             {
                 GetComponentInChildren<ParticleSystem>().Stop();
+              //  Debug.Log(dashFrames + " zero?");
             }
             //Every frame - check we're grounded? If so, allow dashing immediately.
             if (m_CharacterController.isGrounded)
             {
                 dashCooldown = 0;
                 dashFrames = 0;
+
+                Debug.Log(dashFrames + " grounded");
             }
         }
 
