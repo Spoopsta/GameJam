@@ -31,8 +31,6 @@ public class CheckpointAudio : MonoBehaviour
     {
         if (other.gameObject.tag.Equals("Player"))
         {
-           
-            Debug.Log("AUDIO PLAY");
             checkpoint.Play();
         }
    

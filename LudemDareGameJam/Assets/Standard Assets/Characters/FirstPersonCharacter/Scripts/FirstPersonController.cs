@@ -50,10 +50,10 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private float m_StepCycle;
         private float m_NextStep;
         private bool m_Jumping;
-        private bool m_Dash;
-        private bool bAirDashed;
-        private int iDashedCount;
-        private int iDashCount;
+        //  private bool m_Dash;
+        //  private bool bAirDashed;
+        //  private int iDashedCount;
+        // private int iDashCount;
         public float dashSpeed;
         public bool bAirJump;
         public bool playCutscene;
@@ -85,12 +85,13 @@ namespace UnityStandardAssets.Characters.FirstPerson
         public Animator anim;
 
 
-       [SerializeField] public int punchCards;
+        [SerializeField] public int punchCards;
 
         // Use this for initialization
         private void Start()
         {
-            
+            dashCooldown = 0;
+            dashFrames = 0;
             GetComponentInChildren<ParticleSystem>().Stop();
             m_CharacterController = GetComponent<CharacterController>();
             m_Camera = Camera.main;
@@ -98,15 +99,15 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_FovKick.Setup(m_Camera);
             m_HeadBob.Setup(m_Camera, m_StepInterval);
             m_StepCycle = 0f;
-            m_NextStep = m_StepCycle/2f;
+            m_NextStep = m_StepCycle / 2f;
             m_Jumping = false;
-            iDashCount = 0;
-            iDashedCount = 0;
-            bAirDashed = false;
+            // iDashCount = 0;
+            //  iDashedCount = 0;
+            //  bAirDashed = false;
             bAirJump = false;
             bCompleteLevel = false;
             m_AudioSource = GetComponent<AudioSource>();
-			m_MouseLook.Init(transform , m_Camera.transform);
+            m_MouseLook.Init(transform, m_Camera.transform);
             endCounter = 0;
             playCutscene = false;
             end = false;
@@ -122,7 +123,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         private void OnTriggerEnter(Collider collision)
         {
-            
+
 
             if (collision.gameObject.tag.Equals("Pickup")) {
                 collision.gameObject.GetComponent<BoxCollider>().enabled = false;
@@ -131,17 +132,9 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 GetComponentInChildren<ParticleSystem>().Stop();
                 dashText.text = "1";
                 jumpText.text = "1";
-
+                dashCooldown = 0f;
                 bAirJump = true;
-                if (bAirDashed == true) {
 
-                    //look ill be honest im not sure how this is working but when you pickup a jump boost it resets EVERYTHING relating to dash so you can consistently dash after picking one up
-                    bAirDashed = false;
-                    m_Dash = false;
-                    bAirDashed = false;
-                    dashCooldown = 0f;
-                    dashFrames = 0f;
-                }
                 PlayItemGet(collision.gameObject);
             }
 
@@ -160,11 +153,11 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 }
 
 
-               /* bCompleteLevel = true;
-                collision.gameObject.GetComponent<MeshRenderer>().enabled = false;
-                collision.gameObject.GetComponent<MeshCollider>().enabled = false;
-                collision.GetComponent<AudioSource>().Play();
-                */
+                /* bCompleteLevel = true;
+                 collision.gameObject.GetComponent<MeshRenderer>().enabled = false;
+                 collision.gameObject.GetComponent<MeshCollider>().enabled = false;
+                 collision.GetComponent<AudioSource>().Play();
+                 */
             }
 
             if (collision.gameObject.tag.Equals("MiddleWall"))
@@ -197,7 +190,6 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
             if (collision.gameObject.tag.Equals("SpeedBoost"))
             {
-                bAirDashed = true;
                 if (m_WalkSpeed <= maximumAcceleration)
                 {
                     Debug.Log("Movement speed increased");
@@ -207,9 +199,9 @@ namespace UnityStandardAssets.Characters.FirstPerson
             }
 
 
-       
 
-        
+
+
         }
 
         // Update is called once per frame
@@ -236,12 +228,12 @@ namespace UnityStandardAssets.Characters.FirstPerson
             }
             RotateView();
             // the jump state needs to read here to make sure it is not missed
-           if (!m_Jump && (m_CharacterController.isGrounded || bAirJump))
+            if (!m_Jump && (m_CharacterController.isGrounded || bAirJump))
             {
                 m_Jump = CrossPlatformInputManager.GetButtonDown("Jump");
-               
+
             }
-            
+
 
             if (!m_PreviouslyGrounded && m_CharacterController.isGrounded)
             {
@@ -257,8 +249,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
             if (!m_CharacterController.isGrounded && !m_Jumping && m_PreviouslyGrounded)
             {
                 m_MoveDir.y = 0f;
-                
-                
+
+
             }
 
             m_PreviouslyGrounded = m_CharacterController.isGrounded;
@@ -266,9 +258,12 @@ namespace UnityStandardAssets.Characters.FirstPerson
             //temporary code to restart level for testing purposes
             ResetLevel();
 
+            //new place for dashing?
+            PlayerDashing();
+
         }
 
-       
+
 
         private void PlayLandingSound()
         {
@@ -279,7 +274,13 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
 
         private void FixedUpdate()
-        {
+        { 
+
+            if (Input.GetKeyDown(KeyCode.P))
+            {
+                Debug.Break();
+            }
+
             //Debug.Log(m_CharacterController.isGrounded);
             float speed;
             GetInput(out speed);
@@ -289,7 +290,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             // get a normal for the surface that is being touched to move along it
             RaycastHit hitInfo;
             Physics.SphereCast(transform.position, m_CharacterController.radius, Vector3.down, out hitInfo,
-                               m_CharacterController.height/1f, Physics.AllLayers, QueryTriggerInteraction.Ignore);
+                               m_CharacterController.height/1.5f, Physics.AllLayers, QueryTriggerInteraction.Ignore);
             desiredMove = Vector3.ProjectOnPlane(desiredMove, hitInfo.normal).normalized;
 
             m_MoveDir.x = desiredMove.x*speed;
@@ -310,15 +311,11 @@ namespace UnityStandardAssets.Characters.FirstPerson
                
             }
 
-            //Debug.Log(dashCooldown + " cooldown");
-            //Debug.Log(dashFrames + " frames");
-
             //check to make sure speed is increasing on walls
             //Debug.Log(m_WalkSpeed);
 
 
-            //calling for the dashing script
-            PlayerDashing();
+           
 
             //calling for the jumping script.
             PlayerJumping();
@@ -338,7 +335,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             if (m_CharacterController.isGrounded)
             {
                 bAirJump = false;
-                bAirDashed = false;
+               
                 m_MoveDir.y = m_JumpSpeed;
                 m_MoveDir.y = -m_StickToGroundForce;
 
@@ -353,6 +350,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
                     m_Jumping = true;
                     jumpText.text = "0";
                     jumpTextCounter++;
+                    dashFrames = 0;
+                    dashCooldown = 0;
 
                 }
 
@@ -389,7 +388,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private void PlayerDashing()
         {
             //perform the dash - if the button is pushed & we aren't in dashCooldown & we're in the air
-            if (Input.GetKeyDown(DashKey) && dashCooldown == 0 && !m_CharacterController.isGrounded)
+            if (Input.GetKeyDown(DashKey) && dashCooldown == 0 && !m_CharacterController.isGrounded )
             {
                 GetComponentInChildren<ParticleSystem>().Play();
                 //when dash text go 0
@@ -398,35 +397,37 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 dashCooldown = 20f;
                 //No. of frames to apply dash over:
                 dashFrames = 20f;
+                Debug.Log("heh");
 
-                Debug.Log(dashFrames + " shift");
+                
             }
             //every frame, reduce dashCooldown frames by one.
             if (dashCooldown > 0)
             {
                 dashCooldown--;
+           
             }
+
             //Every frame, if remaining dash frames > 0, continue dashing and reduce dash frames 
             if (dashFrames > 0)
             {
-                transform.position = transform.position + Camera.main.transform.forward * dashSpeed * Time.fixedDeltaTime;
+                transform.position = transform.position + Camera.main.transform.forward * dashSpeed * Time.deltaTime;
                 dashFrames--;
-                Debug.Log(dashFrames + " frame by frame");
             }
+            
+
             //Not sure what this bit does??!? Left it in. Enlighten me.
             if (dashFrames == 0)
             {
-                GetComponentInChildren<ParticleSystem>().Stop();
-              //  Debug.Log(dashFrames + " zero?");
+                GetComponentInChildren<ParticleSystem>().Stop();         
             }
             //Every frame - check we're grounded? If so, allow dashing immediately.
             if (m_CharacterController.isGrounded)
             {
                 dashCooldown = 0;
                 dashFrames = 0;
-
-                Debug.Log(dashFrames + " grounded");
             }
+            
         }
 
 
@@ -441,8 +442,6 @@ namespace UnityStandardAssets.Characters.FirstPerson
                     bIsWallR = true;
                     bIsWallL = false;
                     bAirJump = true;
-                    
-                    //m_JumpSpeed = 20.0f;
                     //anim.SetBool("RWallRun", true);
 
                     jumpText.text = "1";
@@ -456,8 +455,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                     {
                         m_WalkSpeed = m_WalkSpeed + wallrunAcceleration;
                     }
-                    //m_MoveDir.y = m_MoveDir.y * 0.75f;
-                    //bAirDashed = false;
+               
                     return true;
                 }
 
@@ -532,7 +530,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         //MORE AUDIO
         private void PlayFootStepAudio()
         {
-            if (!m_CharacterController.isGrounded || m_Dash)
+            if (!m_CharacterController.isGrounded)
             {
                 return;
             }
@@ -550,7 +548,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private void UpdateCameraPosition(float speed)
         {
             Vector3 newCameraPosition;
-            if (!m_UseHeadBob || m_Dash)
+            if (!m_UseHeadBob)
             {
                 return;
             }

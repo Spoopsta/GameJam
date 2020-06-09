@@ -75,7 +75,7 @@ public class WaypointPlatform : MonoBehaviour
     }
 
 
-    private void OnTriggerEnter(Collider other)
+   /* private void OnTriggerEnter(Collider other)
     {
         //if the player touches the object, the platform will begin to move and the player becomes a child object of the platform
         if (other.gameObject == Player)
@@ -89,6 +89,7 @@ public class WaypointPlatform : MonoBehaviour
             isFallingPlatform = true;
         }
     }
+    */
 
     private void OnTriggerExit(Collider other)
     {
@@ -97,6 +98,15 @@ public class WaypointPlatform : MonoBehaviour
        // isStationary = true;
         
         
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject == Player)
+        {
+            isStationary = false;
+            Player.transform.parent = transform;
+        }
     }
 
 }
