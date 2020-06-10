@@ -394,7 +394,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 //when dash text go 0
                 dashText.text = "0";
                 //No. of frames to dashCooldown:
-                dashCooldown = 20f;
+                dashCooldown = 75f;
                 //No. of frames to apply dash over:
                 dashFrames = 20f;
                 Debug.Log("heh");
