@@ -16,6 +16,10 @@ public class WaypointPlatform : MonoBehaviour
 
     public GameObject Player;
 
+   // private float waitTime = 5.0f;
+
+   // private IEnumerator coroutine;
+
     //testing player touching the thing to make it start moving
     public bool isStationary = false;
 
@@ -54,22 +58,17 @@ public class WaypointPlatform : MonoBehaviour
         //when the limit of waypoints is reached, return to the first waypoint.
         if (waypointIndex == waypoints.Length)
         {
-            waypointIndex = 0;
-            
+            //coroutine = StopWait();
+           // StartCoroutine(coroutine);
+            waypointIndex = 0;        
         }
 
-     /*   if (waypointIndex == waypoints.Length) //&& this.gameObject.tag.Equals("Moving")) 
-        {
-            Debug.Log("made it to the start chief");
-            waypointIndex = 0;
-            
-           // isStationary = true;
-        }
-        */
+     
 
         if (waypointIndex == 0 && this.gameObject.tag.Equals("Moving"))
         {
-            //Debug.Log("nani");
+            
+           // StopCoroutine(coroutine);
             isStationary = true;
         }
     }
@@ -82,11 +81,6 @@ public class WaypointPlatform : MonoBehaviour
         {
             isStationary = false;
             Player.transform.parent = transform;
-        }
-
-        else if (isFallingPlatform == false)
-        {
-            isFallingPlatform = true;
         }
     }
     */
@@ -108,5 +102,17 @@ public class WaypointPlatform : MonoBehaviour
             Player.transform.parent = transform;
         }
     }
+
+    //hold onto this idea. platform gets to last thing, pauses for 2 seconds, goes back to last spot. currently not really a good idea.
+/*
+    private IEnumerator StopWait()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(waitTime);
+            waypointIndex = 0;
+        }
+    }
+    */
 
 }

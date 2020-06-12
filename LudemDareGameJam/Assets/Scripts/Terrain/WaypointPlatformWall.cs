@@ -12,6 +12,10 @@ public class WaypointPlatformWall : MonoBehaviour
     [SerializeField]
     float moveSpeed = 2f;
 
+    [SerializeField] float startDelay;
+
+    public float moveRate;
+
     int waypointIndex = 0;
 
     //public GameObject Player;
@@ -27,9 +31,14 @@ public class WaypointPlatformWall : MonoBehaviour
 
 
         //when a waypoint is reached, +1 to go to next waypoint
-        if (transform.position == waypoints[waypointIndex].transform.position)
+
+        if (Time.time > startDelay)
         {
-            waypointIndex += 1;
+            startDelay = Time.time + moveRate;
+            if (transform.position == waypoints[waypointIndex].transform.position)
+            {
+                waypointIndex += 1;
+            }
         }
 
 

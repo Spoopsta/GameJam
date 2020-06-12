@@ -24,6 +24,7 @@ TagManager:
   - Moving
   - SpeedBoost
   - Sheep
+  - JUMP
   layers:
   - Default
   - TransparentFX

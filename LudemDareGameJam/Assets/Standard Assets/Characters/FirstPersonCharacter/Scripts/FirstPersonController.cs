@@ -71,6 +71,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         public float wallrunAcceleration;
         public float dashCooldown;
         public float dashFrames;
+        public float jumpPadBoost;
 
         public TextMeshProUGUI dashText, jumpText;
 
@@ -198,9 +199,11 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 }
             }
 
-
-
-
+            if (collision.gameObject.tag.Equals("JUMP"))
+            {
+                Debug.Log("YEET");
+                m_MoveDir.y = jumpPadBoost;
+            }
 
         }
 
