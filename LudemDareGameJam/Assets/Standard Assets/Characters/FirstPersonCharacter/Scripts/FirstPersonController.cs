@@ -42,7 +42,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private bool m_Jump;
         private float m_YRotation;
         private Vector2 m_Input;
-        private Vector3 m_MoveDir = Vector3.zero;
+        public Vector3 m_MoveDir = Vector3.zero;
         public CharacterController m_CharacterController;
         private CollisionFlags m_CollisionFlags;
         private bool m_PreviouslyGrounded;
@@ -71,7 +71,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         public float wallrunAcceleration;
         public float dashCooldown;
         public float dashFrames;
-        public float jumpPadBoost;
+       // public float jumpPadBoost;
 
         public TextMeshProUGUI dashText, jumpText;
 
@@ -199,12 +199,6 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 }
             }
 
-            if (collision.gameObject.tag.Equals("JUMP"))
-            {
-                Debug.Log("YEET");
-                m_MoveDir.y = jumpPadBoost;
-            }
-
         }
 
         // Update is called once per frame
@@ -290,6 +284,10 @@ namespace UnityStandardAssets.Characters.FirstPerson
             // always move along the camera forward as it is the direction that it being aimed at
             Vector3 desiredMove = transform.forward*m_Input.y + transform.right*m_Input.x;
 
+            //attempt at adjusting velocity within the character controller.
+            Vector3 verticalVelocity = m_CharacterController.velocity;
+            verticalVelocity = new Vector3(m_CharacterController.velocity.x, m_CharacterController.velocity.y + 0.5f, m_CharacterController.velocity.z);
+
             // get a normal for the surface that is being touched to move along it
             RaycastHit hitInfo;
             Physics.SphereCast(transform.position, m_CharacterController.radius, Vector3.down, out hitInfo,
@@ -301,7 +299,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
             //WALLRUNNING
             if (CheckWallTouch()){
-                m_GravityMultiplier = 1.0f;
+                m_GravityMultiplier = 1f;           
                 m_WalkSpeed = m_WalkSpeed;
                 
 
@@ -451,7 +449,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
                     if (!m_Jumping)
                     {
-                        m_MoveDir.y = m_MoveDir.y * 0.45f;
+                        m_MoveDir.y = m_MoveDir.y * 0.3f;
                     }
 
                     if (m_WalkSpeed <= 15)

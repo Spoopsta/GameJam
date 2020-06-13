@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityStandardAssets.Characters.FirstPerson;
 
 public class WaypointPlatform : MonoBehaviour
 {
@@ -15,6 +16,9 @@ public class WaypointPlatform : MonoBehaviour
     int waypointIndex = 0;
 
     public GameObject Player;
+
+    public FirstPersonController fpc;
+
 
    // private float waitTime = 5.0f;
 
