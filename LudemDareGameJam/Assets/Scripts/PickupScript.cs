@@ -5,21 +5,24 @@ using UnityEngine;
 public class PickupScript : MonoBehaviour
 {
     private float iCounter;
-
+    
     private float waitTime = 2.5f;
     // Start is called before the first frame update
     void Start()
     {
         iCounter = 0;
+
     }
 
     // Update is called once per frame
     void Update()
     {
+       
+
         if (!GetComponent<MeshRenderer>().enabled)
         {
             //iCounter += Time.deltaTime + 1;
-            iCounter += Time.fixedDeltaTime + 1;
+            iCounter += Time.deltaTime + 1;
             // coroutine = pickupRespawnDelay();
             //StartCoroutine(coroutine);
 

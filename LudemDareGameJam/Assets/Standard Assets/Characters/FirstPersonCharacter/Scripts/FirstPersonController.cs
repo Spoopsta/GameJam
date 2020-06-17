@@ -130,7 +130,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 collision.gameObject.GetComponent<BoxCollider>().enabled = false;
                 collision.gameObject.GetComponent<MeshRenderer>().enabled = false;
                 collision.gameObject.GetComponentInChildren<ParticleSystem>().Stop();
-                GetComponentInChildren<ParticleSystem>().Stop();
+                //GetComponentInChildren<ParticleSystem>().Stop();
                 dashText.text = "1";
                 jumpText.text = "1";
                 dashCooldown = 0f;
@@ -397,10 +397,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 //No. of frames to dashCooldown:
                 dashCooldown = 75f;
                 //No. of frames to apply dash over:
-                dashFrames = 20f;
-                Debug.Log("heh");
-
-                
+                dashFrames = 20f;       
             }
             //every frame, reduce dashCooldown frames by one.
             if (dashCooldown > 0)
@@ -421,6 +418,11 @@ namespace UnityStandardAssets.Characters.FirstPerson
             if (dashFrames == 0)
             {
                 GetComponentInChildren<ParticleSystem>().Stop();         
+            }
+
+            if (dashCooldown == 0)
+            {
+                dashText.text = "1";
             }
             //Every frame - check we're grounded? If so, allow dashing immediately.
             if (m_CharacterController.isGrounded)

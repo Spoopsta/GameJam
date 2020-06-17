@@ -3,17 +3,24 @@ guid: 335c812a8fc85114da621051c7d6d7b9
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: //RootNode
-    400000: //RootNode
-    2100000: Desktop
-    2100002: Monitor
-    2100004: Screen
+    100000: Computer
+    100002: //RootNode
+    100004: Keyboard
+    400000: Computer
+    400002: //RootNode
+    400004: Keyboard
+    2100000: Monitor
+    2100002: Screen
+    2100004: Desktop
     2100006: Front
     2100008: Keyboard Base
     2100010: Keyboard Keys
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: DesktopComputer
+    2300000: Computer
+    2300002: Keyboard
+    3300000: Computer
+    3300002: Keyboard
+    4300000: Computer
+    4300002: Keyboard
   externalObjects: {}
   materials:
     importMaterials: 1
