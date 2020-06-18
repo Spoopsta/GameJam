@@ -8,9 +8,6 @@ using System.Linq;
 using TMPro;
 using Random = UnityEngine.Random;
 
-
-
-
 namespace UnityStandardAssets.Characters.FirstPerson
 {
     [RequireComponent(typeof(CharacterController))]

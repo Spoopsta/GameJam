@@ -4,8 +4,11 @@ using UnityEngine;
 using UnityStandardAssets.Characters.FirstPerson;
 using UnityEngine.SceneManagement;
 
+
+[System.Serializable]
 public class GameManager : MonoBehaviour
 {
+    
     //when the player collides with a checkpoint, the old checkpoint gets replaced with the most recent. This allows the player to backtrack, but not lose any progress
     public GameObject currentCheckpoint;
 

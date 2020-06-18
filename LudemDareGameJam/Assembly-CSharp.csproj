@@ -60,7 +60,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\JumpPad.cs" />
     <Compile Include="Assets\Materials\StarfieldMaterials\Scripts\Move.cs" />
     <Compile Include="Assets\ProCore\ProGrids\Classes\pg_Constant.cs" />
     <Compile Include="Assets\ProCore\ProGrids\Classes\pg_Enum.cs" />
@@ -72,6 +71,7 @@
     <Compile Include="Assets\Scripts\Game Management\CheckpointAudio.cs" />
     <Compile Include="Assets\Scripts\Game Management\Respawn.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
+    <Compile Include="Assets\Scripts\JumpPad.cs" />
     <Compile Include="Assets\Scripts\PickupScript.cs" />
     <Compile Include="Assets\Scripts\Player\CheckpointPlayerScript.cs" />
     <Compile Include="Assets\Scripts\Player\ReflectionHelpers.cs" />
@@ -148,6 +148,12 @@
     <Reference Include="Unity.CollabProxy.Editor">
       <HintPath>E:/Dreamer/LudemDareGameJam/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.Postprocessing.Editor">
+      <HintPath>E:/Dreamer/LudemDareGameJam/Library/ScriptAssemblies/Unity.Postprocessing.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Postprocessing.Runtime">
+      <HintPath>E:/Dreamer/LudemDareGameJam/Library/ScriptAssemblies/Unity.Postprocessing.Runtime.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.ProBuilder.AddOns.Editor">
       <HintPath>E:/Dreamer/LudemDareGameJam/Library/ScriptAssemblies/Unity.ProBuilder.AddOns.Editor.dll</HintPath>
     </Reference>
@@ -156,12 +162,6 @@
     </Reference>
     <Reference Include="Unity.Analytics.DataPrivacy">
       <HintPath>E:/Dreamer/LudemDareGameJam/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Postprocessing.Editor">
-      <HintPath>E:/Dreamer/LudemDareGameJam/Library/ScriptAssemblies/Unity.Postprocessing.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Postprocessing.Runtime">
-      <HintPath>E:/Dreamer/LudemDareGameJam/Library/ScriptAssemblies/Unity.Postprocessing.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>E:/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>

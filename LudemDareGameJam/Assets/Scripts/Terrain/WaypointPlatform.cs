@@ -75,6 +75,7 @@ public class WaypointPlatform : MonoBehaviour
            // StopCoroutine(coroutine);
             isStationary = true;
         }
+
     }
 
 
@@ -105,18 +106,21 @@ public class WaypointPlatform : MonoBehaviour
             isStationary = false;
             Player.transform.parent = transform;
         }
+
+       
     }
+    
 
     //hold onto this idea. platform gets to last thing, pauses for 2 seconds, goes back to last spot. currently not really a good idea.
-/*
-    private IEnumerator StopWait()
-    {
-        while (true)
+    /*
+        private IEnumerator StopWait()
         {
-            yield return new WaitForSeconds(waitTime);
-            waypointIndex = 0;
+            while (true)
+            {
+                yield return new WaitForSeconds(waitTime);
+                waypointIndex = 0;
+            }
         }
-    }
-    */
+        */
 
 }
