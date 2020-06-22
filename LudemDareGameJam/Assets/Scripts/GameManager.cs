@@ -54,7 +54,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        DestroyWall();
+        //DestroyWall();
         ResetLevel();
         DebugTeleporting();
 
@@ -91,7 +91,7 @@ public class GameManager : MonoBehaviour
         player.transform.position = currentCheckpoint.transform.position;
     }
 
-
+/*
     private void DestroyWall()
     {
         if (player.gameObject.GetComponent<FirstPersonController>().punchCards == 1)
@@ -113,6 +113,7 @@ public class GameManager : MonoBehaviour
         }
 
     }
+    */
     private void ResetLevel()
     {
         if (Input.GetKeyDown(KeyCode.R))
