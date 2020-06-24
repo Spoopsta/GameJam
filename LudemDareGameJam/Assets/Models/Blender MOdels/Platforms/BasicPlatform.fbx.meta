@@ -11,7 +11,22 @@ ModelImporter:
     2300000: //RootNode
     3300000: //RootNode
     4300000: Cube.001
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: CircleSPeed
+    second: {fileID: 2100000, guid: c8449f2ac67b99d4db27ea6fff816dbe, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Platform White_
+    second: {fileID: 2100000, guid: eb7bf6c8944467749b456f34383947dc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Platform black
+    second: {fileID: 2100000, guid: ce04fb8bb846beb4cacc8d3732bbb570, type: 2}
   materials:
     importMaterials: 1
     materialName: 0

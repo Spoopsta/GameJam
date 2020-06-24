@@ -21,7 +21,37 @@ ModelImporter:
     3300002: Keyboard
     4300000: Computer
     4300002: Keyboard
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Desktop
+    second: {fileID: 2100000, guid: a8058c8efa5508b4babcfd293a509152, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Front
+    second: {fileID: 2100000, guid: 87e60f35f5b5c254f87721572a8437d4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Keyboard Base
+    second: {fileID: 2100000, guid: c72e00e2dc6982643b3484171352de9d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Keyboard Keys
+    second: {fileID: 2100000, guid: 94b2e1f31718fb54eafeb4852745c69e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Monitor
+    second: {fileID: 2100000, guid: fdec5b0bc339f0545ae25edc44db5c32, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Screen
+    second: {fileID: 2100000, guid: 4c155807b15b97b47ba4e2bc8a589ad4, type: 2}
   materials:
     importMaterials: 1
     materialName: 0

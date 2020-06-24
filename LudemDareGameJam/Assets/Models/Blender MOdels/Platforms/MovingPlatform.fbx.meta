@@ -18,7 +18,22 @@ ModelImporter:
     3300002: Cube.007
     4300000: Cube.002
     4300002: Cube.007
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: NewArrow
+    second: {fileID: 2100000, guid: 69593e83f0024644387a4a86104d6e77, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Platform White_
+    second: {fileID: 2100000, guid: a03a5b7f7124ee444be7a78ccaa7a8e8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Platform black
+    second: {fileID: 2100000, guid: 6da3a26437f54f1439e7f0f0bb0d5502, type: 2}
   materials:
     importMaterials: 1
     materialName: 0

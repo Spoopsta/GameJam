@@ -39,6 +39,16 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: Cubicle Lighs
     second: {fileID: 2100000, guid: a86376da164e3bc4895014e2e4d2f112, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Cubicle walls and floor
+    second: {fileID: 2100000, guid: fb382568c29816f4e84af96ecded92f9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Walls
+    second: {fileID: 2100000, guid: 496203f5ab13140448565e3309cf8667, type: 2}
   materials:
     importMaterials: 1
     materialName: 0

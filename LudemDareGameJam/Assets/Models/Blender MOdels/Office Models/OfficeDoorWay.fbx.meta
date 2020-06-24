@@ -20,7 +20,27 @@ ModelImporter:
     4300000: Cube.006
     4300002: Icosphere
     2186277476908879412: ImportLogs
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Dark Wood
+    second: {fileID: 2100000, guid: bf0e313d8b74d224ebd7ba97eda53939, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Door
+    second: {fileID: 2100000, guid: 1325f2f88d219ca4d985d86ccccbaa4c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: DoorKnob
+    second: {fileID: 2100000, guid: 3e707f0bcafad024e83508b44d76d61f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Wooden Frame
+    second: {fileID: 2100000, guid: 9868a47f2b3cc7a428da73ec60266d4a, type: 2}
   materials:
     importMaterials: 1
     materialName: 0

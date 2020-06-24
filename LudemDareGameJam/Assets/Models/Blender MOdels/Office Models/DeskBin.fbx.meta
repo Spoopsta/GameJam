@@ -10,7 +10,17 @@ ModelImporter:
     2300000: //RootNode
     3300000: //RootNode
     4300000: DeskBin
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Bin metal
+    second: {fileID: 2100000, guid: c8067889ca871a54596d3ddc338c2ce7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.001
+    second: {fileID: 2100000, guid: 1cfe3173c990cff469b6f24a105d7f82, type: 2}
   materials:
     importMaterials: 1
     materialName: 0

@@ -10,7 +10,17 @@ ModelImporter:
     2300000: //RootNode
     3300000: //RootNode
     4300000: Cube
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Black Tile
+    second: {fileID: 2100000, guid: 3f49c214b34b0114a887b0d03a7f8b92, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: White TIle
+    second: {fileID: 2100000, guid: 952d6f566adf8a14293bdb57ab014189, type: 2}
   materials:
     importMaterials: 1
     materialName: 0

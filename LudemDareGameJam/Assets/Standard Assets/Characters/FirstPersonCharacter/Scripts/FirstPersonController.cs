@@ -296,20 +296,14 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
             //WALLRUNNING
             if (CheckWallTouch()){
-              m_GravityMultiplier = 1f;
-      
-
-                Debug.Log(m_CharacterController.velocity.y);
-               
-
-   
+                m_GravityMultiplier = 1f;
                 
-
             }
 
             //NOT WALL RUNNING ANYMORE
             else {
                 m_GravityMultiplier = 2f;
+               
                
             }
 

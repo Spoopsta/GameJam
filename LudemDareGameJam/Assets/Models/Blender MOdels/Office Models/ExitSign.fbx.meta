@@ -17,7 +17,17 @@ ModelImporter:
     3300002: Tubes
     4300000: Tubes
     4300002: BackingText
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.001
+    second: {fileID: 2100000, guid: 44334f9f74660fb4ab6c0da4c00d5957, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.002
+    second: {fileID: 2100000, guid: 206576acc0ee88d42abe2464249ab905, type: 2}
   materials:
     importMaterials: 1
     materialName: 0

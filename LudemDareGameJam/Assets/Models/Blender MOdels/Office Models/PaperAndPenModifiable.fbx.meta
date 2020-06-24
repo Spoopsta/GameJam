@@ -28,7 +28,22 @@ ModelImporter:
     4300002: Paper3
     4300004: Paper2
     4300006: Cylinder
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Paper
+    second: {fileID: 2100000, guid: 3cc9a48f9f21dc749b19cf8fceaff23a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Pen Grip
+    second: {fileID: 2100000, guid: d23464ba9c4d3cc48b13bcb48682a606, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Pen Tip
+    second: {fileID: 2100000, guid: ebfca5d865c859e41993387c544ec07e, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
