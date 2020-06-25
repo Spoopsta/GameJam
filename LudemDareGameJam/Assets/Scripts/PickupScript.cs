@@ -22,13 +22,13 @@ public class PickupScript : MonoBehaviour
         if (!GetComponent<MeshRenderer>().enabled)
         {
             //iCounter += Time.deltaTime + 1;
-            iCounter += Time.deltaTime + 1;
+            iCounter += Time.deltaTime * 1;
             // coroutine = pickupRespawnDelay();
             //StartCoroutine(coroutine);
 
         }
 
-        if (iCounter > 250)
+        if (iCounter > waitTime)
         {
             GetComponent<MeshRenderer>().enabled = true;
             GetComponent<BoxCollider>().enabled = true;

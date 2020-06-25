@@ -228,6 +228,11 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
             }
 
+            //WALLRUNNING
+            CheckWallTouch();
+          
+            
+
 
             if (!m_PreviouslyGrounded && m_CharacterController.isGrounded)
             {
@@ -294,18 +299,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_MoveDir.x = desiredMove.x*speed;
             m_MoveDir.z = desiredMove.z*speed;
 
-            //WALLRUNNING
-            if (CheckWallTouch()){
-                m_GravityMultiplier = 1f;
-                
-            }
-
-            //NOT WALL RUNNING ANYMORE
-            else {
-                m_GravityMultiplier = 2f;
-               
-               
-            }
+        
 
             //check to make sure speed is increasing on walls
             //Debug.Log(m_WalkSpeed);
@@ -444,10 +438,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
                     jumpText.text = "1";
 
-                    if (!m_Jumping)
-                    {
-                        m_MoveDir.y = m_MoveDir.y * 0.3f;
-                    }
+               
 
                     if (m_WalkSpeed <= 15)
                     {
@@ -470,11 +461,6 @@ namespace UnityStandardAssets.Characters.FirstPerson
                   
                     //m_JumpSpeed = 6.0f;
                     jumpText.text = "1";
-
-                    if (!m_Jumping)
-                    {
-                        m_MoveDir.y = m_MoveDir.y * 0.45f;
-                    }
 
 
                     if (m_WalkSpeed <= 15)
