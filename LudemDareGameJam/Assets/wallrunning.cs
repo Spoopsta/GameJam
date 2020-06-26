@@ -26,6 +26,5 @@ public class wallrunning : MonoBehaviour
     private void OnTriggerStay(Collider other)
     {
         Player.gameObject.GetComponent<FirstPersonController>().m_MoveDir.y -= forceVec * Time.deltaTime;
-        Debug.Log("something happens");
     }
 }

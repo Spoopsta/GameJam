@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour
 
     //death fades
     public Animator animator;
+
     //public Animation DeathFadeOut;
 
     public GameObject punchCard1, Door1;
@@ -57,6 +58,7 @@ public class GameManager : MonoBehaviour
         //DestroyWall();
         ResetLevel();
         DebugTeleporting();
+        
 
 
         if (Input.GetKeyDown(KeyCode.Q))
@@ -83,6 +85,8 @@ public class GameManager : MonoBehaviour
 
 
     }
+
+   
 
     public IEnumerator RespawnCoroutine()
     {

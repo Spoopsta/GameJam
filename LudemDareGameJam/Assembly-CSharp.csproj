@@ -75,10 +75,7 @@
     <Compile Include="Assets\Scripts\JumpPad.cs" />
     <Compile Include="Assets\Scripts\PickupScript.cs" />
     <Compile Include="Assets\Scripts\Player\CheckpointPlayerScript.cs" />
-    <Compile Include="Assets\Scripts\Player\ReflectionHelpers.cs" />
-    <Compile Include="Assets\Scripts\Player\Wallrun.cs" />
-    <Compile Include="Assets\Scripts\Player\Wallrun3.cs" />
-    <Compile Include="Assets\Scripts\Player\WallRunningManager.cs" />
+    <Compile Include="Assets\Scripts\Player\Collectables\SheepCollectables.cs" />
     <Compile Include="Assets\Scripts\Printer.cs" />
     <Compile Include="Assets\Scripts\Projectile.cs" />
     <Compile Include="Assets\Scripts\PunchCard.cs" />
@@ -89,6 +86,7 @@
     <Compile Include="Assets\Scripts\UI\QuitFlash.cs" />
     <Compile Include="Assets\Scripts\UI\SceneManagement.cs" />
     <Compile Include="Assets\Scripts\UI\UIManagement.cs" />
+    <Compile Include="Assets\SheepCollectable.cs" />
     <Compile Include="Assets\Ultimate 10 Plus Shaders\Scripts\DissolveOverTime.cs" />
     <Compile Include="Assets\Ultimate 10 Plus Shaders\Scripts\ExampleReview.cs" />
     <Compile Include="Assets\Ultimate 10 Plus Shaders\Scripts\FreeCameraMovement.cs" />

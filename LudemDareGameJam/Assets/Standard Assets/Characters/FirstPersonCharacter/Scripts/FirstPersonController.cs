@@ -68,9 +68,10 @@ namespace UnityStandardAssets.Characters.FirstPerson
         public float wallrunAcceleration;
         public float dashCooldown;
         public float dashFrames;
+        private bool bSheepText;
        // public float jumpPadBoost;
 
-        public TextMeshProUGUI dashText, jumpText;
+        public TextMeshProUGUI dashText, jumpText, sheepText;
 
         private RaycastHit rHitL;
         private RaycastHit rHitR;
@@ -81,9 +82,11 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private Rigidbody rb;
 
         public Animator anim;
+        
 
 
         [SerializeField] public int punchCards;
+        [SerializeField] private int sheepCollected;
 
         // Use this for initialization
         private void Start()
@@ -110,6 +113,9 @@ namespace UnityStandardAssets.Characters.FirstPerson
             playCutscene = false;
             end = false;
             anim = GetComponent<Animator>();
+          //  textFade = GetComponent<Animator>();
+           // textFade.SetBool("FadeIN", false);
+
             if (SceneManager.GetActiveScene().buildIndex == 3)
             {
                 level2 = true;
@@ -145,10 +151,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 punchCards++;
                 Debug.Log(punchCards);
 
-                if (collision.gameObject.tag.Equals("WinWall"))
-                {
-                    SceneManager.LoadScene(sceneBuildIndex: 2);
-                }
+               
 
 
                 /* bCompleteLevel = true;
@@ -156,6 +159,11 @@ namespace UnityStandardAssets.Characters.FirstPerson
                  collision.gameObject.GetComponent<MeshCollider>().enabled = false;
                  collision.GetComponent<AudioSource>().Play();
                  */
+            }
+
+            if (collision.gameObject.tag.Equals("WinWall"))
+            {
+                SceneManager.LoadScene(sceneBuildIndex: 2);
             }
 
             if (collision.gameObject.tag.Equals("MiddleWall"))
@@ -196,7 +204,26 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 }
             }
 
+            if (collision.gameObject.tag.Equals("Sheep"))
+            {
+                sheepCollected++;
+                sheepText.text = "Sheep Collected: " + sheepCollected;
+               // bSheepText = true;
+                Destroy(collision.gameObject);
+            }
+
+
+
         }
+
+       /* private void OnTriggerExit(Collider other)
+        {
+            if (other.gameObject.tag.Equals("Sheep"))
+            {
+                this.gameObject.GetComponentInChildren<Canvas>().GetComponentInChildren<Animator>().SetBool("Fade IN", false);
+            }
+        }
+        */
 
         // Update is called once per frame
         private void Update()
@@ -205,6 +232,19 @@ namespace UnityStandardAssets.Characters.FirstPerson
             {
                 m_WalkSpeed = m_WalkSpeed - decelerationRatePerFrame;
             }
+
+            /*
+            if (bSheepText == true)
+            {
+                bSheepText = false;
+                this.gameObject.GetComponentInChildren<Canvas>().GetComponentInChildren<Animator>().SetBool("Fade IN", true);
+            }
+
+            if (bSheepText == false)
+            {
+                this.gameObject.GetComponentInChildren<Canvas>().GetComponentInChildren<Animator>().SetBool("Fade IN", false);
+            }
+            */
 
 
             if (end) {
