@@ -366,9 +366,6 @@
     <Reference Include="UnityEditor.Purchasing">
       <HintPath>E:/Dreamer/LudemDareGameJam/Library/PackageCache/com.unity.purchasing@2.0.3/Editor/UnityEditor.Purchasing.dll</HintPath>
     </Reference>
-    <Reference Include="ICSharpCode.NRefactory">
-      <HintPath>E:/Dreamer/LudemDareGameJam/Library/PackageCache/com.unity.render-pipelines.high-definition@4.10.0-preview/Editor/Core/ShaderGenerator/ICSharpCode.NRefactory.dll</HintPath>
-    </Reference>
     <Reference Include="mscorlib">
       <HintPath>E:/Unity/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/mscorlib.dll</HintPath>
     </Reference>

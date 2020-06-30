@@ -8,11 +8,11 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Cieling Light
-  m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
+  m_Shader: {fileID: 4800000, guid: ef0b7c76aed444d4bafdcb14f6a94c4f, type: 3}
   m_ShaderKeywords: _EMISSION
   m_LightmapFlags: 2
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
+  m_EnableInstancingVariants: 1
+  m_DoubleSidedGI: 1
   m_CustomRenderQueue: -1
   stringTagMap: {}
   disabledShaderPasses: []
@@ -63,6 +63,8 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
+    - Color_CF0AD3A: {r: 0, g: 0.77227974, b: 1, a: 0}
+    - Color_FA1E47B7: {r: 0, g: 0.31905735, b: 3.5648696, a: 0}
     - _Color: {r: 0.27439466, g: 0.019579923, b: 0.3773585, a: 1}
     - _EmissionColor: {r: 0.58830965, g: 0.19023676, b: 0.8962264, a: 1}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
