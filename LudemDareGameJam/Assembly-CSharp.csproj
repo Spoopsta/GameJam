@@ -52,6 +52,9 @@
     <UnityVersion>2018.3.2f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
+    <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio Tools for Unity\16.0\Analyzers\Microsoft.Unity.Analyzers.dll" />
+  </ItemGroup>
+  <ItemGroup>
     <Reference Include="UnityEngine">
       <HintPath>E:\Unity\Editor\Data\Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>
@@ -86,7 +89,6 @@
     <Compile Include="Assets\Scripts\UI\QuitFlash.cs" />
     <Compile Include="Assets\Scripts\UI\SceneManagement.cs" />
     <Compile Include="Assets\Scripts\UI\UIManagement.cs" />
-    <Compile Include="Assets\SheepCollectable.cs" />
     <Compile Include="Assets\Tayx\Graphy - Ultimate Stats Monitor\Scene\Color Picker\G_CUIColorPicker.cs" />
     <Compile Include="Assets\Tayx\Graphy - Ultimate Stats Monitor\Scene\Customization Scripts\CustomizeGraphy.cs" />
     <Compile Include="Assets\Tayx\Graphy - Ultimate Stats Monitor\Scene\Customization Scripts\ForceSliderToMultipleOf3.cs" />
