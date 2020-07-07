@@ -3,17 +3,18 @@ using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 using UnityStandardAssets.Utility;
 using UnityEngine.SceneManagement;
-using System.Collections.Generic;
-using System.Linq;
 using TMPro;
 using Random = UnityEngine.Random;
+
 
 namespace UnityStandardAssets.Characters.FirstPerson
 {
     [RequireComponent(typeof(CharacterController))]
     [RequireComponent(typeof(AudioSource))]
+    [Serializable]
     public class FirstPersonController : MonoBehaviour
     {
+        
         [SerializeField] private bool m_IsWalking;
         [SerializeField] public float m_WalkSpeed;
         [SerializeField] private float m_RunSpeed;
@@ -85,8 +86,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
         
 
 
-        [SerializeField] public int punchCards;
-        [SerializeField] private int sheepCollected;
+        public int punchCards;
+        public int sheepCollected;
 
         // Use this for initialization
         private void Start()

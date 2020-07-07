@@ -34,7 +34,7 @@ public class FlashingText : MonoBehaviour
         while (true)
         {
             //set text to blank
-            flashingText.text = " ";
+            //flashingText.text = " ";
 
             //display blank text for 0.5 seconds (can change if need be)
             yield return new WaitForSeconds(0.5f);

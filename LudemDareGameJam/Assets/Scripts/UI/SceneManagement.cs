@@ -1,22 +1,25 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using TMPro;
 
 public class SceneManagement : MonoBehaviour
 {
-    private Animation UIAnimation1;
-    private Animation UIAnimation2;
-    private Animation UIAnimation3;
 
     public GameObject StartCanvas;
     public GameObject UICanvas;
+    public GameObject loadingScreen;
+    public Slider slider;
+    public TMP_Text progressText;
 
 
     private void Start()
     {
         StartCanvas.gameObject.SetActive(true);
         UICanvas.gameObject.SetActive(false);
+        loadingScreen.gameObject.SetActive(false);
         //UIAnimation3.Play();
        
     }
@@ -26,15 +29,13 @@ public class SceneManagement : MonoBehaviour
     {
         if (Input.GetKeyDown("space"))
         {
-            /*Cursor.visible = true;
+            Cursor.visible = true;
             StartCanvas.gameObject.SetActive (false);
 
             UICanvas.gameObject.SetActive(true);
 
-            UIAnimation1.Play();
-            UIAnimation2.Play();
-            */
-            SceneManager.LoadScene(sceneBuildIndex: 1);
+            
+           // SceneManager.LoadScene(sceneBuildIndex: 1);
         }
 
         if (Input.GetKeyDown(KeyCode.Q))
@@ -73,6 +74,30 @@ public class SceneManagement : MonoBehaviour
         Application.Quit();
 
       
+    }
+
+    public void LoadLevel(int sceneIndex)
+    {
+
+        StartCoroutine(LoadAsynchronously(sceneIndex));
+    }
+
+
+    IEnumerator LoadAsynchronously(int sceneIndex)
+    {
+        AsyncOperation operation = SceneManager.LoadSceneAsync(sceneIndex);
+
+        loadingScreen.SetActive(true);
+
+        while (!operation.isDone)
+        {
+            float progress = Mathf.Clamp01(operation.progress / .9f);
+
+            slider.value = progress;
+            progressText.text = progress * 100f + "%";
+
+            yield return null;
+        }
     }
 
    

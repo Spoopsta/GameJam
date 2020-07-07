@@ -11,7 +11,7 @@ public class SheepCollectables : MonoBehaviour
     void Start()
     {
         fadeText.GetComponent<Animator>();
-        fadeText.SetBool("FadeIN", false);
+        //fadeText.SetBool("FadeIN", false);
     }
 
     // Update is called once per frame

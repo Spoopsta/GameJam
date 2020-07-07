@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityStandardAssets.Characters.FirstPerson;
 using UnityEngine.SceneManagement;
-
+using System;
+using UnityEngine.Analytics;
 
 [System.Serializable]
 public class GameManager : MonoBehaviour
 {
-    
+
     //when the player collides with a checkpoint, the old checkpoint gets replaced with the most recent. This allows the player to backtrack, but not lose any progress
     public GameObject currentCheckpoint;
 
@@ -23,6 +24,8 @@ public class GameManager : MonoBehaviour
 
     public GameObject checkpoint1, checkpoint2, checkpoint3, checkpoint4, checkpoint5, checkpoint6, checkpoint7, checkpoint8, checkpoint9, checkpoint10, checkpointO, checkpointP,
         checkpointL, checkpointI;
+
+    public GameObject pauseMenu;
 
 
     //death fades
@@ -46,8 +49,11 @@ public class GameManager : MonoBehaviour
     void Start()
     {
 
-        player.transform.position = currentCheckpoint.transform.position;
+        //player.transform.position = currentCheckpoint.transform.position;
         player = GameObject.FindObjectOfType<FirstPersonController>();
+        pauseMenu.gameObject.SetActive(false);
+        Time.timeScale = 1f;
+
 
 
     }
@@ -58,14 +64,14 @@ public class GameManager : MonoBehaviour
         //DestroyWall();
         ResetLevel();
         DebugTeleporting();
-        
 
-
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
-            Application.Quit();
-            Debug.Log("quit");
+            pauseMenu.gameObject.SetActive(true);
+            Time.timeScale = 0f;
         }
+
+
 
 
     }
@@ -78,12 +84,48 @@ public class GameManager : MonoBehaviour
         //keep just in case
         //player.transform.position = currentCheckpoint.transform.position;
         StartCoroutine(RespawnCoroutine());
-        
+
         animator.SetTrigger("Death-FadeOut");
         player.gameObject.GetComponent<FirstPersonController>().m_WalkSpeed = 8f;
 
 
 
+    }
+
+    public void QUitGame()
+    {
+        Application.Quit();
+        Debug.Log("Game QUit");
+    }
+
+    public void ResumeGame()
+    {
+        pauseMenu.gameObject.SetActive(false);
+        Time.timeScale = 1f;
+    }
+
+    public void SavePlayer()
+    {
+        SaveSystem.SavePlayer(player);
+    }
+    public void LoadPlayer()
+    {
+        PlayerData data = SaveSystem.LoadPlayer();
+
+        GetComponent<FirstPersonController>().punchCards = data.keyCards;
+        GetComponent<FirstPersonController>().sheepCollected = data.Sheep;
+
+        Vector3 position;
+        position.x = data.position[0];
+        position.y = data.position[1];
+        position.z = data.position[2];
+
+        transform.position = position;
+    }
+
+    public void MainMenu()
+    {
+        SceneManager.LoadScene(sceneBuildIndex: 0);
     }
 
    
