@@ -5,6 +5,7 @@ using UnityStandardAssets.Characters.FirstPerson;
 using UnityEngine.SceneManagement;
 using System;
 using UnityEngine.Analytics;
+using UnityEngine.UI;
 
 [System.Serializable]
 public class GameManager : MonoBehaviour
@@ -12,6 +13,8 @@ public class GameManager : MonoBehaviour
 
     //when the player collides with a checkpoint, the old checkpoint gets replaced with the most recent. This allows the player to backtrack, but not lose any progress
     public GameObject currentCheckpoint;
+
+    public GameObject blackOutSquare;
 
     //this is so we can move the player around by making them an object that the code can read and adjust their transform.position
     //public GameObject player;
@@ -25,11 +28,13 @@ public class GameManager : MonoBehaviour
     public GameObject checkpoint1, checkpoint2, checkpoint3, checkpoint4, checkpoint5, checkpoint6, checkpoint7, checkpoint8, checkpoint9, checkpoint10, checkpointO, checkpointP,
         checkpointL, checkpointI;
 
-    public GameObject pauseMenu;
+    public bool playerDeath;
+
+   
 
 
     //death fades
-    public Animator animator;
+   // public Animator animator;
 
     //public Animation DeathFadeOut;
 
@@ -49,10 +54,10 @@ public class GameManager : MonoBehaviour
     void Start()
     {
 
-        //player.transform.position = currentCheckpoint.transform.position;
+        player.transform.position = currentCheckpoint.transform.position;
         player = GameObject.FindObjectOfType<FirstPersonController>();
-        pauseMenu.gameObject.SetActive(false);
         Time.timeScale = 1f;
+        playerDeath = false;
 
 
 
@@ -64,13 +69,20 @@ public class GameManager : MonoBehaviour
         //DestroyWall();
         ResetLevel();
         DebugTeleporting();
+        RespawnPlayer();
 
-        if (Input.GetKeyDown(KeyCode.Escape))
+        //Debug.Log(blackOutSquare.GetComponent<Image>().color.a);
+
+
+
+        if (playerDeath == true)
         {
-            pauseMenu.gameObject.SetActive(true);
-            Time.timeScale = 0f;
+            StartCoroutine(RespawnCoroutine());
         }
-
+        if (playerDeath == false)
+        {
+            StartCoroutine(RespawnCoroutine(false));
+        }
 
 
 
@@ -83,9 +95,8 @@ public class GameManager : MonoBehaviour
     {
         //keep just in case
         //player.transform.position = currentCheckpoint.transform.position;
-        StartCoroutine(RespawnCoroutine());
 
-        animator.SetTrigger("Death-FadeOut");
+        //animator.SetTrigger("Death-FadeOut");
         player.gameObject.GetComponent<FirstPersonController>().m_WalkSpeed = 8f;
 
 
@@ -98,11 +109,7 @@ public class GameManager : MonoBehaviour
         Debug.Log("Game QUit");
     }
 
-    public void ResumeGame()
-    {
-        pauseMenu.gameObject.SetActive(false);
-        Time.timeScale = 1f;
-    }
+  
 
     public void SavePlayer()
     {
@@ -128,13 +135,54 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(sceneBuildIndex: 0);
     }
 
-   
 
-    public IEnumerator RespawnCoroutine()
+
+    public IEnumerator RespawnCoroutine(bool fadeToBlack = true, int fadeSpeed = 50)
     {
         yield return new WaitForSeconds(respawnDelay);
-        animator.SetTrigger("Death-FadeIn");
-        player.transform.position = currentCheckpoint.transform.position;
+
+        Color objectColor = blackOutSquare.GetComponent<Image>().color;
+        float fadeAmount;
+
+        if (fadeToBlack)
+        {
+            while (blackOutSquare.GetComponent<Image>().color.a < 1)
+            {
+                fadeAmount = objectColor.a + (fadeSpeed * Time.deltaTime);
+
+                objectColor = new Color(objectColor.r, objectColor.g, objectColor.b, fadeAmount);
+                blackOutSquare.GetComponent<Image>().color = objectColor;
+                player.transform.position = currentCheckpoint.transform.position;
+                playerDeath = false;
+                yield return null;
+            }
+        }
+
+        else
+        {
+            while (blackOutSquare.GetComponent<Image>().color.a > 0)
+            {
+                fadeAmount = objectColor.a - (fadeSpeed * Time.deltaTime);
+                Debug.Log("hi");
+                objectColor = new Color(objectColor.r, objectColor.g, objectColor.b, fadeAmount);
+                blackOutSquare.GetComponent<Image>().color = objectColor;
+                yield return null;
+            }
+           
+        
+        }
+        if (blackOutSquare.GetComponent<Image>().color.a == 1)
+        {
+            playerDeath = false;
+        }
+
+     
+
+
+/*        
+        animator.SetTrigger("Death-FadeOut");
+       
+*/
     }
 
 /*

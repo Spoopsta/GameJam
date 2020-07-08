@@ -380,6 +380,9 @@
     <Reference Include="Unity.Analytics.Tracker">
       <HintPath>E:/Dreamer/LudemDareGameJam/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Tracker.dll</HintPath>
     </Reference>
+    <Reference Include="FullSerializer">
+      <HintPath>E:/Dreamer/LudemDareGameJam/Assets/BayatGames/SaveGameFree/Plugins/FullSerializer.dll</HintPath>
+    </Reference>
     <Reference Include="netstandard">
       <HintPath>E:/Unity/Editor/Data/NetStandard/ref/2.0.0/netstandard.dll</HintPath>
     </Reference>

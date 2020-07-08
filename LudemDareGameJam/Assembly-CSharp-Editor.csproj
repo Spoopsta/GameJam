@@ -63,6 +63,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\BayatGames\SaveGameFree\Editor\Tests\SaveGameTests.cs" />
     <Compile Include="Assets\ProCore\ProGrids\About\Editor\pg_AboutWindow.cs" />
     <Compile Include="Assets\ProCore\ProGrids\Editor\pg_Editor.cs" />
     <Compile Include="Assets\ProCore\ProGrids\Editor\pg_GridRenderer.cs" />
@@ -370,6 +371,9 @@
     </Reference>
     <Reference Include="UnityEditor.Purchasing">
       <HintPath>E:/Dreamer/LudemDareGameJam/Library/PackageCache/com.unity.purchasing@2.0.3/Editor/UnityEditor.Purchasing.dll</HintPath>
+    </Reference>
+    <Reference Include="FullSerializer">
+      <HintPath>E:/Dreamer/LudemDareGameJam/Assets/BayatGames/SaveGameFree/Plugins/FullSerializer.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib">
       <HintPath>E:/Unity/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/mscorlib.dll</HintPath>

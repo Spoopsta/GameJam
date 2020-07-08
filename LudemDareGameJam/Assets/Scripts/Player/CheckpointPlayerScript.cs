@@ -33,6 +33,9 @@ public class CheckpointPlayerScript : MonoBehaviour
        {
             Debug.Log("void / Projectile");
             checkpointManager.GetComponent<GameManager>().RespawnPlayer();
+            checkpointManager.GetComponent<GameManager>().playerDeath = true;
+            //checkpointManager.GetComponent<GameManager>().blackOutSquare.SetActive(true);
+            //checkpointManager.GetComponent<GameManager>().animator.SetTrigger("Death-FadeIn");
         }
     }
 }

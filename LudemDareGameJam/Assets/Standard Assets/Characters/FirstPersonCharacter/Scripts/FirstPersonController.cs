@@ -14,7 +14,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
     [Serializable]
     public class FirstPersonController : MonoBehaviour
     {
-        
+
         [SerializeField] private bool m_IsWalking;
         [SerializeField] public float m_WalkSpeed;
         [SerializeField] private float m_RunSpeed;
@@ -70,7 +70,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
         public float dashCooldown;
         public float dashFrames;
         private bool bSheepText;
-       // public float jumpPadBoost;
+        private bool gamePaused;
+        // public float jumpPadBoost;
 
         public TextMeshProUGUI dashText, jumpText, sheepText;
 
@@ -83,7 +84,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private Rigidbody rb;
 
         public Animator anim;
-        
+
+        public GameObject pauseMenu;
 
 
         public int punchCards;
@@ -114,8 +116,9 @@ namespace UnityStandardAssets.Characters.FirstPerson
             playCutscene = false;
             end = false;
             anim = GetComponent<Animator>();
-          //  textFade = GetComponent<Animator>();
-           // textFade.SetBool("FadeIN", false);
+            pauseMenu.gameObject.SetActive(false);
+            //  textFade = GetComponent<Animator>();
+            // textFade.SetBool("FadeIN", false);
 
             if (SceneManager.GetActiveScene().buildIndex == 3)
             {
@@ -152,7 +155,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 punchCards++;
                 Debug.Log(punchCards);
 
-               
+
 
 
                 /* bCompleteLevel = true;
@@ -209,7 +212,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             {
                 sheepCollected++;
                 sheepText.text = "Sheep Collected: " + sheepCollected;
-               // bSheepText = true;
+                // bSheepText = true;
                 Destroy(collision.gameObject);
             }
 
@@ -217,14 +220,14 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         }
 
-       /* private void OnTriggerExit(Collider other)
-        {
-            if (other.gameObject.tag.Equals("Sheep"))
-            {
-                this.gameObject.GetComponentInChildren<Canvas>().GetComponentInChildren<Animator>().SetBool("Fade IN", false);
-            }
-        }
-        */
+        /* private void OnTriggerExit(Collider other)
+         {
+             if (other.gameObject.tag.Equals("Sheep"))
+             {
+                 this.gameObject.GetComponentInChildren<Canvas>().GetComponentInChildren<Animator>().SetBool("Fade IN", false);
+             }
+         }
+         */
 
         // Update is called once per frame
         private void Update()
@@ -233,6 +236,24 @@ namespace UnityStandardAssets.Characters.FirstPerson
             {
                 m_WalkSpeed = m_WalkSpeed - decelerationRatePerFrame;
             }
+
+
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                if (pauseMenu.gameObject.activeInHierarchy == false)
+                {
+                    pauseMenu.gameObject.SetActive(true);
+                    Time.timeScale = 0f;
+                }
+
+               /* if (pauseMenu.gameObject.activeInHierarchy == true)
+                {
+                    pauseMenu.gameObject.SetActive(false);
+                    Time.timeScale = 1f;
+                }
+               */
+            }
+
 
             /*
             if (bSheepText == true)
@@ -246,6 +267,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 this.gameObject.GetComponentInChildren<Canvas>().GetComponentInChildren<Animator>().SetBool("Fade IN", false);
             }
             */
+            
 
 
             if (end) {
@@ -271,8 +293,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
             //WALLRUNNING
             CheckWallTouch();
-          
-            
+
+
 
 
             if (!m_PreviouslyGrounded && m_CharacterController.isGrounded)
@@ -314,7 +336,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
 
         private void FixedUpdate()
-        { 
+        {
 
             if (Input.GetKeyDown(KeyCode.P))
             {
@@ -325,7 +347,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             float speed;
             GetInput(out speed);
             // always move along the camera forward as it is the direction that it being aimed at
-            Vector3 desiredMove = transform.forward*m_Input.y + transform.right*m_Input.x;
+            Vector3 desiredMove = transform.forward * m_Input.y + transform.right * m_Input.x;
 
             //attempt at adjusting velocity within the character controller.
             Vector3 verticalVelocity = m_CharacterController.velocity;
@@ -334,25 +356,25 @@ namespace UnityStandardAssets.Characters.FirstPerson
             // get a normal for the surface that is being touched to move along it
             RaycastHit hitInfo;
             Physics.SphereCast(transform.position, m_CharacterController.radius, Vector3.down, out hitInfo,
-                               m_CharacterController.height/1.5f, Physics.AllLayers, QueryTriggerInteraction.Ignore);
+                               m_CharacterController.height / 1.5f, Physics.AllLayers, QueryTriggerInteraction.Ignore);
             desiredMove = Vector3.ProjectOnPlane(desiredMove, hitInfo.normal).normalized;
 
-            m_MoveDir.x = desiredMove.x*speed;
-            m_MoveDir.z = desiredMove.z*speed;
+            m_MoveDir.x = desiredMove.x * speed;
+            m_MoveDir.z = desiredMove.z * speed;
 
-        
+
 
             //check to make sure speed is increasing on walls
             //Debug.Log(m_WalkSpeed);
 
 
-           
+
 
             //calling for the jumping script.
             PlayerJumping();
-          
 
-            
+
+
         }
 
         /// <summary>
@@ -366,11 +388,11 @@ namespace UnityStandardAssets.Characters.FirstPerson
             if (m_CharacterController.isGrounded)
             {
                 bAirJump = false;
-               
+
                 m_MoveDir.y = m_JumpSpeed;
                 m_MoveDir.y = -m_StickToGroundForce;
 
-              
+
 
                 if (m_Jump)
                 {
@@ -392,7 +414,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 if (m_Jump)
                 {
                     //og
-                   m_MoveDir.y = m_JumpSpeed;
+                    m_MoveDir.y = m_JumpSpeed;
 
                     PlayJumpSound();
                     m_Jump = false;
@@ -419,7 +441,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private void PlayerDashing()
         {
             //perform the dash - if the button is pushed & we aren't in dashCooldown & we're in the air
-            if (Input.GetKeyDown(DashKey) && dashCooldown == 0 && !m_CharacterController.isGrounded )
+            if (Input.GetKeyDown(DashKey) && dashCooldown == 0 && !m_CharacterController.isGrounded)
             {
                 GetComponentInChildren<ParticleSystem>().Play();
                 //when dash text go 0
@@ -427,27 +449,27 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 //No. of frames to dashCooldown:
                 dashCooldown = 75f;
                 //No. of frames to apply dash over:
-                dashFrames = 20f;       
+                dashFrames = 20f;
             }
             //every frame, reduce dashCooldown frames by one.
             if (dashCooldown > 0)
             {
                 dashCooldown--;
-           
+
             }
 
             //Every frame, if remaining dash frames > 0, continue dashing and reduce dash frames 
             if (dashFrames > 0)
             {
-                transform.position = transform.position + Camera.main.transform.forward * dashSpeed * Time.deltaTime;
+                transform.position = transform.position + Camera.main.transform.forward * dashSpeed * Time.deltaTime * 1;
                 dashFrames--;
             }
-            
+
 
             //Not sure what this bit does??!? Left it in. Enlighten me.
             if (dashFrames == 0)
             {
-                GetComponentInChildren<ParticleSystem>().Stop();         
+                GetComponentInChildren<ParticleSystem>().Stop();
             }
 
             if (dashCooldown == 0)
@@ -460,7 +482,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 dashCooldown = 0;
                 dashFrames = 0;
             }
-            
+
         }
 
 
@@ -479,18 +501,18 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
                     jumpText.text = "1";
 
-               
+
 
                     if (m_WalkSpeed <= 15)
                     {
                         m_WalkSpeed = m_WalkSpeed + wallrunAcceleration;
                     }
-               
+
                     return true;
                 }
 
             }
-            
+
             //checking for wall touch on the left of the player
             if (Physics.Raycast(transform.position, -transform.right, out rHitL, 2.25f))
             {
@@ -499,7 +521,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                     bIsWallL = true;
                     bIsWallR = false;
                     bAirJump = true;
-                  
+
                     //m_JumpSpeed = 6.0f;
                     jumpText.text = "1";
 
@@ -507,7 +529,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                     if (m_WalkSpeed <= 15)
                     {
                         m_WalkSpeed = m_WalkSpeed + wallrunAcceleration;
-                    } 
+                    }
                     //anim.SetTrigger("LeftWallHit");
                     // anim.SetBool("leftWallHit", true);
                     return true;
@@ -535,10 +557,10 @@ namespace UnityStandardAssets.Characters.FirstPerson
         {
             if (m_CharacterController.velocity.sqrMagnitude > 0 && (m_Input.x != 0 || m_Input.y != 0))
             {
-                m_StepCycle += (m_CharacterController.velocity.magnitude + (speed*(m_IsWalking ? 1f : m_RunstepLenghten)))*
+                m_StepCycle += (m_CharacterController.velocity.magnitude + (speed * (m_IsWalking ? 1f : m_RunstepLenghten))) *
                              Time.fixedDeltaTime;
             }
-            
+
 
             if (!(m_StepCycle > m_NextStep))
             {
@@ -549,8 +571,13 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
             PlayFootStepAudio();
         }
-        
-        
+
+
+        public void ResumeGame()
+        {
+            pauseMenu.gameObject.SetActive(false);
+            Time.timeScale = 1f;
+        }
 
         //MORE AUDIO
         private void PlayFootStepAudio()
@@ -581,7 +608,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             {
                 m_Camera.transform.localPosition =
                     m_HeadBob.DoHeadBob(m_CharacterController.velocity.magnitude +
-                                      (speed*(m_IsWalking ? 1f : m_RunstepLenghten)));
+                                      (speed * (m_IsWalking ? 1f : m_RunstepLenghten)));
                 newCameraPosition = m_Camera.transform.localPosition;
                 newCameraPosition.y = m_Camera.transform.localPosition.y - m_JumpBob.Offset();
             }
@@ -638,8 +665,9 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         private void RotateView()
         {
-            m_MouseLook.LookRotation (transform, m_Camera.transform);
+           m_MouseLook.LookRotation(transform, m_Camera.transform);
         }
+
 
 
         private void OnControllerColliderHit(ControllerColliderHit hit)

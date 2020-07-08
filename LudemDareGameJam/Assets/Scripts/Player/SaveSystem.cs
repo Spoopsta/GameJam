@@ -3,7 +3,7 @@ using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using UnityStandardAssets.Characters.FirstPerson;
 
-public static class SaveSystem 
+public class SaveSystem 
 {
 
    
