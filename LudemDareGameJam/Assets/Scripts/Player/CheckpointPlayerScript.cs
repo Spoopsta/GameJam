@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+[System.Serializable]
 public class CheckpointPlayerScript : MonoBehaviour
 {
     public GameManager checkpointManager;
@@ -38,4 +39,6 @@ public class CheckpointPlayerScript : MonoBehaviour
             //checkpointManager.GetComponent<GameManager>().animator.SetTrigger("Death-FadeIn");
         }
     }
+
+
 }

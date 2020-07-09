@@ -213,7 +213,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 sheepCollected++;
                 sheepText.text = "Sheep Collected: " + sheepCollected;
                 // bSheepText = true;
-                Destroy(collision.gameObject);
+                collision.gameObject.SetActive(false);
             }
 
 
@@ -449,7 +449,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 //No. of frames to dashCooldown:
                 dashCooldown = 75f;
                 //No. of frames to apply dash over:
-                dashFrames = 20f;
+                dashFrames = 15f;
             }
             //every frame, reduce dashCooldown frames by one.
             if (dashCooldown > 0)
@@ -461,7 +461,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             //Every frame, if remaining dash frames > 0, continue dashing and reduce dash frames 
             if (dashFrames > 0)
             {
-                transform.position = transform.position + Camera.main.transform.forward * dashSpeed * Time.deltaTime * 1;
+                transform.position = transform.position + Camera.main.transform.forward * dashSpeed * Time.deltaTime;
                 dashFrames--;
             }
 

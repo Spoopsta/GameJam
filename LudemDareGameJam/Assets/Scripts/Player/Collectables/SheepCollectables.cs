@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public class SheepCollectables : MonoBehaviour
 {
-    public Animator fadeText;
+   
 
     public GameObject Player;
     // Start is called before the first frame update
     void Start()
     {
-        fadeText.GetComponent<Animator>();
         //fadeText.SetBool("FadeIN", false);
     }
 
@@ -24,7 +24,7 @@ public class SheepCollectables : MonoBehaviour
     {
         if (other.gameObject.tag.Equals("Player"))
         {
-            fadeText.SetBool("FadeIN", true);
+            //fadeText.SetBool("FadeIN", true);
             Debug.Log("AHAHAHh");
            
         }

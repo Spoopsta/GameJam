@@ -2,6 +2,7 @@
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using UnityStandardAssets.Characters.FirstPerson;
+using System;
 
 public class SaveSystem 
 {

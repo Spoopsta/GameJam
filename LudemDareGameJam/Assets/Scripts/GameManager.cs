@@ -7,7 +7,7 @@ using System;
 using UnityEngine.Analytics;
 using UnityEngine.UI;
 
-[System.Serializable]
+[Serializable]
 public class GameManager : MonoBehaviour
 {
 
@@ -69,8 +69,8 @@ public class GameManager : MonoBehaviour
         //DestroyWall();
         ResetLevel();
         DebugTeleporting();
-        RespawnPlayer();
-
+         RespawnPlayer();
+        
         //Debug.Log(blackOutSquare.GetComponent<Image>().color.a);
 
 
@@ -98,6 +98,7 @@ public class GameManager : MonoBehaviour
 
         //animator.SetTrigger("Death-FadeOut");
         player.gameObject.GetComponent<FirstPersonController>().m_WalkSpeed = 8f;
+        
 
 
 
@@ -137,23 +138,26 @@ public class GameManager : MonoBehaviour
 
 
 
-    public IEnumerator RespawnCoroutine(bool fadeToBlack = true, int fadeSpeed = 50)
+    public IEnumerator RespawnCoroutine(bool fadeToBlack = true, float fadeSpeed = 1.5f)
     {
-        yield return new WaitForSeconds(respawnDelay);
-
+       yield return new WaitForSeconds(respawnDelay);
+        
         Color objectColor = blackOutSquare.GetComponent<Image>().color;
         float fadeAmount;
 
         if (fadeToBlack)
         {
+            
             while (blackOutSquare.GetComponent<Image>().color.a < 1)
             {
-                fadeAmount = objectColor.a + (fadeSpeed * Time.deltaTime);
+                
+                fadeAmount = objectColor.a + (fadeSpeed * Time.deltaTime * 1);
 
                 objectColor = new Color(objectColor.r, objectColor.g, objectColor.b, fadeAmount);
+                
                 blackOutSquare.GetComponent<Image>().color = objectColor;
-                player.transform.position = currentCheckpoint.transform.position;
                 playerDeath = false;
+                player.transform.position = currentCheckpoint.transform.position;
                 yield return null;
             }
         }
@@ -162,7 +166,7 @@ public class GameManager : MonoBehaviour
         {
             while (blackOutSquare.GetComponent<Image>().color.a > 0)
             {
-                fadeAmount = objectColor.a - (fadeSpeed * Time.deltaTime);
+                fadeAmount = objectColor.a - (fadeSpeed * Time.deltaTime * 1);
                 Debug.Log("hi");
                 objectColor = new Color(objectColor.r, objectColor.g, objectColor.b, fadeAmount);
                 blackOutSquare.GetComponent<Image>().color = objectColor;
@@ -171,10 +175,13 @@ public class GameManager : MonoBehaviour
            
         
         }
+
+        /*
         if (blackOutSquare.GetComponent<Image>().color.a == 1)
         {
             playerDeath = false;
         }
+        */
 
      
 
@@ -185,29 +192,7 @@ public class GameManager : MonoBehaviour
 */
     }
 
-/*
-    private void DestroyWall()
-    {
-        if (player.gameObject.GetComponent<FirstPersonController>().punchCards == 1)
-        {
-            //Debug.Log("Wall is kill");
-           Door1.gameObject.SetActive(false);
-        }
 
-        if (player.gameObject.GetComponent<FirstPersonController>().punchCards == 2)
-        {
-            //Debug.Log("Wall is kill");
-            Door2.gameObject.SetActive(false);
-        }
-
-        if (player.gameObject.GetComponent<FirstPersonController>().punchCards == 3)
-        {
-            //Debug.Log("Wall is kill");
-            Door3.gameObject.SetActive(false);
-        }
-
-    }
-    */
     private void ResetLevel()
     {
         if (Input.GetKeyDown(KeyCode.R))
