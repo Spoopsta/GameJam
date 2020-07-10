@@ -25,6 +25,12 @@ TagManager:
   - SpeedBoost
   - Sheep
   - JUMP
+  - Door1
+  - Door2
+  - Door3
+  - JumpInstructions
+  - DashInstructions
+  - WallrunInstructions
   layers:
   - Default
   - TransparentFX

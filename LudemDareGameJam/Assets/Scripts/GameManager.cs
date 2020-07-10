@@ -69,7 +69,7 @@ public class GameManager : MonoBehaviour
         //DestroyWall();
         ResetLevel();
         DebugTeleporting();
-         RespawnPlayer();
+        RespawnPlayer();
         
         //Debug.Log(blackOutSquare.GetComponent<Image>().color.a);
 
@@ -97,8 +97,10 @@ public class GameManager : MonoBehaviour
         //player.transform.position = currentCheckpoint.transform.position;
 
         //animator.SetTrigger("Death-FadeOut");
-        player.gameObject.GetComponent<FirstPersonController>().m_WalkSpeed = 8f;
-        
+        if (playerDeath == true)
+        {
+            player.gameObject.GetComponent<FirstPersonController>().m_WalkSpeed = 8f;
+        }
 
 
 
@@ -137,7 +139,12 @@ public class GameManager : MonoBehaviour
     }
 
 
-
+    /// <summary>
+    /// handles player death fade. When player dies, the blackoutsquare gameobject alpha will begin to decrease. When it reaches 0, it will increase.
+    /// </summary>
+    /// <param name="fadeToBlack"></param>
+    /// <param name="fadeSpeed"></param>
+    /// <returns></returns>
     public IEnumerator RespawnCoroutine(bool fadeToBlack = true, float fadeSpeed = 1.5f)
     {
        yield return new WaitForSeconds(respawnDelay);
@@ -192,7 +199,7 @@ public class GameManager : MonoBehaviour
 */
     }
 
-
+    //sends the player back to the most recent checkpoint.
     private void ResetLevel()
     {
         if (Input.GetKeyDown(KeyCode.R))
@@ -201,6 +208,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    //scene transition stuff.
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag.Equals("Player"))
@@ -212,11 +220,7 @@ public class GameManager : MonoBehaviour
 
 
 
-    /* public void DeathFade(int levelIndex)
-     {
-         animator.SetTrigger("Death-FadeOut");
-     }
-     */
+
 
     /// <summary>
     /// Used for teleporting between checkpoints for the purposes of testing with the level manager on. delete or comment out when unnecessary. or just make the proper debug tool 4head

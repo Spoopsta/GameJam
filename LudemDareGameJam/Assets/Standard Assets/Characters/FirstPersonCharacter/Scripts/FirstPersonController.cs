@@ -73,7 +73,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private bool gamePaused;
         // public float jumpPadBoost;
 
-        public TextMeshProUGUI dashText, jumpText, sheepText;
+        public TextMeshProUGUI dashText, jumpText, sheepText, keycardsText, instructionsText;
 
         private RaycastHit rHitL;
         private RaycastHit rHitR;
@@ -85,7 +85,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         public Animator anim;
 
-        public GameObject pauseMenu;
+        public GameObject pauseMenu, instructionsPanel;
 
 
         public int punchCards;
@@ -153,6 +153,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 Debug.Log("punch ard obtained");
                 collision.gameObject.SetActive(false);
                 punchCards++;
+
+                keycardsText.text = "Keycards Collected: " + punchCards;
                 Debug.Log(punchCards);
 
 
@@ -197,7 +199,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                     end = true;
                 }
             }
-
+            //collision of red circle on basic platforms increases movement speed by platform acceleration to a cap of maximum acceleration
             if (collision.gameObject.tag.Equals("SpeedBoost"))
             {
                 if (m_WalkSpeed <= maximumAcceleration)
@@ -207,7 +209,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                     m_WalkSpeed = m_WalkSpeed + platformAcceleration;
                 }
             }
-
+            //if colliding with a sheep. sheep int increases byt +1 , sheep text changes to reflect this
             if (collision.gameObject.tag.Equals("Sheep"))
             {
                 sheepCollected++;
@@ -220,14 +222,60 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         }
 
-        /* private void OnTriggerExit(Collider other)
+        private void OnTriggerStay(Collider other)
+        {
+            if (other.gameObject.tag.Equals("Door1"))
+            {
+                instructionsPanel.gameObject.SetActive(true);
+                instructionsText.text = "I need to find the Yellow Key Card to open this door.";
+            } 
+            
+            if (other.gameObject.tag.Equals("Door2"))
+            {
+                instructionsPanel.gameObject.SetActive(true);
+                instructionsText.text = "I need to find the Blue Key Card to open this door.";
+            }           
+            
+            if (other.gameObject.tag.Equals("Door3"))
+            {
+                instructionsPanel.gameObject.SetActive(true);
+                instructionsText.text = "I need to find the Red Key Card to open this door.";
+            }
+
+            if (other.gameObject.tag.Equals("JumpInstructions"))
+            {
+                instructionsPanel.gameObject.SetActive(true);
+                Debug.Log("hello");
+                instructionsText.text = "Press 'Space' to Jump. Landing in the red circle increases speed";
+            } 
+            
+            if (other.gameObject.tag.Equals("DashInstructions"))
+            {
+                instructionsPanel.gameObject.SetActive(true);
+                instructionsText.text = "Press 'LShift' to Dash";
+            } 
+            
+            if (other.gameObject.tag.Equals("DashInstructions"))
+            {
+                instructionsPanel.gameObject.SetActive(true);
+                instructionsText.text = "Press 'LShift' to Dash";
+            }    
+            if (other.gameObject.tag.Equals("WallrunInstructions"))
+            {
+                instructionsPanel.gameObject.SetActive(true);
+                instructionsText.text = "These walls allow you to run along them. As well as giving infinite jumps.";
+            }
+        }
+
+        private void OnTriggerExit(Collider other)
          {
-             if (other.gameObject.tag.Equals("Sheep"))
-             {
-                 this.gameObject.GetComponentInChildren<Canvas>().GetComponentInChildren<Animator>().SetBool("Fade IN", false);
-             }
+            if (other.gameObject.tag.Equals("Door1") || other.gameObject.tag.Equals("Door2") || other.gameObject.tag.Equals("Door3") || other.gameObject.tag.Equals("JumpInstructions")|| 
+                other.gameObject.tag.Equals("DashInstructions")||other.gameObject.tag.Equals("WallrunInstructions"))
+            {
+                instructionsPanel.gameObject.SetActive(false);
+            }
          }
-         */
+         
 
         // Update is called once per frame
         private void Update()
@@ -449,7 +497,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 //No. of frames to dashCooldown:
                 dashCooldown = 75f;
                 //No. of frames to apply dash over:
-                dashFrames = 15f;
+                dashFrames = 20f;
             }
             //every frame, reduce dashCooldown frames by one.
             if (dashCooldown > 0)
