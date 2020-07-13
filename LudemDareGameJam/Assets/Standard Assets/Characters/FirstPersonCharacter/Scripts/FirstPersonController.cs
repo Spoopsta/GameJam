@@ -219,52 +219,49 @@ namespace UnityStandardAssets.Characters.FirstPerson
             }
 
 
-
-        }
-
-        private void OnTriggerStay(Collider other)
-        {
-            if (other.gameObject.tag.Equals("Door1"))
+            if (collision.gameObject.tag.Equals("Door1"))
             {
                 instructionsPanel.gameObject.SetActive(true);
                 instructionsText.text = "I need to find the Yellow Key Card to open this door.";
-            } 
-            
-            if (other.gameObject.tag.Equals("Door2"))
+            }
+
+            if (collision.gameObject.tag.Equals("Door2"))
             {
                 instructionsPanel.gameObject.SetActive(true);
                 instructionsText.text = "I need to find the Blue Key Card to open this door.";
-            }           
-            
-            if (other.gameObject.tag.Equals("Door3"))
+            }
+
+            if (collision.gameObject.tag.Equals("Door3"))
             {
                 instructionsPanel.gameObject.SetActive(true);
                 instructionsText.text = "I need to find the Red Key Card to open this door.";
             }
 
-            if (other.gameObject.tag.Equals("JumpInstructions"))
+            if (collision.gameObject.tag.Equals("JumpInstructions"))
             {
                 instructionsPanel.gameObject.SetActive(true);
-                Debug.Log("hello");
                 instructionsText.text = "Press 'Space' to Jump. Landing in the red circle increases speed";
-            } 
-            
-            if (other.gameObject.tag.Equals("DashInstructions"))
+            }
+
+            if (collision.gameObject.tag.Equals("DashInstructions"))
             {
                 instructionsPanel.gameObject.SetActive(true);
                 instructionsText.text = "Press 'LShift' to Dash";
-            } 
-            
-            if (other.gameObject.tag.Equals("DashInstructions"))
-            {
-                instructionsPanel.gameObject.SetActive(true);
-                instructionsText.text = "Press 'LShift' to Dash";
-            }    
-            if (other.gameObject.tag.Equals("WallrunInstructions"))
+            }
+
+            if (collision.gameObject.tag.Equals("WallrunInstructions"))
             {
                 instructionsPanel.gameObject.SetActive(true);
                 instructionsText.text = "These walls allow you to run along them. As well as giving infinite jumps.";
             }
+
+
+
+        }
+
+        private void OnTriggerStay(Collider other)
+        {
+           
         }
 
         private void OnTriggerExit(Collider other)
