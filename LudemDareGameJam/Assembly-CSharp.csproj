@@ -106,6 +106,7 @@
     <Compile Include="Assets\Scripts\Printer.cs" />
     <Compile Include="Assets\Scripts\Projectile.cs" />
     <Compile Include="Assets\Scripts\PunchCard.cs" />
+    <Compile Include="Assets\Scripts\Terrain\ExportTerrain.cs" />
     <Compile Include="Assets\Scripts\Terrain\FallingPlatform.cs" />
     <Compile Include="Assets\Scripts\Terrain\WaypointPlatform.cs" />
     <Compile Include="Assets\Scripts\Terrain\WaypointPlatformWall.cs" />
