@@ -87,6 +87,9 @@
     <Compile Include="Assets\BayatGames\SaveGameFree\Scripts\Types\Vector3Save.cs" />
     <Compile Include="Assets\BayatGames\SaveGameFree\Scripts\Types\Vector4Save.cs" />
     <Compile Include="Assets\doorOpening.cs" />
+    <Compile Include="Assets\Low Poly Modular Terrain Pack\Bonus_Assets\Scripts\ModularTerrainCameraControl.cs" />
+    <Compile Include="Assets\Low Poly Modular Terrain Pack\Bonus_Assets\Scripts\ModularTerrainCloudsControl.cs" />
+    <Compile Include="Assets\Low Poly Modular Terrain Pack\Bonus_Assets\Scripts\ModularTerrainSunControl.cs" />
     <Compile Include="Assets\ProCore\ProGrids\Classes\pg_Constant.cs" />
     <Compile Include="Assets\ProCore\ProGrids\Classes\pg_Enum.cs" />
     <Compile Include="Assets\ProCore\ProGrids\Classes\pg_IconUtility.cs" />
