@@ -6,8 +6,6 @@ using UnityEngine.SceneManagement;
 using System;
 using UnityEngine.Analytics;
 using UnityEngine.UI;
-
-[Serializable]
 public class GameManager : MonoBehaviour
 {
 
@@ -70,9 +68,19 @@ public class GameManager : MonoBehaviour
         ResetLevel();
         DebugTeleporting();
         RespawnPlayer();
-        
+
         //Debug.Log(blackOutSquare.GetComponent<Image>().color.a);
 
+        if (Input.GetKeyDown(KeyCode.J))
+        {
+            print("saved");
+            SavePlayer();
+        }
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            print("loaded");
+            LoadPlayer();
+        }
 
 
         if (playerDeath == true)
@@ -101,9 +109,6 @@ public class GameManager : MonoBehaviour
         {
             player.gameObject.GetComponent<FirstPersonController>().m_WalkSpeed = 8f;
         }
-
-
-
     }
 
     public void QUitGame()
@@ -113,26 +118,25 @@ public class GameManager : MonoBehaviour
     }
 
   
-
     public void SavePlayer()
     {
         SaveSystem.SavePlayer(player);
     }
+
     public void LoadPlayer()
     {
         PlayerData data = SaveSystem.LoadPlayer();
 
-        GetComponent<FirstPersonController>().punchCards = data.keyCards;
-        GetComponent<FirstPersonController>().sheepCollected = data.Sheep;
+        player.GetComponent<FirstPersonController>().punchCards = data.keyCards;
+        player.GetComponent<FirstPersonController>().sheepCollected = data.Sheep;
 
         Vector3 position;
         position.x = data.position[0];
         position.y = data.position[1];
         position.z = data.position[2];
 
-        transform.position = position;
+        player.transform.position = position;
     }
-
     public void MainMenu()
     {
         SceneManager.LoadScene(sceneBuildIndex: 0);
