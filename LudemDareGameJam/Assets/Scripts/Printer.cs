@@ -10,22 +10,23 @@ public class Printer : MonoBehaviour
     private Quaternion rotation;
     private int count;
     private bool done;
-    [SerializeField] float Delay;
+    float time;
     public float fireRate;
 
     // Start is called before the first frame update
     void Start()
     {
-   
+        time = fireRate;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Time.time > Delay)
+        time -= Time.deltaTime;
+        if (time <= 0)
         {
-            Delay = Time.time + fireRate;
-            Instantiate(myPrefab, ShotSpawn.position, ShotSpawn.rotation);
+            GameObject ball =  Instantiate(myPrefab, ShotSpawn.position, transform.rotation);
+            time = fireRate;
         }
        
     }
