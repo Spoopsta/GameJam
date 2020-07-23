@@ -1,6 +1,6 @@
 Win64
 PlayerPath?
-F:/Dreamer BUilds & backups/Dreamer test v0.7/Dreamer_Test.exe
+F:/Dreamer BUilds & backups/Dreamer test v0.8/Dreamer_Test.exe
 SceneListBegin?
 Assets/Scenes/Credits - Main/Main Menu.unity
 Assets/Scenes/Level 1 - Office/Office 1 - Updated.unity
@@ -178,6 +178,7 @@ f8bd7a92bf9f22d289759689ae7b1fd4 Assembly-CSharp-firstpass.dll:UnityStandardAsse
 d5d5b47e59a15c5b72713555b7a000cf Assembly-CSharp.dll:Tayx.Graphy.CustomizationScene.UpdateTextWithSliderValue
 71bb6a6b6c8f052f948db64c7dd3ca4f Unity.Analytics.Editor.dll:UnityEditor.Analytics.AnalyticsEventTrackerEditor
 5765d6300946dc01c47fa9a41b70ddb6 Assembly-CSharp.dll:Tayx.Graphy.Fps.G_FpsGraph
+736412e362408ed70c767f6171c06ff0 Assembly-CSharp.dll:.ModularTerrainCameraControl
 d6fc8d3165070298511ec776ea575626 Unity.Postprocessing.Runtime.dll:UnityEngine.Rendering.PostProcessing.PostProcessResources
 71bb6a6b6c8f052f948db64c7dd3ca4f Unity.TextMeshPro.dll:TMPro.TMP_SpriteAnimator
 afc5b93a7b192de2dcb3832fe35a5c7e Assembly-CSharp.dll:.DissolveOverTime
@@ -196,6 +197,7 @@ a53651ee3996fbba20dfe0fce02f0b23 Unity.Postprocessing.Runtime.dll:UnityEngine.Re
 07b10ec6743430d549314b87e8e67f9d Assembly-CSharp.dll:Tayx.Graphy.Audio.G_AudioManager
 71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.doorOpening
 71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.MouseVisible
+6102a2224923c6340ed6be6f01b292a7 Assembly-CSharp.dll:.ModularTerrainSunControl
 1b92988a55396830baca92f66cfd570f Assembly-CSharp.dll:Tayx.Graphy.Audio.G_AudioGraph
 71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.PunchCard
 f050e4ebd311386367bb1906f9218b01 Unity.RenderPipelines.Lightweight.Runtime.dll:UnityEngine.Experimental.Rendering.LightweightPipeline.LWRPAdditionalLightData
@@ -216,7 +218,7 @@ e0ee4b3d4e27318934cc940a969d3d96 UnityEngine.Networking.dll:UnityEngine.Networki
 ad9173d3a69d99153f38ed4b62226129 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkTransform
 9b895dcabbc1faf095c000c32d471fd0 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkTransformChild
 5887ef1bc706b22b773d253fd443ceef UnityEngine.Networking.dll:UnityEngine.Networking.NetworkTransformVisualizer
-6d8b91f10277fb23d63461ab513202ba Assembly-CSharp.dll:.Printer
+319f4e663dfc23ad1eed2d6ffb0ecd79 Assembly-CSharp.dll:.Printer
 86f3d2860b237b2cfa63aa5ab7c62acf Assembly-CSharp.dll:.CheckpointAudio
 d6a8e9bec3160a152b9b2710593d3caa Unity.ProBuilder.dll:UnityEngine.ProBuilder.ColorPalette
 9a40de0f5a84ec02044ccfb05875df71 Assembly-CSharp-firstpass.dll:UnityStandardAssets.Utility.WaypointCircuit
@@ -260,6 +262,7 @@ b9048d3760274b9fd3dc94b75b3d0f96 Assembly-CSharp-firstpass.dll:UnityStandardAsse
 afc5b93a7b192de2dcb3832fe35a5c7e Assembly-CSharp.dll:.Projectile
 d251bf88db6c95a6b1aa0b69298da9ef UnityEngine.SpatialTracking.dll:UnityEngine.SpatialTracking.TrackedPoseDriver
 323ef9904ec6149348cdcc45975c0dbe Assembly-CSharp-firstpass.dll:UnityStandardAssets.Effects.SmokeParticles
+d327df05f7ebc1d59bee3627945ef0a6 Assembly-CSharp.dll:.ModularTerrainCloudsControl
 49dcb3939f87870ac10cf1f8fcdfb35e Assembly-CSharp-firstpass.dll:UnityStandardAssets.Utility.FollowTarget
 33db3a4b513d315e5294bf0ddd9f53d7 FullSerializer.dll:.RuntimeTestRunner
 4f5532c55018275407f0d6f2f9aa4ff5 Assembly-CSharp.dll:.WaypointPlatform

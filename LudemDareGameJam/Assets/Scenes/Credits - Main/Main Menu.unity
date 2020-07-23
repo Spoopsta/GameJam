@@ -3231,6 +3231,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentCheckpoint: {fileID: 0}
+  blackOutSquare: {fileID: 0}
   player: {fileID: 0}
   respawnDelay: 0
   checkpoint1: {fileID: 0}
@@ -3247,8 +3248,7 @@ MonoBehaviour:
   checkpointP: {fileID: 0}
   checkpointL: {fileID: 0}
   checkpointI: {fileID: 0}
-  pauseMenu: {fileID: 0}
-  animator: {fileID: 0}
+  playerDeath: 0
   punchCard1: {fileID: 0}
   Door1: {fileID: 0}
   punchCard2: {fileID: 0}
@@ -5369,7 +5369,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: 0
+  m_firstOverflowCharacterIndex: -1
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
@@ -5397,7 +5397,7 @@ MonoBehaviour:
     spaceCount: 0
     wordCount: 1
     linkCount: 0
-    lineCount: 7
+    lineCount: 1
     pageCount: 1
     materialCount: 1
   m_havePropertiesChanged: 0
