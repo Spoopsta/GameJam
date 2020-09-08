@@ -26,12 +26,12 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Desktop
-    second: {fileID: 2100000, guid: a8058c8efa5508b4babcfd293a509152, type: 2}
+    second: {fileID: 2100000, guid: fba6293dd01bde14cb278550e5defad3, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Front
-    second: {fileID: 2100000, guid: 87e60f35f5b5c254f87721572a8437d4, type: 2}
+    second: {fileID: 2100000, guid: f9f437ad053438e4c9f9fb9a5eb0c770, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
@@ -41,7 +41,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Keyboard Keys
-    second: {fileID: 2100000, guid: 94b2e1f31718fb54eafeb4852745c69e, type: 2}
+    second: {fileID: 2100000, guid: 1f856b463157f3540ad5487d1ab61744, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
@@ -51,7 +51,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Screen
-    second: {fileID: 2100000, guid: 4c155807b15b97b47ba4e2bc8a589ad4, type: 2}
+    second: {fileID: 2100000, guid: 5bff4b1a21e31c9428e1731867778ce0, type: 2}
   materials:
     importMaterials: 1
     materialName: 0

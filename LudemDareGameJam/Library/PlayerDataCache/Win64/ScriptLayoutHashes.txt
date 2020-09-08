@@ -1,6 +1,6 @@
 Win64
 PlayerPath?
-F:/Dreamer BUilds & backups/Dreamer test v0.8/Dreamer_Test.exe
+F:/Dreamer BUilds & backups/Dreamer Test v0.9/Dreamer_Test.exe
 SceneListBegin?
 Assets/Scenes/Credits - Main/Main Menu.unity
 Assets/Scenes/Level 1 - Office/Office 1 - Updated.unity
@@ -27,7 +27,6 @@ e1bbf0ab858085e38fae6b12ebbdcd35 UnityEngine.Timeline.dll:UnityEngine.Timeline.G
 e1bbf0ab858085e38fae6b12ebbdcd35 UnityEngine.Timeline.dll:UnityEngine.Timeline.PlayableTrack
 201e3fde670b00545944bb3db215c80a UnityEngine.Timeline.dll:UnityEngine.Timeline.TimelineAsset
 3748fbad2d474a315bda516b8363a0c5 Assembly-CSharp-firstpass.dll:UnityStandardAssets.Effects.ParticleSystemMultiplier
-71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:BayatGames.SaveGameFree.Examples.ExampleMoveObject
 9c7c87712e298256d276eb96e02a57b1 Unity.ProBuilder.dll:UnityEngine.ProBuilder.PreferenceDictionary
 7a34f70a3261a175b8a03a6d1cc7dfec Assembly-CSharp-firstpass.dll:UnityStandardAssets.Characters.FirstPerson.FirstPersonController
 71f7f12b8d0f4fd73590db8bcb6d453c Unity.Postprocessing.Runtime.dll:UnityEngine.Rendering.PostProcessing.Bloom
@@ -158,7 +157,6 @@ db1f205a8c9dae1c39098cd23fc97f63 Assembly-CSharp-firstpass.dll:UnityStandardAsse
 71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp-firstpass.dll:UnityStandardAssets.Utility.DragRigidbody
 94017dcc9f00fe671ea7dc427b4da011 Unity.TextMeshPro.dll:TMPro.TMP_SpriteAsset
 a8b6c919b2049fcc280823488144371f Assembly-CSharp-firstpass.dll:UnityStandardAssets.CrossPlatformInput.Joystick
-19661c8eb87fb08285f231a8d68fc700 Assembly-CSharp.dll:BayatGames.SaveGameFree.Examples.ExampleSaveWeb
 4f631fd718256a8c69483c396671a274 Assembly-CSharp-firstpass.dll:UnityStandardAssets.Utility.PlatformSpecificContent
 61b9d9b6f4b6a222dfea8b131b3d3227 Unity.Postprocessing.Runtime.dll:UnityEngine.Rendering.PostProcessing.ChromaticAberration
 3e345838d555e3f0f0a651f8c577cd84 Unity.RenderPipelines.Lightweight.Runtime.dll:UnityEngine.Experimental.Rendering.LightweightPipeline.LightweightRenderPipelineAsset
@@ -202,8 +200,6 @@ a53651ee3996fbba20dfe0fce02f0b23 Unity.Postprocessing.Runtime.dll:UnityEngine.Re
 71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.PunchCard
 f050e4ebd311386367bb1906f9218b01 Unity.RenderPipelines.Lightweight.Runtime.dll:UnityEngine.Experimental.Rendering.LightweightPipeline.LWRPAdditionalLightData
 2294ba4929e515b4b46046eff1f6b057 Assembly-CSharp-firstpass.dll:UnityStandardAssets.Effects.ExplosionFireAndDebris
-a6742d7804d9ffde99f8f086d08d7a1a Assembly-CSharp.dll:BayatGames.SaveGameFree.Examples.ExampleSaveRotation
-6432408546b84fb95f523fd055ac10b4 Assembly-CSharp.dll:BayatGames.SaveGameFree.SaveGameAuto
 e6ae40841db498b6e673877ac45ad208 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkAnimator
 71bb6a6b6c8f052f948db64c7dd3ca4f UnityEngine.Networking.dll:UnityEngine.Networking.NetworkBehaviour
 1dcb82730d983b77cec736c6ef19f814 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkDiscovery
@@ -222,7 +218,6 @@ ad9173d3a69d99153f38ed4b62226129 UnityEngine.Networking.dll:UnityEngine.Networki
 86f3d2860b237b2cfa63aa5ab7c62acf Assembly-CSharp.dll:.CheckpointAudio
 d6a8e9bec3160a152b9b2710593d3caa Unity.ProBuilder.dll:UnityEngine.ProBuilder.ColorPalette
 9a40de0f5a84ec02044ccfb05875df71 Assembly-CSharp-firstpass.dll:UnityStandardAssets.Utility.WaypointCircuit
-23efcd1831b04ace52b7b3485f150f24 Assembly-CSharp.dll:BayatGames.SaveGameFree.Examples.SerializerDropdown
 510fefd6a544e16a3ffefa557ddcba39 Unity.TextMeshPro.dll:TMPro.PackageResourceImporterWindow
 aa82b3ce4c0c9b227036c0337315c5d3 Unity.TextMeshPro.dll:TMPro.TMP_FontAsset
 e51c09a4cc447f11db225afcd8e3e490 Unity.TextMeshPro.dll:TMPro.TMP_Settings
@@ -251,8 +246,6 @@ c933b2cffdb9d1429a103e9d63c523ef Assembly-CSharp-firstpass.dll:UnityStandardAsse
 4fb2059caa7215e1505829bdcfbf177c Assembly-CSharp.dll:.MouseRotation
 b9c6f7358c6c4a116c264d7c7f6f08b1 Unity.RenderPipelines.Lightweight.Runtime.dll:UnityEngine.Experimental.Rendering.LightweightPipeline.LightweightRenderPipelineEditorResources
 03b9ef2ed536e8d6280069f2195174da Assembly-CSharp-firstpass.dll:UnityStandardAssets.Utility.SimpleActivatorMenu
-843ef066e2d14ad60d8f1875b01a933d Assembly-CSharp.dll:BayatGames.SaveGameFree.Examples.ExampleSaveCustom
-a6742d7804d9ffde99f8f086d08d7a1a Assembly-CSharp.dll:BayatGames.SaveGameFree.Examples.ExampleSaveScale
 d5d5b47e59a15c5b72713555b7a000cf Assembly-CSharp.dll:Tayx.Graphy.CustomizationScene.ForceSliderToMultipleOf3
 a4f0a4f62100f1a4fb5cbe0e00dde83f Unity.TextMeshPro.dll:TMPro.TextMeshProUGUI
 251d655f4acfc2454c7b7ba4247e2955 Assembly-CSharp.dll:.pg_SceneMeshRender
@@ -264,7 +257,6 @@ d251bf88db6c95a6b1aa0b69298da9ef UnityEngine.SpatialTracking.dll:UnityEngine.Spa
 323ef9904ec6149348cdcc45975c0dbe Assembly-CSharp-firstpass.dll:UnityStandardAssets.Effects.SmokeParticles
 d327df05f7ebc1d59bee3627945ef0a6 Assembly-CSharp.dll:.ModularTerrainCloudsControl
 49dcb3939f87870ac10cf1f8fcdfb35e Assembly-CSharp-firstpass.dll:UnityStandardAssets.Utility.FollowTarget
-33db3a4b513d315e5294bf0ddd9f53d7 FullSerializer.dll:.RuntimeTestRunner
 4f5532c55018275407f0d6f2f9aa4ff5 Assembly-CSharp.dll:.WaypointPlatform
 219ec6059796d8951d2adcd8505d0dc2 Assembly-CSharp-firstpass.dll:UnityStandardAssets.CrossPlatformInput.TouchPad
 a8cd58c1680eb5251e5604e560cf89e9 Assembly-CSharp-firstpass.dll:UnityStandardAssets.Utility.TimedObjectDestructor
@@ -280,7 +272,6 @@ c6666661329916e218bee7f5e79e60f5 Unity.TextMeshPro.dll:TMPro.TextMeshPro
 3165968ba45c74472d279ba04455fccb Unity.TextMeshPro.dll:TMPro.TMP_ColorGradient
 71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp-firstpass.dll:UnityStandardAssets.Utility.FPSCounter
 ac6acd886c54c48c599ab5fed5781ea7 Unity.Postprocessing.Runtime.dll:UnityEngine.Rendering.PostProcessing.AmbientOcclusion
-a6742d7804d9ffde99f8f086d08d7a1a Assembly-CSharp.dll:BayatGames.SaveGameFree.Examples.ExampleSavePosition
 72e988bce445c33ad2756912a5b22ba1 Assembly-CSharp.dll:.GameManager
 8649814970b42d345b89944b862453cc Unity.TextMeshPro.dll:TMPro.TMP_SubMesh
 afc5b93a7b192de2dcb3832fe35a5c7e Assembly-CSharp.dll:.SnowOverTime

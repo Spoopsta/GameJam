@@ -33,7 +33,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Paper
-    second: {fileID: 2100000, guid: 3cc9a48f9f21dc749b19cf8fceaff23a, type: 2}
+    second: {fileID: 2100000, guid: 7527b101f6c308a4aa3d4e8dff62a47d, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
