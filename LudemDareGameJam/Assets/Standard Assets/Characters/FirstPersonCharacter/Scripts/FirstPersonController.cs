@@ -14,7 +14,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
     [Serializable]
     public class FirstPersonController : MonoBehaviour
     {
-
+        
         [SerializeField] private bool m_IsWalking;
         [SerializeField] public float m_WalkSpeed;
         [SerializeField] private float m_RunSpeed;
@@ -34,7 +34,11 @@ namespace UnityStandardAssets.Characters.FirstPerson
         [SerializeField] private AudioClip m_LandSound;           // the sound played when character touches back on ground.
         [SerializeField] private AudioClip m_ItemGet;
 
+        
         public GameObject player;
+
+        public GameObject projectileSet1, projectileSet2, projectileSet3, projectileSet4, projectileSet5;
+       
         //public GameObject levelManager;
         private Camera m_Camera;
         private bool m_Jump;
@@ -119,6 +123,11 @@ namespace UnityStandardAssets.Characters.FirstPerson
             pauseMenu.gameObject.SetActive(false);
             //  textFade = GetComponent<Animator>();
             // textFade.SetBool("FadeIN", false);
+            projectileSet1.gameObject.SetActive(false);
+            projectileSet2.gameObject.SetActive(false);
+            projectileSet3.gameObject.SetActive(false);
+            projectileSet4.gameObject.SetActive(false);
+            projectileSet5.gameObject.SetActive(false);
 
             if (SceneManager.GetActiveScene().buildIndex == 3)
             {
@@ -145,6 +154,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
                 PlayItemGet(collision.gameObject);
             }
+
+         
 
 
             //when hitting special pickups it adds to the punch cards int.
@@ -255,13 +266,64 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 instructionsText.text = "These walls allow you to run along them. As well as giving infinite jumps.";
             }
 
+            //projectiles
+
+            if (collision.gameObject.tag.Equals("ProjectileSet1"))
+            {
+                projectileSet1.gameObject.SetActive(true);
+            }
+
+            if (collision.gameObject.tag.Equals("ProjectileSet2"))
+            {
+                projectileSet2.gameObject.SetActive(true);
+            }
+
+            if (collision.gameObject.tag.Equals("ProjectileSet3"))
+            {
+                projectileSet3.gameObject.SetActive(true);
+            }
+
+            if (collision.gameObject.tag.Equals("ProjectileSet4"))
+            {
+                projectileSet4.gameObject.SetActive(true);
+            }
+
+            if (collision.gameObject.tag.Equals("ProjectileSet5"))
+            {
+                projectileSet5.gameObject.SetActive(true);
+            }
+
 
 
         }
 
         private void OnTriggerStay(Collider other)
         {
-           
+            if (other.gameObject.tag.Equals("ProjectileSet1"))
+            {
+                projectileSet1.gameObject.SetActive(true);
+            }  
+            
+            if (other.gameObject.tag.Equals("ProjectileSet2"))
+            {
+                projectileSet2.gameObject.SetActive(true);
+            }
+
+            if (other.gameObject.tag.Equals("ProjectileSet3"))
+            {
+                projectileSet3.gameObject.SetActive(true);
+            }
+
+            if (other.gameObject.tag.Equals("ProjectileSet4"))
+            {
+                projectileSet4.gameObject.SetActive(true);
+            }
+
+            if (other.gameObject.tag.Equals("ProjectileSet5"))
+            {
+                projectileSet5.gameObject.SetActive(true);
+            }
+
         }
 
         private void OnTriggerExit(Collider other)
@@ -271,7 +333,33 @@ namespace UnityStandardAssets.Characters.FirstPerson
             {
                 instructionsPanel.gameObject.SetActive(false);
             }
-         }
+
+            if (other.gameObject.tag.Equals("ProjectileSet1"))
+            {
+                projectileSet1.gameObject.SetActive(false);
+            }
+
+            if (other.gameObject.tag.Equals("ProjectileSet2"))
+            {
+                projectileSet2.gameObject.SetActive(false);
+            }
+
+            if (other.gameObject.tag.Equals("ProjectileSet3"))
+            {
+                projectileSet3.gameObject.SetActive(false);
+            }
+
+            if (other.gameObject.tag.Equals("ProjectileSet4"))
+            {
+                projectileSet4.gameObject.SetActive(false);
+            }
+
+            if (other.gameObject.tag.Equals("ProjectileSet5"))
+            {
+                projectileSet5.gameObject.SetActive(false);
+            }
+
+        }
          
 
         // Update is called once per frame

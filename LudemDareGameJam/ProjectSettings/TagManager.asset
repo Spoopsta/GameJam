@@ -31,6 +31,11 @@ TagManager:
   - JumpInstructions
   - DashInstructions
   - WallrunInstructions
+  - ProjectileSet1
+  - ProjectileSet2
+  - ProjectileSet3
+  - ProjectileSet4
+  - ProjectileSet5
   layers:
   - Default
   - TransparentFX

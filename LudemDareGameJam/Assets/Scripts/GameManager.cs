@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour
 
     public GameObject blackOutSquare;
 
+    public GameObject projectileSet1;
+
     //this is so we can move the player around by making them an object that the code can read and adjust their transform.position
     //public GameObject player;
 
@@ -219,6 +221,12 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log("WIN");
             SceneManager.LoadScene(sceneBuildIndex: 2);
+        }
+
+        if (other.gameObject.tag.Equals("Player"))
+        {
+            Debug.Log("yeah gday");
+            projectileSet1.SetActive(true);
         }
     }
 
