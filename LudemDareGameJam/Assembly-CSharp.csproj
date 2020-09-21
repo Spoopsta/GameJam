@@ -87,6 +87,7 @@
     <Compile Include="Assets\Scripts\Saving\PlayerData.cs" />
     <Compile Include="Assets\Scripts\Saving\SaveSystem.cs" />
     <Compile Include="Assets\Scripts\Terrain\FallingPlatform.cs" />
+    <Compile Include="Assets\Scripts\Terrain\Teleporter.cs" />
     <Compile Include="Assets\Scripts\Terrain\WaypointPlatform.cs" />
     <Compile Include="Assets\Scripts\Terrain\WaypointPlatformWall.cs" />
     <Compile Include="Assets\Scripts\UI\FlashingText.cs" />

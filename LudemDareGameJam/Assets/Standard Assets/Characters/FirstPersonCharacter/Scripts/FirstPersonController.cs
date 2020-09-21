@@ -229,6 +229,14 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 collision.gameObject.SetActive(false);
             }
 
+            if (collision.gameObject.tag.Equals("Teleporter"))
+            {
+                dashText.text = "1";
+                jumpText.text = "1";
+                dashCooldown = 0f;
+                bAirJump = true;
+            }
+
 
             if (collision.gameObject.tag.Equals("Door1"))
             {
