@@ -8,17 +8,18 @@ using TMPro;
 public class SceneManagement : MonoBehaviour
 {
 
-    public GameObject StartCanvas;
+   // public GameObject StartCanvas;
     public GameObject UICanvas;
     public GameObject loadingScreen;
     public Slider slider;
     public TMP_Text progressText;
+    public AudioSource uiSound;
 
 
     private void Start()
     {
-        StartCanvas.gameObject.SetActive(true);
-        UICanvas.gameObject.SetActive(false);
+      //  StartCanvas.gameObject.SetActive(true);
+        UICanvas.gameObject.SetActive(true);
         loadingScreen.gameObject.SetActive(false);
         //UIAnimation3.Play();
        
@@ -27,6 +28,7 @@ public class SceneManagement : MonoBehaviour
 
     private void Update()
     {
+        /*
         if (Input.GetKeyDown("space"))
         {
             Cursor.visible = true;
@@ -37,6 +39,7 @@ public class SceneManagement : MonoBehaviour
             
            // SceneManager.LoadScene(sceneBuildIndex: 1);
         }
+        */
 
         if (Input.GetKeyDown(KeyCode.Q))
         {
@@ -53,6 +56,11 @@ public class SceneManagement : MonoBehaviour
         {
             Application.Quit();
         }
+    }
+
+    public void uiSoundPlay()
+    {
+        uiSound.Play();
     }
 
     public void SceneLoader(int SceneIndex)

@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Desktop
-  m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
+  m_Shader: {fileID: 4800000, guid: 3f353c8b1704c994c810c6f31d8b56c3, type: 3}
   m_ShaderKeywords: _EMISSION
   m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
@@ -60,6 +60,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
+    - Vector1_23ED801: 0.1
+    - Vector1_301F0A58: 89.28
+    - Vector1_38EEBE7B: 8.6
+    - Vector1_8CBE76AB: 1
+    - Vector1_8F7BD9E1: 5
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
@@ -83,6 +88,8 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
+    - Color_9EA93878: {r: 0.004716992, g: 0.51325595, b: 1, a: 0}
+    - Color_EF76F6D7: {r: 1.6907041, g: 2.0071607, b: 2.1989527, a: 0}
     - _Color: {r: 0.1509434, g: 0.11712354, b: 0.08330367, a: 1}
     - _EmissionColor: {r: 0, g: 0.2246542, b: 1, a: 1}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}

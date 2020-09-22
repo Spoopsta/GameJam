@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Void
-  m_Shader: {fileID: 4800000, guid: 3f353c8b1704c994c810c6f31d8b56c3, type: 3}
+  m_Shader: {fileID: 4800000, guid: e18db736629263b4b97c1a5b5993dd93, type: 3}
   m_ShaderKeywords: _SMOOTHNESS_TEXTURE_ALBEDO_CHANNEL_A
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -88,8 +88,8 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - Color_9EA93878: {r: 0, g: 0.72047997, b: 1, a: 0}
-    - Color_EF76F6D7: {r: 33.361794, g: 33.361794, b: 33.361794, a: 0}
+    - Color_9EA93878: {r: 0.07489322, g: 0.0821179, b: 0.084905684, a: 0}
+    - Color_EF76F6D7: {r: 31.496008, g: 3.0127146, b: 33.615566, a: 0}
     - _Color: {r: 0, g: 0, b: 0, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
