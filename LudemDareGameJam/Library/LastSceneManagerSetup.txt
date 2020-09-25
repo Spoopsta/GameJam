@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/Credits - Main/Main Menu.unity
+- path: Assets/Scenes/Level 1 - Office/Office 1 - Updated.unity
   isLoaded: 1
   isActive: 1

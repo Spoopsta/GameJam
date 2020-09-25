@@ -387,6 +387,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
                     Time.timeScale = 0f;
                 }
 
+               
+
                /* if (pauseMenu.gameObject.activeInHierarchy == true)
                 {
                     pauseMenu.gameObject.SetActive(false);

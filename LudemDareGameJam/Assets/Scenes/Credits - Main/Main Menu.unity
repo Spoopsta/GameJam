@@ -1275,8 +1275,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1367275090}
-          m_MethodName: OnMouseEnter
+        - m_Target: {fileID: 1227020192}
+          m_MethodName: LoadPlayer
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -6864,7 +6864,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.47956252, y: 0.48970374}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 196.48001, y: 22.8}
+  m_AnchoredPosition: {x: 196.47998, y: 22.800049}
   m_SizeDelta: {x: 399.17004, y: 65.599976}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2049969567
