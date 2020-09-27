@@ -3,6 +3,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityStandardAssets.Characters.FirstPerson;
 using TMPro;
 
 public class SceneManagement : MonoBehaviour
@@ -14,6 +15,9 @@ public class SceneManagement : MonoBehaviour
     public Slider slider;
     public TMP_Text progressText;
     public AudioSource uiSound;
+    public FirstPersonController player;
+    public bool bLoadGame;
+    //public GameObject player;
 
 
     private void Start()
@@ -22,7 +26,9 @@ public class SceneManagement : MonoBehaviour
         UICanvas.gameObject.SetActive(true);
         loadingScreen.gameObject.SetActive(false);
         //UIAnimation3.Play();
-       
+ 
+    
+
     }
 
 
@@ -90,6 +96,7 @@ public class SceneManagement : MonoBehaviour
         StartCoroutine(LoadAsynchronously(sceneIndex));
     }
 
+   
 
     IEnumerator LoadAsynchronously(int sceneIndex)
     {

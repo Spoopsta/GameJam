@@ -30,6 +30,8 @@ public class GameManager : MonoBehaviour
 
     public bool playerDeath;
 
+    public bool bLoadGame;
+
    
 
 
@@ -53,12 +55,17 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        bLoadGame = false;
+
 
         player.transform.position = currentCheckpoint.transform.position;
         player = GameObject.FindObjectOfType<FirstPersonController>();
         Time.timeScale = 1f;
         playerDeath = false;
 
+    
+
+        
 
 
     }
@@ -73,6 +80,7 @@ public class GameManager : MonoBehaviour
 
         //Debug.Log(blackOutSquare.GetComponent<Image>().color.a);
 
+        /*
         if (Input.GetKeyDown(KeyCode.J))
         {
             print("saved");
@@ -83,6 +91,7 @@ public class GameManager : MonoBehaviour
             print("loaded");
             LoadPlayer();
         }
+        */
 
 
         if (playerDeath == true)
@@ -97,6 +106,7 @@ public class GameManager : MonoBehaviour
 
 
     }
+
 
     /// <summary>
     /// When the player collides with a bad projectile or falls to their death, this code is called and respawns the player on the current checkpoint
@@ -119,7 +129,7 @@ public class GameManager : MonoBehaviour
         Debug.Log("Game QUit");
     }
 
-  
+  /*
     public void SavePlayer()
     {
         SaveSystem.SavePlayer(player);
@@ -131,6 +141,7 @@ public class GameManager : MonoBehaviour
 
         player.GetComponent<FirstPersonController>().punchCards = data.keyCards;
         player.GetComponent<FirstPersonController>().sheepCollected = data.Sheep;
+      //  player.GetComponent<PlayerData>().activeScene = data.activeScene;
 
         Vector3 position;
         position.x = data.position[0];
@@ -138,10 +149,19 @@ public class GameManager : MonoBehaviour
         position.z = data.position[2];
 
         player.transform.position = position;
+
+        
+    
     }
+  */
     public void MainMenu()
     {
         SceneManager.LoadScene(sceneBuildIndex: 0);
+    }
+
+    public void NewGame()
+    {
+        SceneManager.LoadScene(sceneBuildIndex: 1);
     }
 
 
@@ -228,6 +248,11 @@ public class GameManager : MonoBehaviour
             Debug.Log("yeah gday");
             projectileSet1.SetActive(true);
         }
+    }
+
+    public void LoadPlayerConfirm()
+    {
+        bLoadGame = true;
     }
 
 

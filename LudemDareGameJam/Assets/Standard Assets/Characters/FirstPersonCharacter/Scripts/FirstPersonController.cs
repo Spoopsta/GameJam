@@ -128,6 +128,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             projectileSet3.gameObject.SetActive(false);
             projectileSet4.gameObject.SetActive(false);
             projectileSet5.gameObject.SetActive(false);
+            
 
             if (SceneManager.GetActiveScene().buildIndex == 3)
             {
@@ -373,6 +374,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
         // Update is called once per frame
         private void Update()
         {
+            
+
             if (m_WalkSpeed >= 8.0 && !CheckWallTouch())
             {
                 m_WalkSpeed = m_WalkSpeed - decelerationRatePerFrame;
