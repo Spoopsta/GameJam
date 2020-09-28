@@ -93,7 +93,8 @@ public class SceneManagement : MonoBehaviour
     public void LoadLevel(int sceneIndex)
     {
 
-        StartCoroutine(LoadAsynchronously(sceneIndex));
+       StartCoroutine(LoadAsynchronously(sceneIndex));
+
     }
 
    

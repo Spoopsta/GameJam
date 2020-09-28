@@ -15,7 +15,8 @@ public static class SaveSystem
         PlayerData data = new PlayerData(player);
         Debug.Log(data.Sheep);
         formatter.Serialize(stream, data);
-        stream.Close();
+        Debug.Log(path);
+        stream.Close();      
     }
 
 

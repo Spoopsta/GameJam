@@ -86,7 +86,9 @@
     <Compile Include="Assets\Scripts\PunchCard.cs" />
     <Compile Include="Assets\Scripts\Saving\PlayerData.cs" />
     <Compile Include="Assets\Scripts\Saving\SaveLoadManager.cs" />
+    <Compile Include="Assets\Scripts\Saving\SavePlayer.cs" />
     <Compile Include="Assets\Scripts\Saving\SaveSystem.cs" />
+    <Compile Include="Assets\Scripts\Saving\SceneSaving.cs" />
     <Compile Include="Assets\Scripts\Terrain\FallingPlatform.cs" />
     <Compile Include="Assets\Scripts\Terrain\Teleporter.cs" />
     <Compile Include="Assets\Scripts\Terrain\WaypointPlatform.cs" />

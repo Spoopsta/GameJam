@@ -15,6 +15,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Level 1 - Office/Office 1 - Updated.unity
     guid: 1c6d58c4e37268248941ce6432e346c5
   - enabled: 1
+    path: Assets/Scenes/Level 2 - Medieval/Level 2 - Medieval City.unity
+    guid: bd7e03259eadc5740aa815a6887f8d08
+  - enabled: 1
     path: Assets/Scenes/Credits - Main/Credits.unity
     guid: 9b7f4b7b3ff375148be589aef5d63544
   m_configObjects: {}

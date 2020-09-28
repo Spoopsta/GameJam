@@ -16,7 +16,7 @@ public class PlayerData
     {
         keyCards = player.punchCards;
         Sheep = player.sheepCollected;
-        //activeScene = SceneManager.GetActiveScene().buildIndex;
+        activeScene = SceneManager.GetActiveScene().buildIndex;
 
         position = new float[3];
         position[0] = player.transform.position.x;

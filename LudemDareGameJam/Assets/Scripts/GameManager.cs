@@ -30,7 +30,7 @@ public class GameManager : MonoBehaviour
 
     public bool playerDeath;
 
-    public bool bLoadGame;
+ 
 
    
 
@@ -55,8 +55,6 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        bLoadGame = false;
-
 
         player.transform.position = currentCheckpoint.transform.position;
         player = GameObject.FindObjectOfType<FirstPersonController>();
@@ -248,11 +246,6 @@ public class GameManager : MonoBehaviour
             Debug.Log("yeah gday");
             projectileSet1.SetActive(true);
         }
-    }
-
-    public void LoadPlayerConfirm()
-    {
-        bLoadGame = true;
     }
 
 

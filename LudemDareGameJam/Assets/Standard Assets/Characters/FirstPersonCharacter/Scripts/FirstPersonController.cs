@@ -38,6 +38,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
         public GameObject player;
 
         public GameObject projectileSet1, projectileSet2, projectileSet3, projectileSet4, projectileSet5;
+
+
        
         //public GameObject levelManager;
         private Camera m_Camera;
@@ -138,6 +140,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 level2 = false;
             }
         }
+
+   
 
         private void OnTriggerEnter(Collider collision)
         {
