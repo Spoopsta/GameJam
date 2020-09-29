@@ -127,31 +127,6 @@ public class GameManager : MonoBehaviour
         Debug.Log("Game QUit");
     }
 
-  /*
-    public void SavePlayer()
-    {
-        SaveSystem.SavePlayer(player);
-    }
-
-    public void LoadPlayer()
-    {
-        PlayerData data = SaveSystem.LoadPlayer();
-
-        player.GetComponent<FirstPersonController>().punchCards = data.keyCards;
-        player.GetComponent<FirstPersonController>().sheepCollected = data.Sheep;
-      //  player.GetComponent<PlayerData>().activeScene = data.activeScene;
-
-        Vector3 position;
-        position.x = data.position[0];
-        position.y = data.position[1];
-        position.z = data.position[2];
-
-        player.transform.position = position;
-
-        
-    
-    }
-  */
     public void MainMenu()
     {
         SceneManager.LoadScene(sceneBuildIndex: 0);
@@ -207,20 +182,7 @@ public class GameManager : MonoBehaviour
         
         }
 
-        /*
-        if (blackOutSquare.GetComponent<Image>().color.a == 1)
-        {
-            playerDeath = false;
-        }
-        */
-
-     
-
-
-/*        
-        animator.SetTrigger("Death-FadeOut");
-       
-*/
+ 
     }
 
     //sends the player back to the most recent checkpoint.

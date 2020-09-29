@@ -10,11 +10,13 @@ public class SaveLoadManager : MonoBehaviour
 
     public FirstPersonController player;
     public bool bLoadGame = false;
+   // public GameObject sceneLoader;
     // Start is called before the first frame update
     void Start()
     {
 
         //player = GameObject.FindObjectOfType<FirstPersonController>();
+      //  bLoadGame = false;
 
     }
 
@@ -38,7 +40,7 @@ public class SaveLoadManager : MonoBehaviour
      
         PlayerData data = SaveSystem.LoadPlayer();
 
-        
+      
         player.GetComponent<FirstPersonController>().punchCards = data.keyCards;
         player.GetComponent<FirstPersonController>().sheepCollected = data.Sheep;
         //SceneManager.LoadScene(sceneBuildIndex: GetComponent<PlayerData>().activeScene);
@@ -67,6 +69,7 @@ public class SaveLoadManager : MonoBehaviour
         if (bLoadGame == true)
         {
             LoadPlayer();
+            
         }
     }
 

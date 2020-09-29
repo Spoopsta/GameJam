@@ -37,6 +37,7 @@ TagManager:
   - ProjectileSet4
   - ProjectileSet5
   - Teleporter
+  - FallingTree
   layers:
   - Default
   - TransparentFX

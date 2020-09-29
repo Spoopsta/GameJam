@@ -4554,6 +4554,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1358248746}
   bLoadGame: 0
+  sceneLoader: {fileID: 1313079699}
 --- !u!4 &794069960
 Transform:
   m_ObjectHideFlags: 0
@@ -12310,7 +12311,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.47956252, y: 0.48970374}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 196.48047, y: 22.799805}
+  m_AnchoredPosition: {x: 196.5, y: 22.75}
   m_SizeDelta: {x: 399.17004, y: 65.599976}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2049969567
