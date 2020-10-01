@@ -21,11 +21,16 @@ public class Teleporter : MonoBehaviour
             FallingTree.transform.position = teleportTarget.transform.position;
             
         }
+
+        if (other.gameObject.tag.Equals("Projectile"))
+        {
+            other.gameObject.transform.position = teleportTarget.transform.position;
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        
+       
     }
 
 }

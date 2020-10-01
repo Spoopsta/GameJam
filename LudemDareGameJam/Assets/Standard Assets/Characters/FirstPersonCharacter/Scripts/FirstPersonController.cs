@@ -156,8 +156,17 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 jumpText.text = "1";
                 dashCooldown = 0f;
                 bAirJump = true;
+                m_WalkSpeed = m_WalkSpeed + platformAcceleration + 0.2f;
 
                 PlayItemGet(collision.gameObject);
+            }
+
+            if (collision.gameObject.tag.Equals("Teleporter"))
+            {
+                dashText.text = "1";
+                jumpText.text = "1";
+                dashCooldown = 0f;
+                bAirJump = true;
             }
 
          
