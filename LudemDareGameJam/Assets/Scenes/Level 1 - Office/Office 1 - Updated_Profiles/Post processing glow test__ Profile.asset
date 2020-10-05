@@ -32,7 +32,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6050e2d5de785ce4d931e4dbdbf2d755, type: 3}
   m_Name: ChromaticAberration
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   enabled:
     overrideState: 1
     value: 1
@@ -95,7 +95,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 556797029e73b2347956b6579e77e05b, type: 3}
   m_Name: DepthOfField
   m_EditorClassIdentifier: 
-  active: 0
+  active: 1
   enabled:
     overrideState: 1
     value: 1
@@ -173,7 +173,7 @@ MonoBehaviour:
     value: 1
   intensity:
     overrideState: 1
-    value: 30
+    value: 10
   threshold:
     overrideState: 1
     value: 0.25
@@ -184,14 +184,14 @@ MonoBehaviour:
     overrideState: 0
     value: 65472
   diffusion:
-    overrideState: 0
-    value: 7
+    overrideState: 1
+    value: 8.19
   anamorphicRatio:
-    overrideState: 0
-    value: 0
+    overrideState: 1
+    value: -1
   color:
     overrideState: 1
-    value: {r: 1, g: 0.64257646, b: 0, a: 1}
+    value: {r: 0.8867924, g: 0.6432328, b: 0.4141153, a: 1}
   fastMode:
     overrideState: 0
     value: 0
@@ -310,7 +310,7 @@ MonoBehaviour:
     value: -100
   colorFilter:
     overrideState: 1
-    value: {r: 0.10215378, g: 0, b: 1, a: 1}
+    value: {r: 1, g: 0.756178, b: 0.5330188, a: 1}
   hueShift:
     overrideState: 1
     value: 1.29

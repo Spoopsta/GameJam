@@ -71,6 +71,8 @@ public class SaveLoadManager : MonoBehaviour
             LoadPlayer();
             
         }
+
+        
     }
 
     public void NewGameDeleteData()

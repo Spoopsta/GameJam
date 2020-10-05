@@ -38,6 +38,7 @@ TagManager:
   - ProjectileSet5
   - Teleporter
   - FallingTree
+  - FinishWall
   layers:
   - Default
   - TransparentFX

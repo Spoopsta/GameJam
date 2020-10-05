@@ -16,6 +16,8 @@ public class GameManager : MonoBehaviour
 
     public GameObject projectileSet1;
 
+    public bool hasDied = false;
+
     //this is so we can move the player around by making them an object that the code can read and adjust their transform.position
     //public GameObject player;
 
@@ -60,6 +62,7 @@ public class GameManager : MonoBehaviour
         player = GameObject.FindObjectOfType<FirstPersonController>();
         Time.timeScale = 1f;
         playerDeath = false;
+       // Application.targetFrameRate = 60;
 
     
 
@@ -74,7 +77,7 @@ public class GameManager : MonoBehaviour
         //DestroyWall();
         ResetLevel();
         DebugTeleporting();
-        RespawnPlayer();
+
 
         //Debug.Log(blackOutSquare.GetComponent<Image>().color.a);
 
@@ -92,13 +95,10 @@ public class GameManager : MonoBehaviour
         */
 
 
-        if (playerDeath == true)
+        if (playerDeath == true && hasDied == false)
         {
+            hasDied = true;
             StartCoroutine(RespawnCoroutine());
-        }
-        if (playerDeath == false)
-        {
-            StartCoroutine(RespawnCoroutine(false));
         }
 
 
@@ -151,8 +151,7 @@ public class GameManager : MonoBehaviour
         Color objectColor = blackOutSquare.GetComponent<Image>().color;
         float fadeAmount;
 
-        if (fadeToBlack)
-        {
+      
             
             while (blackOutSquare.GetComponent<Image>().color.a < 1)
             {
@@ -163,27 +162,31 @@ public class GameManager : MonoBehaviour
                 
                 blackOutSquare.GetComponent<Image>().color = objectColor;
                 playerDeath = false;
-                player.transform.position = currentCheckpoint.transform.position;
+                
                 yield return null;
             }
-        }
 
-        else
-        {
+        
+            player.transform.position = currentCheckpoint.transform.position;
+
+           Debug.Log(blackOutSquare.GetComponent<Image>().color.a + "before");
+
             while (blackOutSquare.GetComponent<Image>().color.a > 0)
             {
-                fadeAmount = objectColor.a - (fadeSpeed * Time.deltaTime * 1);
-                Debug.Log("hi");
+
+            fadeAmount = objectColor.a - (fadeSpeed * Time.deltaTime * 1);
+               // Debug.Log("hi");
                 objectColor = new Color(objectColor.r, objectColor.g, objectColor.b, fadeAmount);
                 blackOutSquare.GetComponent<Image>().color = objectColor;
                 yield return null;
             }
-           
-        
-        }
+        hasDied = false;
+        Debug.Log(blackOutSquare.GetComponent<Image>().color.a + "after");
+    }
+
 
  
-    }
+    
 
     //sends the player back to the most recent checkpoint.
     private void ResetLevel()

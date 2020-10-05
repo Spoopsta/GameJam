@@ -197,9 +197,21 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 SceneManager.LoadScene(sceneBuildIndex: 2);
             }
 
+            if (collision.gameObject.tag.Equals("FinishWall"))
+            {
+                SceneManager.LoadScene(sceneBuildIndex: 3);
+            }
+
             if (collision.gameObject.tag.Equals("MiddleWall"))
             {
                 m_MoveDir.y = 10.0f;
+            }
+
+
+            if (collision.gameObject.tag.Equals("JUMP"))
+            {
+                bAirJump = true; 
+                jumpText.text = "1";
             }
 
             /*if (collision.gameObject.tag.Equals("aaa")) {
@@ -382,7 +394,9 @@ namespace UnityStandardAssets.Characters.FirstPerson
             }
 
         }
-         
+
+        
+
 
         // Update is called once per frame
         private void Update()
@@ -599,6 +613,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         /// </summary>
         private void PlayerDashing()
         {
+           //Debug.Log(dashFrames);
             //perform the dash - if the button is pushed & we aren't in dashCooldown & we're in the air
             if (Input.GetKeyDown(DashKey) && dashCooldown == 0 && !m_CharacterController.isGrounded)
             {
@@ -606,14 +621,16 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 //when dash text go 0
                 dashText.text = "0";
                 //No. of frames to dashCooldown:
-                dashCooldown = 75f;
+                dashCooldown = 1.5f;
                 //No. of frames to apply dash over:
-                dashFrames = 20f;
+                dashFrames = 0.37f;
+
+               
             }
             //every frame, reduce dashCooldown frames by one.
             if (dashCooldown > 0)
             {
-                dashCooldown--;
+                dashCooldown -= Time.deltaTime;
 
             }
 
@@ -621,12 +638,13 @@ namespace UnityStandardAssets.Characters.FirstPerson
             if (dashFrames > 0)
             {
                 transform.position = transform.position + Camera.main.transform.forward * dashSpeed * Time.deltaTime;
-                dashFrames--;
+                dashFrames -= Time.deltaTime;
+                Debug.Log("something anything it doesnt matter");
             }
 
 
             //Not sure what this bit does??!? Left it in. Enlighten me.
-            if (dashFrames == 0)
+            if (dashFrames <= 0)
             {
                 GetComponentInChildren<ParticleSystem>().Stop();
             }
