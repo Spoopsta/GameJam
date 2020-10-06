@@ -613,9 +613,9 @@ namespace UnityStandardAssets.Characters.FirstPerson
         /// </summary>
         private void PlayerDashing()
         {
-           //Debug.Log(dashFrames);
+           Debug.Log(dashCooldown);
             //perform the dash - if the button is pushed & we aren't in dashCooldown & we're in the air
-            if (Input.GetKeyDown(DashKey) && dashCooldown == 0 && !m_CharacterController.isGrounded)
+            if (Input.GetKeyDown(DashKey) && dashCooldown <= 0 && !m_CharacterController.isGrounded)
             {
                 GetComponentInChildren<ParticleSystem>().Play();
                 //when dash text go 0
@@ -639,7 +639,6 @@ namespace UnityStandardAssets.Characters.FirstPerson
             {
                 transform.position = transform.position + Camera.main.transform.forward * dashSpeed * Time.deltaTime;
                 dashFrames -= Time.deltaTime;
-                Debug.Log("something anything it doesnt matter");
             }
 
 
@@ -649,7 +648,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 GetComponentInChildren<ParticleSystem>().Stop();
             }
 
-            if (dashCooldown == 0)
+            if (dashCooldown <= 0)
             {
                 dashText.text = "1";
             }

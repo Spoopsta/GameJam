@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/Level 1 - Office/Office 1 - Updated.unity
+- path: Assets/Scenes/Level 2 - Medieval/Level 2 - Medieval City.unity
   isLoaded: 1
   isActive: 1

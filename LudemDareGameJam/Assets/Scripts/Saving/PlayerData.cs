@@ -24,4 +24,5 @@ public class PlayerData
         position[2] = player.transform.position.z;
 
     }
+
 }
