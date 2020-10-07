@@ -4,6 +4,7 @@ using UnityStandardAssets.CrossPlatformInput;
 using UnityStandardAssets.Utility;
 using UnityEngine.SceneManagement;
 using TMPro;
+using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
 
@@ -69,6 +70,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private AudioSource m_AudioSource;
         public int jumpTextCounter;
         public int dashTextCounter;
+        private bool isDashCooldown = false;
+        public Image dashImage;
         public float decelerationRatePerFrame;
         public float platformAcceleration;
         public float maximumAcceleration;
@@ -103,6 +106,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             dashCooldown = 0;
             dashFrames = 0;
             GetComponentInChildren<ParticleSystem>().Stop();
+            dashImage.fillAmount = 0;
             m_CharacterController = GetComponent<CharacterController>();
             m_Camera = Camera.main;
             m_OriginalCameraPosition = m_Camera.transform.localPosition;
@@ -615,17 +619,31 @@ namespace UnityStandardAssets.Characters.FirstPerson
         {
            Debug.Log(dashCooldown);
             //perform the dash - if the button is pushed & we aren't in dashCooldown & we're in the air
-            if (Input.GetKeyDown(DashKey) && dashCooldown <= 0 && !m_CharacterController.isGrounded)
+            if (Input.GetKeyDown(DashKey) && dashCooldown <= 0 && !m_CharacterController.isGrounded && isDashCooldown == false)
             {
                 GetComponentInChildren<ParticleSystem>().Play();
                 //when dash text go 0
                 dashText.text = "0";
                 //No. of frames to dashCooldown:
-                dashCooldown = 1.5f;
+                dashCooldown = 1.75f;
                 //No. of frames to apply dash over:
                 dashFrames = 0.37f;
 
+                isDashCooldown = true;
+                dashImage.fillAmount = 1;
+
                
+            }
+
+            if (isDashCooldown)
+            {
+                dashImage.fillAmount -= 1 / dashCooldown * Time.deltaTime;
+
+                if (dashImage.fillAmount <= 0)
+                {
+                    dashImage.fillAmount = 0;
+                    isDashCooldown = false;
+                }
             }
             //every frame, reduce dashCooldown frames by one.
             if (dashCooldown > 0)
@@ -648,7 +666,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 GetComponentInChildren<ParticleSystem>().Stop();
             }
 
-            if (dashCooldown <= 0)
+            if (dashCooldown <= 0 && isDashCooldown == false)
             {
                 dashText.text = "1";
             }
