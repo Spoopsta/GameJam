@@ -58,7 +58,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
 
-        player.transform.position = currentCheckpoint.transform.position;
+        //player.transform.position = currentCheckpoint.transform.position;
         player = GameObject.FindObjectOfType<FirstPersonController>();
         Time.timeScale = 1f;
         playerDeath = false;
@@ -101,6 +101,20 @@ public class GameManager : MonoBehaviour
             StartCoroutine(RespawnCoroutine());
         }
 
+        if (player.GetComponent<FirstPersonController>().iYellowKey == 1)
+        {
+            punchCard1.SetActive(false);
+        }
+        
+        if (player.GetComponent<FirstPersonController>().iBlueKey == 1)
+        {
+            punchCard2.SetActive(false);
+        }
+        
+        if (player.GetComponent<FirstPersonController>().iRedKey == 1)
+        {
+            punchCard3.SetActive(false);
+        }
 
 
     }
@@ -169,7 +183,7 @@ public class GameManager : MonoBehaviour
         
             player.transform.position = currentCheckpoint.transform.position;
 
-           Debug.Log(blackOutSquare.GetComponent<Image>().color.a + "before");
+          // Debug.Log(blackOutSquare.GetComponent<Image>().color.a + "before");
 
             while (blackOutSquare.GetComponent<Image>().color.a > 0)
             {
@@ -181,7 +195,7 @@ public class GameManager : MonoBehaviour
                 yield return null;
             }
         hasDied = false;
-        Debug.Log(blackOutSquare.GetComponent<Image>().color.a + "after");
+        //Debug.Log(blackOutSquare.GetComponent<Image>().color.a + "after");
     }
 
 
@@ -189,7 +203,7 @@ public class GameManager : MonoBehaviour
     
 
     //sends the player back to the most recent checkpoint.
-    private void ResetLevel()
+    public void ResetLevel()
     {
         if (Input.GetKeyDown(KeyCode.R))
         {

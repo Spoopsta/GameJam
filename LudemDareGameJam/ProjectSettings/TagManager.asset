@@ -39,6 +39,9 @@ TagManager:
   - Teleporter
   - FallingTree
   - FinishWall
+  - YellowKey
+  - BlueKey
+  - RedKey
   layers:
   - Default
   - TransparentFX

@@ -8,6 +8,9 @@ using UnityStandardAssets.Characters.FirstPerson;
 public class PlayerData
 {
     public int keyCards;
+    public int YellowKeyCard;
+    public int BlueKeyCard;
+    public int RedKeyCard;
     public int Sheep;
     public float[] position;
     public int activeScene;
@@ -15,6 +18,10 @@ public class PlayerData
     public PlayerData(FirstPersonController player)
     {
         keyCards = player.punchCards;
+
+        YellowKeyCard = player.iYellowKey;
+        BlueKeyCard = player.iBlueKey;
+        RedKeyCard = player.iRedKey;
         Sheep = player.sheepCollected;
         activeScene = SceneManager.GetActiveScene().buildIndex;
 

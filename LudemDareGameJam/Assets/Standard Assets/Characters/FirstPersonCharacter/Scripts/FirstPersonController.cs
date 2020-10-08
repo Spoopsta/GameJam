@@ -55,6 +55,12 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private float m_StepCycle;
         private float m_NextStep;
         private bool m_Jumping;
+        public bool bYellowKeyCard;
+        public bool bBlueKeyCard;
+        public bool bRedKeyCard;
+        public int iYellowKey;
+        public int iBlueKey;
+        public int iRedKey;
         //  private bool m_Dash;
         //  private bool bAirDashed;
         //  private int iDashedCount;
@@ -115,6 +121,13 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_StepCycle = 0f;
             m_NextStep = m_StepCycle / 2f;
             m_Jumping = false;
+            bYellowKeyCard = false;
+            bBlueKeyCard = false;
+            bRedKeyCard = false;
+            iYellowKey = 0;
+            iBlueKey = 0;
+            iRedKey = 0;
+
             // iDashCount = 0;
             //  iDashedCount = 0;
             //  bAirDashed = false;
@@ -149,6 +162,46 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         private void OnTriggerEnter(Collider collision)
         {
+
+            if (collision.gameObject.tag.Equals("YellowKey"))
+            {
+                Debug.Log("punch ard obtained");
+                collision.gameObject.SetActive(false);
+                punchCards++;
+
+                keycardsText.text = "Keycards: " + punchCards;
+                Debug.Log(punchCards);
+
+                bYellowKeyCard = true;
+                iYellowKey = 1;
+            }
+
+            if (collision.gameObject.tag.Equals("BlueKey"))
+            {
+                Debug.Log("punch ard obtained");
+                collision.gameObject.SetActive(false);
+                punchCards++;
+
+                keycardsText.text = "Keycards: " + punchCards;
+                Debug.Log(punchCards);
+
+                bBlueKeyCard = true;
+                iBlueKey = 1;
+                Debug.Log("Blue");
+            }
+
+            if (collision.gameObject.tag.Equals("RedKey"))
+            {
+                Debug.Log("punch ard obtained");
+                collision.gameObject.SetActive(false);
+                punchCards++;
+
+                keycardsText.text = "Keycards: " + punchCards;
+                iRedKey = 1;
+                Debug.Log(punchCards);
+
+                bRedKeyCard = true;
+            }
 
 
             if (collision.gameObject.tag.Equals("Pickup")) {
@@ -240,6 +293,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
                     end = true;
                 }
             }
+
+
             //collision of red circle on basic platforms increases movement speed by platform acceleration to a cap of maximum acceleration
             if (collision.gameObject.tag.Equals("SpeedBoost"))
             {
@@ -399,7 +454,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         }
 
-        
+
+
 
 
         // Update is called once per frame
@@ -617,7 +673,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         /// </summary>
         private void PlayerDashing()
         {
-           Debug.Log(dashCooldown);
+           
             //perform the dash - if the button is pushed & we aren't in dashCooldown & we're in the air
             if (Input.GetKeyDown(DashKey) && dashCooldown <= 0 && !m_CharacterController.isGrounded && isDashCooldown == false)
             {

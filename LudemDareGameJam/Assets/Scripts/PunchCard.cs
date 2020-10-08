@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityStandardAssets.Characters.FirstPerson;
 using UnityEngine;
 
 public class PunchCard : MonoBehaviour
 {
     private int upInt;
     private int downInt;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -30,5 +32,9 @@ public class PunchCard : MonoBehaviour
             upInt = 0;
             downInt = 0;
         }
+
+       
     }
+
+  
 }
