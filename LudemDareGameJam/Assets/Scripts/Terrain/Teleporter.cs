@@ -8,12 +8,14 @@ public class Teleporter : MonoBehaviour
     public Transform teleportTarget;
     public FirstPersonController fpc;
     public GameObject FallingTree;
+    public AudioSource teleportSound;
 
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag.Equals("Player"))
         {
             fpc.transform.position = teleportTarget.transform.position;
+            teleportSound.Play();
         }
 
         if (other.gameObject == FallingTree)
