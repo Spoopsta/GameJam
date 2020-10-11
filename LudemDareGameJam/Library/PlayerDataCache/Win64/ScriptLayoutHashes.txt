@@ -1,6 +1,6 @@
 Win64
 PlayerPath?
-F:/Dreamer BUilds & backups/Dreamer Test v0.11/Dreamer_Test.exe
+F:/Dreamer BUilds & backups/Dreamer Test v0.12/Dreamer_Test.exe
 SceneListBegin?
 Assets/Scenes/Credits - Main/Main Menu.unity
 Assets/Scenes/Level 1 - Office/Office 1 - Updated.unity
@@ -29,7 +29,7 @@ e1bbf0ab858085e38fae6b12ebbdcd35 UnityEngine.Timeline.dll:UnityEngine.Timeline.P
 201e3fde670b00545944bb3db215c80a UnityEngine.Timeline.dll:UnityEngine.Timeline.TimelineAsset
 3748fbad2d474a315bda516b8363a0c5 Assembly-CSharp-firstpass.dll:UnityStandardAssets.Effects.ParticleSystemMultiplier
 9c7c87712e298256d276eb96e02a57b1 Unity.ProBuilder.dll:UnityEngine.ProBuilder.PreferenceDictionary
-e3660a95bf8e82437e095016ef3f8e80 Assembly-CSharp-firstpass.dll:UnityStandardAssets.Characters.FirstPerson.FirstPersonController
+886bddfd4f24e946394af128fec049db Assembly-CSharp-firstpass.dll:UnityStandardAssets.Characters.FirstPerson.FirstPersonController
 71f7f12b8d0f4fd73590db8bcb6d453c Unity.Postprocessing.Runtime.dll:UnityEngine.Rendering.PostProcessing.Bloom
 e7a73f5f78ba6445195ec23b74a1ce2d Unity.TextMeshPro.dll:TMPro.TMP_ScrollbarEventHandler
 0faadf7f444e033f28a19470d1ae257b Assembly-CSharp-firstpass.dll:UnityStandardAssets.Effects.ExplosionPhysicsForce
@@ -72,7 +72,7 @@ c56a55d215c9785540a335488c42b102 Assembly-CSharp.dll:Tayx.Graphy.GraphyDebugger
 f542c1afca5bb4022f91fdda19b8d622 Unity.Postprocessing.Runtime.dll:UnityEngine.Rendering.PostProcessing.DepthOfField
 98ad81e9f689a492509f07e75b810aaa Unity.TextMeshPro.dll:TMPro.TMP_InputField
 f6633ace6e530c0000f2ac6da4269c52 Unity.ProBuilder.dll:UnityEngine.ProBuilder.PolyShape
-261cdf5bd1a4305bd8c877af79238308 Assembly-CSharp.dll:.Teleporter
+c42ad6f48a07857b135b54805632e1e0 Assembly-CSharp.dll:.Teleporter
 26fe8d64d18a6adb64611d959c11fe05 Assembly-CSharp.dll:.SheepCollectables
 352455aaadb8c98ff36ead557753abfa Assembly-CSharp-firstpass.dll:UnityStandardAssets.CrossPlatformInput.TiltInput
 cf9f5cf2c3145a37ac07f00e50e460f9 UnityEngine.UI.dll:UnityEngine.UI.AspectRatioFitter
@@ -157,7 +157,7 @@ d251bf88db6c95a6b1aa0b69298da9ef UnityEngine.SpatialTracking.dll:UnityEngine.Spa
 db1f205a8c9dae1c39098cd23fc97f63 Assembly-CSharp-firstpass.dll:UnityStandardAssets.Utility.ParticleSystemDestroyer
 22c018dd8fa228e66d586ea6215449b3 Assembly-CSharp-firstpass.dll:UnityStandardAssets.Utility.SimpleMouseRotator
 71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp-firstpass.dll:UnityStandardAssets.Utility.DragRigidbody
-71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.SceneSaving
+3797e208c960421ee786f3a25ff7c046 Assembly-CSharp.dll:.SceneSaving
 94017dcc9f00fe671ea7dc427b4da011 Unity.TextMeshPro.dll:TMPro.TMP_SpriteAsset
 a8b6c919b2049fcc280823488144371f Assembly-CSharp-firstpass.dll:UnityStandardAssets.CrossPlatformInput.Joystick
 4f631fd718256a8c69483c396671a274 Assembly-CSharp-firstpass.dll:UnityStandardAssets.Utility.PlatformSpecificContent
@@ -180,7 +180,7 @@ d5d5b47e59a15c5b72713555b7a000cf Assembly-CSharp.dll:Tayx.Graphy.CustomizationSc
 71bb6a6b6c8f052f948db64c7dd3ca4f Unity.Analytics.Editor.dll:UnityEditor.Analytics.AnalyticsEventTrackerEditor
 5765d6300946dc01c47fa9a41b70ddb6 Assembly-CSharp.dll:Tayx.Graphy.Fps.G_FpsGraph
 736412e362408ed70c767f6171c06ff0 Assembly-CSharp.dll:.ModularTerrainCameraControl
-d7bab2229942d36ed6d980a7807c222f Assembly-CSharp.dll:.SaveLoadManager
+04b531b663b627e85767fdb0e57c9d07 Assembly-CSharp.dll:.SaveLoadManager
 d6fc8d3165070298511ec776ea575626 Unity.Postprocessing.Runtime.dll:UnityEngine.Rendering.PostProcessing.PostProcessResources
 71bb6a6b6c8f052f948db64c7dd3ca4f Unity.TextMeshPro.dll:TMPro.TMP_SpriteAnimator
 afc5b93a7b192de2dcb3832fe35a5c7e Assembly-CSharp.dll:.DissolveOverTime
@@ -287,3 +287,4 @@ be3793efdd72cdd3aa963814d025d4c7 Assembly-CSharp.dll:Tayx.Graphy.CustomizationSc
 71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:Tayx.Graphy.Audio.G_AudioMonitor
 e755f47f9c89a5492632d952d38b2936 Assembly-CSharp.dll:.wallrunning
 47cd05cf11ce8beb2fd9a1522f58f5ec Assembly-CSharp-firstpass.dll:UnityStandardAssets.Utility.AutoMobileShaderSwitch
+544465e396200a5079d32660e58d0a12 Assembly-CSharp.dll:.SettingsMenu

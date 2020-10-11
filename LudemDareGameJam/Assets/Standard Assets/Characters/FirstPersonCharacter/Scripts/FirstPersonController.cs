@@ -213,7 +213,11 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 jumpText.text = "1";
                 dashCooldown = 0f;
                 bAirJump = true;
-                m_WalkSpeed = m_WalkSpeed + platformAcceleration + 0.2f;
+
+                if (m_WalkSpeed < 15f)
+                {
+                    m_WalkSpeed = m_WalkSpeed + platformAcceleration;
+                }
 
                 PlayItemGet(collision.gameObject);
             }
@@ -461,11 +465,11 @@ namespace UnityStandardAssets.Characters.FirstPerson
         // Update is called once per frame
         private void Update()
         {
-            
+            //Debug.Log(m_WalkSpeed);
 
             if (m_WalkSpeed >= 8.0 && !CheckWallTouch())
             {
-                m_WalkSpeed = m_WalkSpeed - decelerationRatePerFrame;
+                m_WalkSpeed = m_WalkSpeed - decelerationRatePerFrame * Time.deltaTime;
             }
 
 
