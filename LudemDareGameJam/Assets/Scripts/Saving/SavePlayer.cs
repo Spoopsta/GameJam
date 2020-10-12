@@ -15,7 +15,6 @@ public class SavePlayer : MonoBehaviour
         
         //sets the load game bool to true
         saveManager.GetComponent<SaveLoadManager>().LoadPlayerConfirm();
-        
     }
     private void Awake()
     {

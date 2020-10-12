@@ -88,6 +88,7 @@ public class SaveLoadManager : MonoBehaviour
     public void NewGameDeleteData(int sceneIndex)
     {
        File.Delete(Application.persistentDataPath + "/player.data");
+        PlayerPrefs.DeleteAll();
         StartCoroutine(LoadAsynchronously(sceneIndex));
     }
 

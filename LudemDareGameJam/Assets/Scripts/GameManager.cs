@@ -78,6 +78,7 @@ public class GameManager : MonoBehaviour
         ResetLevel();
         DebugTeleporting();
 
+       
 
         //Debug.Log(blackOutSquare.GetComponent<Image>().color.a);
 
@@ -230,7 +231,7 @@ public class GameManager : MonoBehaviour
 
 
 
-
+    
     /// <summary>
     /// Used for teleporting between checkpoints for the purposes of testing with the level manager on. delete or comment out when unnecessary. or just make the proper debug tool 4head
     /// </summary>
@@ -307,4 +308,5 @@ public class GameManager : MonoBehaviour
 
         }
     }
+    
 }

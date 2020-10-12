@@ -214,7 +214,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 dashCooldown = 0f;
                 bAirJump = true;
 
-                if (m_WalkSpeed < 15f)
+                if (m_WalkSpeed < 12f)
                 {
                     m_WalkSpeed = m_WalkSpeed + platformAcceleration;
                 }
@@ -554,8 +554,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
             m_PreviouslyGrounded = m_CharacterController.isGrounded;
 
-            //temporary code to restart level for testing purposes
-            ResetLevel();
+           
 
             //new place for dashing?
             PlayerDashing();
@@ -874,14 +873,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_Camera.transform.localPosition = newCameraPosition;
         }
 
-        //RESET LEVEL
-        private void ResetLevel()
-        {
-            if (Input.GetKeyDown(KeyCode.Y))
-            {
-                Application.LoadLevel(Application.loadedLevel);
-            }
-        }
+        
 
         //PLAYER INPUT
         private void GetInput(out float speed)
